@@ -1,0 +1,287 @@
+<!doctype html>
+<!-- Copyright (c) Nohuto (N.B.) -->
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <script>
+    (() => {
+      const applyTheme = (theme) => {
+        document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
+      };
+
+      try {
+        const override = sessionStorage.getItem("theme_override");
+        if (override === "light" || override === "dark") {
+          applyTheme(override);
+          return;
+        }
+      } catch (_) { }
+
+      const prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      applyTheme(prefersDark ? "dark" : "light");
+    })();
+  </script>
+  <title>Impressum | Katzenfreunde Bietigheim-Bissingen e.V.</title>
+  <meta content="Rechtliche Angaben und Verantwortlichkeiten." name="description" />
+
+  <link rel="canonical" href="/pages/impressum.html" />
+  <link rel="icon" type="image/png" href="/assets/katzenfreunde-circle.png" />
+
+  <link as="image" href="/assets/katzenfreunde-transparent.png" rel="preload" />
+  <link rel="preload" href="/styles/fonts.css" as="style" />
+  <link rel="stylesheet" href="/styles/fonts.css" />
+  <link rel="stylesheet" href="/styles/base.css?v=css-refactor-3" />
+  <link rel="stylesheet" href="/styles/layout.css?v=css-refactor-3" />
+  <link rel="stylesheet" href="/styles/components.css?v=no-reveal-2" />
+  <link rel="stylesheet" href="/styles/content.css?v=css-refactor-3" />
+  <link rel="stylesheet" href="/styles/pages.css?v=css-refactor-3" />
+  <script defer type="module" src="/scripts/main.js?v=no-reveal-2"></script>
+</head>
+
+<body data-banner-mode="none" data-page="impressum">
+  <header class="site-header">
+    <div class="topline" data-i18n="tagline">Wir helfen Katzen in Not</div>
+    <div class="header-main">
+      <a class="brand" href="/index.html">
+        <img alt="Vereinslogo" class="brand__logo" height="62" src="/assets/katzenfreunde-transparent.png" width="62" />
+      </a>
+      <div class="header-controls">
+        <button aria-label="Farbmodus wechseln" class="theme-toggle" data-i18n-aria-label="themeAria" data-theme-toggle
+          type="button"></button>
+        <button aria-controls="site-nav" aria-expanded="false" class="nav-toggle" data-i18n="menuToggle" data-nav-toggle
+          type="button">Men&uuml;</button>
+      </div>
+      <nav aria-label="Hauptnavigation" class="nav-wrap" data-nav-wrap id="site-nav">
+        <ul class="main-nav">
+          <li class="">
+            <a data-i18n="navHome" href="/index.html">Startseite</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navDates" href="/pages/termine.html">Termine</a>
+          </li>
+
+          <li class="has-dropdown">
+            <a class="nav-link--dropdown" data-i18n="navActivities" href="/pages/unsere-aktivitaeten.html">Unsere
+              Aktivit&auml;ten</a>
+            <button aria-expanded="false" aria-haspopup="true" aria-label="Untermen&uuml; umschalten"
+              class="nav-dropdown-toggle" data-i18n-aria-label="navActivitiesToggle" type="button"></button>
+            <ul class="submenu">
+              <li>
+                <a href="/pages/flohmaerkte.html">Flohmarkt</a>
+              </li>
+
+              <li>
+                <a href="/pages/tieraerztl-versorgung.html">Tier&auml;rztliche Versorgung</a>
+              </li>
+
+              <li>
+                <a href="/pages/futterstellen.html">Futterstellen</a>
+              </li>
+
+              <li>
+                <a href="/pages/katzenvermittlung.html">Katzenvermittlung</a>
+              </li>
+
+              <li>
+                <a href="/pages/schutzgebuehren.html">Schutzgeb&uuml;hren</a>
+              </li>
+
+              <li>
+                <a href="/pages/endlich-daheim.html">Endlich daheim</a>
+              </li>
+
+              <li>
+                <a href="/pages/futter-shop.html">Futter Shop</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="">
+            <a data-i18n="navPlacement" href="/pages/vermittlung.html">Vermittlung</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navReports" href="/pages/aktuelle-berichte.html">Berichte</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navMembership" href="/pages/mitglied-werden.html">Mitgliedschaft</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navDonate" href="/pages/spenden.html">Spenden</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navTips" href="/pages/tipps.html">Tipps</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navContact" href="/pages/kontakt.html">Kontakt</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <article class="rich-content prose page-content">
+      <h1>Impressum</h1>
+      <div class="content-prose">
+        <p><strong>Katzenfreunde Bietigheim-Bissingen e.V.</strong></p>
+        <p>Gesch&auml;ftsstelle: Im Vogelsang 11, 74372 Sersheim</p>
+        <ul class="content-list">
+          <li>Telefon: (07042) 34355</li>
+          <li>Fax: (07042) 816627</li>
+          <li>E-Mail: info@katzenfreunde-bietigheim-bissingen.de</li>
+          <li>URL: www.katzenfreunde-bietigheim-bissingen.de</li>
+          <li>Registergericht: Amtsgericht Stuttgart</li>
+          <li>Registernummer: VR 300462</li>
+          <li>Steuernummer: 55099/11942</li>
+        </ul>
+        <p>Vertretungsberechtigt und f&uuml;r den Inhalt der Publikationen sowie im Sinne von § 55 Abs. 2 RStV
+          verantwortlich ist der Vereinsvorstand:</p>
+        <p>Jutta Framenau (1. Vorsitzende), Claudia Reichl (stellvertretende Vorsitzende), Jutta Henig (Kassier).</p>
+        <p>Alle genannten Personen sind &Uuml;ber die oben genannte Postanschrift erreichbar.</p>
+
+        <p><strong>Haftungsausschl&uuml;sse</strong></p>
+        <p><strong>1. Inhalt des Onlineangebotes</strong></p>
+        <p>
+          Der Autor &uuml;bernimmt keinerlei Gew&auml;hr f&uuml;r die Aktualit&auml;t, Korrektheit, Vollst&auml;ndigkeit
+          oder Qualit&auml;t der bereitgestellten Informationen. Haftungsanspr&uuml;che gegen den Autor, welche sich auf
+          Sch&auml;den
+          materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen
+          bzw. durch die Nutzung fehlerhafter und unvollst&auml;ndiger Informationen verursacht wurden, sind
+          grunds&auml;tzlich ausgeschlossen, sofern seitens des Autors kein nachweislich vors&auml;tzliches oder grob
+          fahrl&auml;ssiges Verschulden vorliegt.
+        </p>
+        <p>
+          Alle Angebote sind freibleibend und unverbindlich. Der Autor beh&auml;lt es sich ausdr&uuml;cklich vor, Teile
+          der Seiten oder das gesamte Angebot ohne gesonderte Ank&uuml;ndigung zu ver&auml;ndern, zu erg&auml;nzen, zu
+          l&ouml;schen
+          oder die Ver&ouml;ffentlichung zeitweise oder endg&uuml;ltig einzustellen.
+        </p>
+
+        <p><strong>2. Verweise und Links</strong></p>
+        <p>
+          Bei direkten oder indirekten Verweisen auf fremde Webseiten ("Hyperlinks"), die au&szlig;erhalb des
+          Verantwortungsbereiches des Autors liegen, w&uuml;rde eine Haftungsverpflichtung ausschlie&szlig;lich in dem
+          Fall in
+          Kraft treten, in dem der Autor von den Inhalten Kenntnis hat und es ihm technisch m&ouml;glich und zumutbar
+          w&auml;re, die Nutzung im Falle rechtswidriger Inhalte zu verhindern.
+        </p>
+        <p>
+          Der Autor erkl&auml;rt hiermit ausdr&uuml;cklich, dass zum Zeitpunkt der Linksetzung keine illegalen Inhalte
+          auf den zu verlinkenden Seiten erkennbar waren. Auf die aktuelle und zuk&uuml;nftige Gestaltung, die Inhalte
+          oder die Urheberschaft der verlinkten/verkn&uuml;pften Seiten hat der Autor keinerlei Einfluss. Deshalb
+          distanziert er sich hiermit ausdr&uuml;cklich von allen Inhalten aller verlinkten/verkn&uuml;pften Seiten, die
+          nach
+          der Linksetzung ver&auml;ndert wurden. Diese Feststellung gilt f&uuml;r alle innerhalb des eigenen
+          Internetangebotes gesetzten Links und Verweise sowie f&uuml;r Fremdeintr&auml;ge in vom Autor eingerichteten
+          G&auml;steb&uuml;chern,
+          Diskussionsforen, Linkverzeichnissen, Mailinglisten und in allen anderen Formen von Datenbanken, auf deren
+          Inhalt externe Schreibzugriffe m&ouml;glich sind. F&uuml;r illegale, fehlerhafte oder unvollst&auml;ndige
+          Inhalte
+          und insbesondere f&uuml;r Sch&auml;den, die aus der Nutzung oder Nichtnutzung solcherart dargebotener
+          Informationen entstehen, haftet allein der Anbieter der Seite, auf welche verwiesen wurde, nicht derjenige,
+          der
+          &Uuml;ber Links auf die jeweilige Ver&ouml;ffentlichung lediglich verweist.
+        </p>
+
+        <p><strong>3. Urheber- und Kennzeichenrecht</strong></p>
+        <p>
+          Der Autor ist bestrebt, in allen Publikationen die Urheberrechte der verwendeten Bilder, Grafiken,
+          Tondokumente, Videosequenzen und Texte zu beachten, von ihm selbst erstellte Bilder, Grafiken, Tondokumente,
+          Videosequenzen und Texte zu nutzen oder auf lizenzfreie Grafiken, Tondokumente, Videosequenzen und Texte
+          zur&uuml;ckzugreifen.
+        </p>
+        <p>
+          Alle innerhalb des Internetangebotes genannten und ggf. durch Dritte gesch&uuml;tzten Marken- und Warenzeichen
+          unterliegen uneingeschr&auml;nkt den Bestimmungen des jeweils g&uuml;ltigen Kennzeichenrechts und den
+          Besitzrechten der jeweiligen eingetragenen Eigent&uuml;mer. Allein aufgrund der blo&szlig;en Nennung ist nicht
+          der Schluss zu ziehen, dass Markenzeichen nicht durch Rechte Dritter gesch&uuml;tzt sind.
+        </p>
+        <p>
+          Das Copyright f&uuml;r ver&ouml;ffentlichte, vom Autor selbst erstellte Objekte bleibt allein beim Autor der
+          Seiten. Eine Vervielf&auml;ltigung oder Verwendung solcher Grafiken, Tondokumente, Videosequenzen und Texte in
+          anderen elektronischen oder gedruckten Publikationen ist ohne ausdr&uuml;ckliche Zustimmung des Autors nicht
+          gestattet.
+        </p>
+
+        <p><strong>4. Datenschutz</strong></p>
+        <p>
+          Sofern innerhalb des Internetangebotes die M&ouml;glichkeit zur Eingabe pers&ouml;nlicher oder
+          gesch&auml;ftlicher Daten (E-Mail-Adressen, Namen, Anschriften) besteht, so erfolgt die Preisgabe dieser Daten
+          seitens des
+          Nutzers auf ausdr&uuml;cklich freiwilliger Basis. Die Inanspruchnahme und Bezahlung aller angebotenen Dienste
+          ist - soweit technisch m&ouml;glich und zumutbar - auch ohne Angabe solcher Daten bzw. unter Angabe
+          anonymisierter Daten oder eines Pseudonyms gestattet. Die Nutzung der im Rahmen des Impressums oder
+          vergleichbarer Angaben ver&ouml;ffentlichten Kontaktdaten wie Postanschriften, Telefon- und Faxnummern sowie
+          E-Mail-Adressen durch Dritte zur &Uuml;bersendung von nicht ausdr&uuml;cklich angeforderten Informationen ist
+          nicht gestattet. Rechtliche Schritte gegen die Versender von sogenannten Spam-Mails bei Verst&ouml;&szlig;en
+          gegen
+          dieses Verbot sind ausdr&uuml;cklich vorbehalten.
+        </p>
+
+        <p><strong>5. Rechtswirksamkeit dieses Haftungsausschlusses</strong></p>
+        <p>
+          Dieser Haftungsausschluss ist als Teil des Internetangebotes zu betrachten, von dem aus auf diese Seite
+          verwiesen wurde. Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht,
+          nicht mehr oder nicht vollst&auml;ndig entsprechen sollten, bleiben die &uuml;brigen Teile des Dokumentes in
+          ihrem Inhalt und ihrer G&uuml;ltigkeit davon unber&uuml;hrt.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <h2 class="footer-title">Katzenfreunde Bietigheim-Bissingen e.V.</h2>
+          <p class="footer-note">Gesch&auml;ftsstelle: Im Vogelsang 11, 74372 Sersheim</p>
+          <p class="footer-note" data-i18n="footerRights">© 2026 Katzenfreunde Bietigheim-Bissingen e.V. Alle Rechte
+            vorbehalten.</p>
+        </div>
+        <div class="footer-links">
+          <a data-i18n="legalImpressum" href="/pages/impressum.html">Impressum</a>
+          <a data-i18n="legalPrivacy" href="/pages/datenschutz.html">Datenschutz</a>
+        </div>
+        <div aria-label="Kontakt-Icons" class="icon-row">
+          <a aria-label="Telefon anrufen" class="icon-link" data-icon="phone" href="tel:+49704234355"></a>
+          <button aria-label="E-Mail kopieren" class="icon-btn"
+            data-copy-email="info@katzenfreunde-bietigheim-bissingen.de" data-i18n-aria-label="copyEmail"
+            data-icon="mail" type="button"></button>
+          <a aria-label="WhatsApp" class="icon-link" data-icon="brand-whatsapp" href="https://wa.me/4915772702827"
+            rel="noopener noreferrer" target="_blank"></a>
+          <a aria-label="Facebook" class="icon-link" data-icon="brand-facebook"
+            href="https://www.facebook.com/katzenfreundebibi/" rel="noopener noreferrer" target="_blank"></a>
+          <a aria-label="Instagram" class="icon-link" data-icon="brand-instagram"
+            href="https://www.instagram.com/katzenfreunde_bietigheim/" rel="noopener noreferrer" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div aria-hidden="true" class="modal" data-pdf-modal>
+    <div class="modal__backdrop" data-modal-backdrop></div>
+    <div aria-label="PDF Vorschau" aria-modal="true" class="modal__dialog" role="dialog">
+      <div class="modal__head">
+        <p class="modal__title" data-i18n="modalTitle" data-modal-title>PDF Vorschau</p>
+        <div class="modal__actions">
+          <button aria-label="Schlie&szlig;en" class="modal__close modal__close--icon" data-i18n-aria-label="modalClose"
+            data-modal-close data-icon="x" type="button"></button>
+        </div>
+      </div>
+      <iframe class="modal__frame" data-modal-frame src="about:blank" title="PDF Vorschau"></iframe>
+    </div>
+  </div>
+
+  <div aria-live="polite" class="toast" data-toast role="status"></div>
+</body>
+
+</html>

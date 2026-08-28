@@ -1,0 +1,228 @@
+<!doctype html>
+<!-- Copyright (c) Nohuto (N.B.) -->
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <script>
+    (() => {
+      const applyTheme = (theme) => {
+        document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
+      };
+
+      try {
+        const override = sessionStorage.getItem("theme_override");
+        if (override === "light" || override === "dark") {
+          applyTheme(override);
+          return;
+        }
+      } catch (_) { }
+
+      const prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      applyTheme(prefersDark ? "dark" : "light");
+    })();
+  </script>
+  <title>Futterstellen | Katzenfreunde Bietigheim-Bissingen e.V.</title>
+  <meta content="Regelm&auml;&szlig;ige Versorgung freilebender Katzen an betreuten Stellen." name="description" />
+
+  <link rel="canonical" href="/pages/futterstellen.html" />
+  <link rel="icon" type="image/png" href="/assets/katzenfreunde-circle.png" />
+
+
+  <link rel="preload" href="/styles/fonts.css" as="style" />
+  <link rel="stylesheet" href="/styles/fonts.css" />
+  <link rel="stylesheet" href="/styles/base.css?v=css-refactor-3" />
+  <link rel="stylesheet" href="/styles/layout.css?v=css-refactor-3" />
+  <link rel="stylesheet" href="/styles/components.css?v=no-reveal-2" />
+  <link rel="stylesheet" href="/styles/content.css?v=css-refactor-3" />
+  <link rel="stylesheet" href="/styles/pages.css?v=css-refactor-3" />
+  <script defer type="module" src="/scripts/main.js?v=no-reveal-2"></script>
+</head>
+
+<body data-banner-mode="auto" data-page="futterstellen">
+  <header class="site-header">
+    <div class="topline" data-i18n="tagline">Wir helfen Katzen in Not</div>
+    <div class="header-main">
+      <a class="brand" href="/index.html">
+        <img alt="Vereinslogo" class="brand__logo" height="62" src="/assets/katzenfreunde-transparent.png" width="62" />
+      </a>
+      <div class="header-controls">
+        <button aria-label="Farbmodus wechseln" class="theme-toggle" data-i18n-aria-label="themeAria" data-theme-toggle
+          type="button"></button>
+        <button aria-controls="site-nav" aria-expanded="false" class="nav-toggle" data-i18n="menuToggle" data-nav-toggle
+          type="button">Men&uuml;</button>
+      </div>
+      <nav aria-label="Hauptnavigation" class="nav-wrap" data-nav-wrap id="site-nav">
+        <ul class="main-nav">
+          <li class="">
+            <a data-i18n="navHome" href="/index.html">Startseite</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navDates" href="/pages/termine.html">Termine</a>
+          </li>
+
+          <li class="has-dropdown is-active">
+            <a aria-current="page" class="nav-link--dropdown" data-i18n="navActivities"
+              href="/pages/unsere-aktivitaeten.html">Unsere Aktivit&auml;ten</a>
+            <button aria-expanded="false" aria-haspopup="true" aria-label="Untermen&uuml; umschalten"
+              class="nav-dropdown-toggle" data-i18n-aria-label="navActivitiesToggle" type="button"></button>
+            <ul class="submenu">
+              <li>
+                <a href="/pages/flohmaerkte.html">Flohmarkt</a>
+              </li>
+
+              <li>
+                <a href="/pages/tieraerztl-versorgung.html">Tier&auml;rztliche Versorgung</a>
+              </li>
+
+              <li>
+                <a href="/pages/futterstellen.html">Futterstellen</a>
+              </li>
+
+              <li>
+                <a href="/pages/katzenvermittlung.html">Katzenvermittlung</a>
+              </li>
+
+              <li>
+                <a href="/pages/schutzgebuehren.html">Schutzgeb&uuml;hren</a>
+              </li>
+
+              <li>
+                <a href="/pages/endlich-daheim.html">Endlich daheim</a>
+              </li>
+
+              <li>
+                <a href="/pages/futter-shop.html">Futter Shop</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="">
+            <a data-i18n="navPlacement" href="/pages/vermittlung.html">Vermittlung</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navReports" href="/pages/aktuelle-berichte.html">Berichte</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navMembership" href="/pages/mitglied-werden.html">Mitgliedschaft</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navDonate" href="/pages/spenden.html">Spenden</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navTips" href="/pages/tipps.html">Tipps</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navContact" href="/pages/kontakt.html">Kontakt</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell page-shell--with-banner">
+    <article class="rich-content prose page-content">
+      <section class="activity-header">
+        <h1>Futterstellen</h1>
+        <p>Regelm&auml;&szlig;ige Versorgung freilebender Katzen an betreuten Stellen.</p>
+      </section>
+      <div class="content-prose">
+        <p>Die tats&auml;chliche Bedeutung von Futterstellen und die damit verbundene Arbeit ist letztlich im
+          Bewusstsein vieler Menschen noch nicht angekommen. Katze und Mensch gehen hier eine schicksalhafte
+          Partnerschaft ein.</p>
+        <p>Wenn man sich die Voraussetzungen und Auswirkungen spontan in den Fokus des Bewusstsein holt, f&auml;llt
+          einem dazu eine ganze Menge ein:</p>
+        <p><strong>Mensch</strong></p>
+        <ul class="content-list">
+          <li>Katzen werden an ihren Futterpl&auml;tzen von opferbereiten und netten Menschen freiwillig gef&uuml;ttert.
+          </li>
+          <li>Unentgeltlich, allenfalls mit einer Ehrenamtspauschale versehen.</li>
+          <li>Bei Sturm und Regen, bei K&auml;lte und Schnee, bei Hitze und auch bei Unlust.</li>
+          <li>Wie war das noch mit dem Urlaub?</li>
+          <li>Bei kilometerlangen Anfahrten, mehrere tausend Kilometer im Jahr, ohne Aufwandserstattung.</li>
+          <li>Diese Geschichte ist teuer! Ja! Katzen m&uuml;ssen t&auml;glich versorgt werden</li>
+          <li>Unz&auml;hlige Stunden in tier&auml;rztlicher Praxis kommen hinzu.</li>
+        </ul>
+        <p><strong>Katze, &ouml;kologisches Gleichgewicht</strong></p>
+        <ul class="content-list">
+          <li>Sicherung regelm&auml;&szlig;iger, t&auml;glicher Mahlzeiten.</li>
+          <li>Die Standorttreue der Katzen ist dadurch gesichert.</li>
+          <li>Neu hinzugewanderte Katzen k&ouml;nnen leichter erkannt werden.</li>
+          <li>Kranke und unkastrierte Katzen werden eingefangen und tier&auml;rztlich versorgt.</li>
+          <li>Die Katzenpopulation ist ges&uuml;nder und die Ausbreitung von Krankheiten wird abgemildert.</li>
+          <li>Durch rechtzeitige Kastration wird eine weitere Vermehrung von Katzen verhindert.</li>
+          <li>Katzen k&ouml;nnen zu einem &ouml;kologischen Gleichgewicht mit ihren Beutetieren (M&auml;use, Ratten,
+            Fr&ouml;sche, V&ouml;gel) beitragen.</li>
+          <li>Beispiel: L&ouml;st man einen Katzenbestand komplett auf, haben Beutetiere die M&ouml;glichkeit, sich
+            ungebremst zu vermehren.</li>
+          <li>Das gilt besonders auf Friedh&ouml;fen, in Parkanlagen und auf Bauernh&ouml;fen.</li>
+          <li>Gleichzeitig ist auf ein stabiles Gleichgewicht mit den m&ouml;glichen Beutetieren zu achten.</li>
+          <li>Gegebenenfalls werden Schutzma&szlig;nahmen f&uuml;r V&ouml;gel und Reptilien wichtig.</li>
+        </ul>
+        <p><strong>Wir meinen</strong></p>
+        <p>Wenn Sie f&uuml;r die Versorgung der Katzen Geld oder Tierfutter spenden, dann freuen Sie sich inniglich. Sie
+          haben damit Streunerkatzen geholfen, w&uuml;rdig und m&ouml;glichst gesund zu leben.</p>
+        <p>Damit bringen Sie aber auch aufopferungsvollen Menschen die Anerkennung und Wertsch&auml;tzung entgegen, um
+          ihren t&auml;glichen Einsatz mit Freude und Hingabe weiter zu beschreiten.</p>
+        <p><strong><a href="/pages/spenden.html">Spendenkonto</a></strong></p>
+        <p>Die vollst&auml;ndige Bankverbindung und alle Spendenm&ouml;glichkeiten finden Sie auf unserer <a
+            href="/pages/spenden.html">Spenden-Seite</a>.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <h2 class="footer-title">Katzenfreunde Bietigheim-Bissingen e.V.</h2>
+          <p class="footer-note">Gesch&auml;ftsstelle: Im Vogelsang 11, 74372 Sersheim</p>
+          <p class="footer-note" data-i18n="footerRights">� 2026 Katzenfreunde Bietigheim-Bissingen e.V. Alle Rechte
+            vorbehalten.</p>
+        </div>
+        <div class="footer-links">
+          <a data-i18n="legalImpressum" href="/pages/impressum.html">Impressum</a>
+          <a data-i18n="legalPrivacy" href="/pages/datenschutz.html">Datenschutz</a>
+        </div>
+        <div aria-label="Kontakt-Icons" class="icon-row">
+          <a aria-label="Telefon anrufen" class="icon-link" data-icon="phone" href="tel:+49704234355"></a>
+          <button aria-label="E-Mail kopieren" class="icon-btn"
+            data-copy-email="info@katzenfreunde-bietigheim-bissingen.de" data-i18n-aria-label="copyEmail"
+            data-icon="mail" type="button"></button>
+          <a aria-label="WhatsApp" class="icon-link" data-icon="brand-whatsapp" href="https://wa.me/4915772702827"
+            rel="noopener noreferrer" target="_blank"></a>
+          <a aria-label="Facebook" class="icon-link" data-icon="brand-facebook"
+            href="https://www.facebook.com/katzenfreundebibi/" rel="noopener noreferrer" target="_blank"></a>
+          <a aria-label="Instagram" class="icon-link" data-icon="brand-instagram"
+            href="https://www.instagram.com/katzenfreunde_bietigheim/" rel="noopener noreferrer" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div aria-hidden="true" class="modal" data-pdf-modal>
+    <div class="modal__backdrop" data-modal-backdrop></div>
+    <div aria-label="PDF Vorschau" aria-modal="true" class="modal__dialog" role="dialog">
+      <div class="modal__head">
+        <p class="modal__title" data-i18n="modalTitle" data-modal-title>PDF Vorschau</p>
+        <div class="modal__actions">
+          <button aria-label="Schlie&szlig;en" class="modal__close modal__close--icon" data-i18n-aria-label="modalClose"
+            data-modal-close data-icon="x" type="button"></button>
+        </div>
+      </div>
+      <iframe class="modal__frame" data-modal-frame src="about:blank" title="PDF Vorschau"></iframe>
+    </div>
+  </div>
+
+  <div aria-live="polite" class="toast" data-toast role="status"></div>
+</body>
+
+</html>

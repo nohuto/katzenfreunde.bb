@@ -1,0 +1,230 @@
+/* Copyright (c) Nohuto (N.B.) */
+@layer tokens, reset, base, layout, content, components, utilities, overrides;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --container-xl: 1180px;
+    --container-content: 960px;
+    --gutter-inline: 1rem;
+
+    --bg: #f8f9f7;
+    --bg-accent: #f1f3ef;
+    --surface: #ffffff;
+    --surface-soft: #e9e2d5;
+
+    --text: #232622;
+    --muted: #5e655c;
+
+    --brand: #6b7d57;
+    --brand-strong: #6b7d57;
+    --brand-hover: #5f704d;
+    --brand-hover-strong: #5f704d;
+
+    --line: #cbbba0;
+    --line-strong: #beae92;
+
+    --accent: #cbbba0;
+    --accent-strong: #beae92;
+    --accent-hover: #beae92;
+    --paypal-blue: #005EA6;
+    --selection-text: #232622;
+
+    --shadow-soft: 0 16px 40px rgba(35, 38, 34, 0.1);
+    --shadow-strong: 0 24px 56px rgba(28, 31, 27, 0.18);
+
+    --radius-m: 4px;
+    --radius-l: 6px;
+
+    --font-main: "Source Sans 3", "Segoe UI", Tahoma, sans-serif;
+    --font-display: "Amatic SC", "Segoe UI", Tahoma, sans-serif;
+
+    --paw-icon: url("../assets/icons/light/paw.svg");
+
+    --cursor-main: url("../assets/cursor/dark/paw-filled.cur") 2 1, auto;
+    --cursor-action: url("../assets/cursor/dark/paw-filled.cur") 2 1, pointer;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
+    --container-xl: 1180px;
+    --container-content: 960px;
+    --gutter-inline: 1rem;
+
+    --bg: #161718;
+    --bg-accent: #1d1f20;
+    --surface: #232527;
+    --surface-soft: #423c34;
+
+    --text: #e8ebe5;
+    --muted: #b8beb5;
+
+    --brand: #7f9368;
+    --brand-strong: #7f9368;
+    --brand-hover: #93a97a;
+    --brand-hover-strong: #93a97a;
+
+    --line: #b7aa93;
+    --line-strong: #c5b8a1;
+
+    --accent: #b7aa93;
+    --accent-strong: #c5b8a1;
+    --accent-hover: #c5b8a1;
+    --paypal-blue: #00355F;
+    --selection-text: #161718;
+
+    --paw-icon: url("../assets/icons/dark/paw.svg");
+
+    --shadow-soft: 0 16px 42px rgba(0, 0, 0, 0.3);
+    --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.44);
+
+    --cursor-main: url("../assets/cursor/light/paw-filled.cur") 2 1, auto;
+    --cursor-action: url("../assets/cursor/light/paw-filled.cur") 2 1, pointer;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    scrollbar-color: var(--line-strong) transparent;
+    scrollbar-width: thin;
+  }
+
+  *::selection {
+    background-color: var(--accent);
+    color: var(--selection-text);
+    text-shadow: none;
+    -webkit-text-fill-color: var(--selection-text);
+  }
+
+  *::-moz-selection {
+    background-color: var(--accent);
+    color: var(--selection-text);
+    text-shadow: none;
+  }
+
+  *::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-x: clip;
+    color: var(--text);
+    background: var(--bg);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    line-height: 1.68;
+    cursor: var(--cursor-main);
+  }
+
+  body::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  @media (pointer: coarse) {
+
+    html,
+    body {
+      overscroll-behavior-x: none;
+    }
+
+    body {
+      touch-action: pan-y pinch-zoom;
+    }
+  }
+
+  a,
+  button,
+  input[type="button"],
+  input[type="submit"],
+  summary {
+    cursor: var(--cursor-action);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 5.4vw, 4.35rem);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 3.3vw, 3.25rem);
+  }
+
+  h3 {
+    font-size: clamp(1.7rem, 2.45vw, 2.6rem);
+  }
+
+  p,
+  li,
+  span,
+  label,
+  input,
+  textarea,
+  select,
+  button {
+    font-family: var(--font-main);
+  }
+
+  a {
+    color: var(--brand-strong);
+    text-decoration-thickness: 1.3px;
+    text-underline-offset: 3px;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--brand-hover, var(--brand));
+  }
+}

@@ -1,0 +1,262 @@
+<!doctype html>
+<!-- Copyright (c) Nohuto (N.B.) -->
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <script>
+    (() => {
+      const applyTheme = (theme) => {
+        document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
+      };
+
+      try {
+        const override = sessionStorage.getItem("theme_override");
+        if (override === "light" || override === "dark") {
+          applyTheme(override);
+          return;
+        }
+      } catch (_) { }
+
+      const prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      applyTheme(prefersDark ? "dark" : "light");
+    })();
+  </script>
+  <title>Mitgliedschaft | Katzenfreunde Bietigheim-Bissingen e.V.</title>
+  <meta content="Unterst&uuml;tzen Sie den Verein dauerhaft als Mitglied." name="description" />
+
+  <link rel="canonical" href="/pages/mitglied-werden.html" />
+  <link rel="icon" type="image/png" href="/assets/katzenfreunde-circle.png" />
+
+  <link as="image" href="/assets/media/resources/mitgliedschaft-katze-zuhause.jpg" rel="preload" />
+  <link rel="preload" href="/styles/fonts.css" as="style" />
+  <link rel="stylesheet" href="/styles/fonts.css" />
+  <link rel="stylesheet" href="/styles/base.css?v=css-refactor-3" />
+  <link rel="stylesheet" href="/styles/layout.css?v=css-refactor-3" />
+  <link rel="stylesheet" href="/styles/components.css?v=no-reveal-2" />
+  <link rel="stylesheet" href="/styles/content.css?v=css-refactor-3" />
+  <link rel="stylesheet" href="/styles/pages.css?v=css-refactor-3" />
+  <script defer type="module" src="/scripts/main.js?v=no-reveal-2"></script>
+</head>
+
+<body data-banner-mode="none" data-page="mitglied-werden">
+  <header class="site-header">
+    <div class="topline" data-i18n="tagline">Wir helfen Katzen in Not</div>
+    <div class="header-main">
+      <a class="brand" href="/index.html">
+        <img alt="Vereinslogo" class="brand__logo" height="62" src="/assets/katzenfreunde-transparent.png" width="62" />
+      </a>
+      <div class="header-controls">
+        <button aria-label="Farbmodus wechseln" class="theme-toggle" data-i18n-aria-label="themeAria" data-theme-toggle
+          type="button"></button>
+        <button aria-controls="site-nav" aria-expanded="false" class="nav-toggle" data-i18n="menuToggle" data-nav-toggle
+          type="button">Men&uuml;</button>
+      </div>
+      <nav aria-label="Hauptnavigation" class="nav-wrap" data-nav-wrap id="site-nav">
+        <ul class="main-nav">
+          <li class="">
+            <a data-i18n="navHome" href="/index.html">Startseite</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navDates" href="/pages/termine.html">Termine</a>
+          </li>
+
+          <li class="has-dropdown">
+            <a class="nav-link--dropdown" data-i18n="navActivities" href="/pages/unsere-aktivitaeten.html">Unsere
+              Aktivit&auml;ten</a>
+            <button aria-expanded="false" aria-haspopup="true" aria-label="Untermen&uuml; umschalten"
+              class="nav-dropdown-toggle" data-i18n-aria-label="navActivitiesToggle" type="button"></button>
+            <ul class="submenu">
+              <li>
+                <a href="/pages/flohmaerkte.html">Flohmarkt</a>
+              </li>
+
+              <li>
+                <a href="/pages/tieraerztl-versorgung.html">Tier&auml;rztliche Versorgung</a>
+              </li>
+
+              <li>
+                <a href="/pages/futterstellen.html">Futterstellen</a>
+              </li>
+
+              <li>
+                <a href="/pages/katzenvermittlung.html">Katzenvermittlung</a>
+              </li>
+
+              <li>
+                <a href="/pages/schutzgebuehren.html">Schutzgeb&uuml;hren</a>
+              </li>
+
+              <li>
+                <a href="/pages/endlich-daheim.html">Endlich daheim</a>
+              </li>
+
+              <li>
+                <a href="/pages/futter-shop.html">Futter Shop</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="">
+            <a data-i18n="navPlacement" href="/pages/vermittlung.html">Vermittlung</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navReports" href="/pages/aktuelle-berichte.html">Berichte</a>
+          </li>
+
+          <li class="is-active">
+            <a aria-current="page" data-i18n="navMembership" href="/pages/mitglied-werden.html">Mitgliedschaft</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navDonate" href="/pages/spenden.html">Spenden</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navTips" href="/pages/tipps.html">Tipps</a>
+          </li>
+
+          <li class="">
+            <a data-i18n="navContact" href="/pages/kontakt.html">Kontakt</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <article class="rich-content prose page-content">
+      <section class="membership-header">
+        <h1>Mitgliedschaft</h1>
+        <p>Mit Ihrer Mitgliedschaft unterst&uuml;tzen Sie den Verein dauerhaft und verl&auml;sslich.</p>
+      </section>
+      <div class="membership-content">
+        <p class="membership-introline">
+          <strong>Mitgliedschaft bei "Katzenfreunde Bietigheim-Bissingen e. V."</strong>
+          <strong>Warum</strong>
+        </p>
+        <p class="membership-quote">
+          <em>Hilfe mit Herz f&uuml;r Katzen in Not und willkommen in unserem Verein.</em>
+        </p>
+        <p>
+          Irgendwann fragt sich jeder einmal:
+          <em>"Soll ich Mitglied im Verein werden"</em> Meist ist der Entschluss schnell gefasst, wenn es sich um einen
+          Verein handelt, der Freizeitaktivit&auml;ten oder kulturelle Angebote im Programm hat.
+        </p>
+        <figure class="membership-media membership-media--right">
+          <picture><img alt="Bild aus dem Vereinsarchiv" decoding="async" fetchpriority="high" height="336"
+              loading="eager" sizes="(max-width: 980px) 100vw,
+                      960px" src="/assets/media/resources/mitgliedschaft-katze-zuhause.jpg" width="448" />
+          </picture>
+        </figure>
+        <p>
+          Aber warum sollte man gerade in einem gemeinn&uuml;tzigen Tierschutzverein Mitglied sein Da f&auml;llt die
+          Entscheidung oft schwerer. Manche Menschen wollen helfen, k&ouml;nnen das Tierleid aber emotional kaum
+          ertragen.
+          Andere m&ouml;chten sich nicht binden, obwohl sie den Tierschutz grunds&auml;tzlich Unterst&uuml;tzen.
+        </p>
+        <p>
+          Arthur Schopenhauer brachte es auf den Punkt: "Der Beweggrund des ethischen Handelns ist das Mitleid mit den
+          Mitgesch&ouml;pfen." Wenn Hilfe gr&ouml;&szlig;er organisiert werden soll, gelingt das am besten im Verein.
+          Ein
+          Verein braucht m&ouml;glichst viele gleichgesinnte Mitglieder, um Aufgaben langfristig erf&uuml;llen zu
+          k&ouml;nnen und in der &Ouml;ffentlichkeit geh&ouml;rt zu werden.
+        </p>
+        <figure class="membership-media membership-media--left">
+          <picture><img alt="Miri wartet nahe ihrer Futterstelle" decoding="async" height="450" loading="lazy" sizes="(max-width: 980px) 100vw,
+                      960px" src="/assets/media/resources/futterstelle-miri.jpg" width="600" />
+          </picture>
+          <figcaption>Miri, 6-j&auml;hrige Streunerk&auml;tzin, wartet nahe ihrer Futterstelle.</figcaption>
+        </figure>
+        <p>Unsere Aufmunterung gilt allen, die bereits Mitglied sind und unsere Arbeit weiterempfehlen. Jede
+          Unterst&uuml;tzung hilft, neue Mitglieder zu gewinnen und die Versorgung unserer Katzen zu sichern.</p>
+        <p>Aktive Mitarbeit ist sch&ouml;n, aber keine Bedingung. Ein gutes Herz f&uuml;r Tiere reicht, um Teil unseres
+          Vereins zu werden. Treten Sie mit uns in Kontakt, wenn Sie Fragen haben.</p>
+        <p>Entscheiden Sie in Ruhe, ob Sie Mitglied werden m&ouml;chten. Wir w&uuml;rden uns freuen, Sie in unserem
+          Verein willkommen zu hei&szlig;en. Die Tiere brauchen Sie.</p>
+        <p class="membership-tax-note">
+          <strong>Hinweis: Auch Mitgliedsbeitr&auml;ge sind steuerlich absetzbar.</strong>
+        </p>
+        <section aria-label="Dokumente zur Mitgliedschaft"
+          class="membership-docs section-divider section-divider--solid">
+          <div class="pdf-inline-grid">
+            <a class="pdf-preview pdf-inline-card" data-pdf="/assets/media/data/Aufnahmeantrag.pdf"
+              data-title="Aufnahmeantrag" href="#" target="_blank">
+              <span aria-hidden="true" class="pdf-inline-card__frame"><span class="pdf-placeholder">PDF
+                  Vorschau</span></span>
+              <span class="pdf-inline-card__caption">
+                Aufnahmeantrag.pdf
+                <span class="pdf-badge">Vorschau</span>
+              </span>
+            </a>
+            <a class="pdf-preview pdf-inline-card" data-pdf="/assets/media/data/Hoenig/SEPA.pdf"
+              data-title="SEPA / Erl&auml;uterungen zu SEPA-Bezahlvorg&auml;ngen" href="#" target="_blank">
+              <span aria-hidden="true" class="pdf-inline-card__frame"><span class="pdf-placeholder">PDF
+                  Vorschau</span></span>
+              <span class="pdf-inline-card__caption">
+                SEPA.pdf
+                <span class="pdf-badge">Vorschau</span>
+              </span>
+            </a>
+          </div>
+          <p>
+            <em>Bitte laden Sie die Formulare herunter, f&uuml;llen Sie sie vollst&auml;ndig aus und senden Sie sie an
+              die angegebene Adresse. Nach Vorstandsbeschluss erhalten Sie die Best&auml;tigung Ihrer
+              Mitgliedschaft.</em>
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <h2 class="footer-title">Katzenfreunde Bietigheim-Bissingen e.V.</h2>
+          <p class="footer-note">Gesch&auml;ftsstelle: Im Vogelsang 11, 74372 Sersheim</p>
+          <p class="footer-note" data-i18n="footerRights">© 2026 Katzenfreunde Bietigheim-Bissingen e.V. Alle Rechte
+            vorbehalten.</p>
+        </div>
+        <div class="footer-links">
+          <a data-i18n="legalImpressum" href="/pages/impressum.html">Impressum</a>
+          <a data-i18n="legalPrivacy" href="/pages/datenschutz.html">Datenschutz</a>
+        </div>
+        <div aria-label="Kontakt-Icons" class="icon-row">
+          <a aria-label="Telefon anrufen" class="icon-link" data-icon="phone" href="tel:+49704234355"></a>
+          <button aria-label="E-Mail kopieren" class="icon-btn"
+            data-copy-email="info@katzenfreunde-bietigheim-bissingen.de" data-i18n-aria-label="copyEmail"
+            data-icon="mail" type="button"></button>
+          <a aria-label="WhatsApp" class="icon-link" data-icon="brand-whatsapp" href="https://wa.me/4915772702827"
+            rel="noopener noreferrer" target="_blank"></a>
+          <a aria-label="Facebook" class="icon-link" data-icon="brand-facebook"
+            href="https://www.facebook.com/katzenfreundebibi/" rel="noopener noreferrer" target="_blank"></a>
+          <a aria-label="Instagram" class="icon-link" data-icon="brand-instagram"
+            href="https://www.instagram.com/katzenfreunde_bietigheim/" rel="noopener noreferrer" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div aria-hidden="true" class="modal" data-pdf-modal>
+    <div class="modal__backdrop" data-modal-backdrop></div>
+    <div aria-label="PDF Vorschau" aria-modal="true" class="modal__dialog" role="dialog">
+      <div class="modal__head">
+        <p class="modal__title" data-i18n="modalTitle" data-modal-title>PDF Vorschau</p>
+        <div class="modal__actions">
+          <button aria-label="Schlie&szlig;en" class="modal__close modal__close--icon" data-i18n-aria-label="modalClose"
+            data-modal-close data-icon="x" type="button"></button>
+        </div>
+      </div>
+      <iframe class="modal__frame" data-modal-frame src="about:blank" title="PDF Vorschau"></iframe>
+    </div>
+  </div>
+
+  <div aria-live="polite" class="toast" data-toast role="status"></div>
+</body>
+
+</html>
