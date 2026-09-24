@@ -6,7 +6,7 @@
     top: 0;
     z-index: 90;
     border-bottom: 1px solid var(--line);
-    background: var(--header-bg);
+    background: var(--bg-alt);
     transition: border-color var(--ui-transition), background-color var(--ui-transition);
   }
 
@@ -1289,7 +1289,7 @@
   .site-footer {
     margin-top: 2.4rem;
     border-top: 1px solid var(--line);
-    background: var(--footer-bg);
+    background: var(--bg-alt);
   }
 
   .footer-inner {

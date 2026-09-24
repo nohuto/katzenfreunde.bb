@@ -13,8 +13,7 @@
     --bg-accent: #efe9dc;
     --surface: #fffdf8;
     --surface-soft: #e9e0cf;
-    --header-bg: #fcfaf4;
-    --footer-bg: #ebe4d7;
+    --bg-alt: #ebe4d7;
 
     --text: #252a22;
     --muted: #60665b;
@@ -53,8 +52,7 @@
     --bg-accent: #1e1b14;
     --surface: #242017;
     --surface-soft: #302b20;
-    --header-bg: #1e1b14;
-    --footer-bg: #1e1b14;
+    --bg-alt: #1e1b14;
 
     --text: #f3f0e6;
     --muted: #b6af9d;
@@ -118,7 +116,7 @@
 
   html {
     scroll-behavior: smooth;
-    background: var(--footer-bg);
+    background: var(--bg-alt);
     overflow-x: hidden;
     overflow-x: clip;
   }
