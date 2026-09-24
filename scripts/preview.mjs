@@ -50,7 +50,13 @@ const server = createServer(async (request, response) => {
     const pathname = decodeURIComponent(new URL(request.url, "http://localhost").pathname);
     const file = await resolveRoute(pathname === "/" ? "/index.html" : pathname);
     if (!file) {
-      response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" }).end("Not found");
+      const notFoundPage = path.join(root, "404.html");
+      if (await isFile(notFoundPage)) {
+        response.writeHead(404, { "Cache-Control": "no-store", "Content-Type": "text/html; charset=utf-8" });
+        createReadStream(notFoundPage).pipe(response);
+      } else {
+        response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" }).end("Not found");
+      }
       return;
     }
     response.writeHead(200, {

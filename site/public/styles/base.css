@@ -1,4 +1,5 @@
 /* Copyright (c) nohuto (N.B.) */
+
 @layer tokens, reset, base, layout, content, components, utilities, overrides;
 
 @layer base {
@@ -12,7 +13,6 @@
     --bg-accent: #efe9dc;
     --surface: #fffdf8;
     --surface-soft: #e9e0cf;
-    --surface-hover: #e2d8c5;
     --header-bg: #fcfaf4;
     --footer-bg: #ebe4d7;
 
@@ -20,11 +20,10 @@
     --muted: #60665b;
 
     --brand: #596b48;
-    --brand-strong: #596b48;
     --brand-hover: #4f613e;
-    --brand-hover-strong: #4f613e;
     --button-bg: #596b48;
     --button-bg-hover: #4f613e;
+    --nav-active: #3f6b1c;
 
     --line: #d6cab6;
     --line-strong: #bdae94;
@@ -36,8 +35,9 @@
     --shadow-soft: 0 4px 10px rgba(45, 48, 38, 0.1);
     --shadow-strong: 0 8px 14px rgba(36, 40, 31, 0.17);
 
-    --radius-m: 4px;
-    --radius-l: 6px;
+    --radius: 4px;
+    --on-accent: #f6f4ed;
+    --ui-transition: 180ms ease;
 
     --font-main: "Cabin", "Segoe UI", Tahoma, sans-serif;
     --font-display: "Amatic SC", "Segoe UI", Tahoma, sans-serif;
@@ -49,13 +49,10 @@
   html[data-theme="dark"] {
     color-scheme: dark;
 
-    /* Same warm, sandy palette as the light theme, mirrored into the dark end
-       of the scale: identical hues, inverted lightness. */
     --bg: #17150f;
     --bg-accent: #1e1b14;
     --surface: #242017;
     --surface-soft: #302b20;
-    --surface-hover: #3b3527;
     --header-bg: #1e1b14;
     --footer-bg: #1e1b14;
 
@@ -63,11 +60,10 @@
     --muted: #b6af9d;
 
     --brand: #b0c793;
-    --brand-strong: #b0c793;
     --brand-hover: #c3d8a8;
-    --brand-hover-strong: #c3d8a8;
     --button-bg: #596b48;
     --button-bg-hover: #526440;
+    --nav-active: #a8d46a;
 
     --line: #3a3428;
     --line-strong: #5a5240;
@@ -101,12 +97,6 @@
     -webkit-text-fill-color: var(--selection-text);
   }
 
-  *::-moz-selection {
-    background-color: var(--accent);
-    color: var(--selection-text);
-    text-shadow: none;
-  }
-
   *::-webkit-scrollbar {
     width: 12px;
     height: 12px;
@@ -120,8 +110,6 @@
     background: var(--line-strong);
   }
 
-  /* No height: 100% here. It would cap the sticky header's containing block at
-     one viewport, so the header would scroll away on longer pages. */
   html,
   body {
     margin: 0;
@@ -130,13 +118,14 @@
 
   html {
     scroll-behavior: smooth;
-    background: var(--bg);
+    background: var(--footer-bg);
     overflow-x: hidden;
     overflow-x: clip;
   }
 
   body {
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
@@ -147,10 +136,6 @@
     font-size: 1rem;
     line-height: 1.62;
     cursor: var(--cursor-main);
-  }
-
-  body::-webkit-scrollbar {
-    width: 1px;
   }
 
   main {
@@ -170,10 +155,7 @@
   }
 
   a,
-  button,
-  input[type="button"],
-  input[type="submit"],
-  summary {
+  button {
     cursor: var(--cursor-action);
     -webkit-tap-highlight-color: transparent;
   }
@@ -209,19 +191,12 @@
     font-size: clamp(1.7rem, 2.45vw, 2.6rem);
   }
 
-  p,
-  li,
-  span,
-  label,
-  input,
-  textarea,
-  select,
   button {
     font-family: var(--font-main);
   }
 
   a {
-    color: var(--brand-strong);
+    color: var(--brand);
     text-decoration-thickness: 1.3px;
     text-underline-offset: 3px;
   }
@@ -232,7 +207,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--brand-strong);
+    outline: 2px solid var(--brand);
     outline-offset: 3px;
   }
 }

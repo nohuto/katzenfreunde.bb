@@ -15,6 +15,7 @@ const publicDir = path.join(site, "public");
 const distDir = path.join(root, "dist");
 
 const rasterPattern = /\.(?:jpe?g|png|webp)$/i;
+const rootPages = new Set(["index.html", "404.html"]);
 const pageToNav = new Map([
   ["home", "home"],
   ["termine", "termine"],
@@ -100,9 +101,6 @@ function collectRasterUrls(pages) {
   return [...urls].sort();
 }
 
-// The build writes into an existing dist/ rather than wiping it first, so a
-// running preview server never sees a moment where the site is half deleted.
-// Every output is recorded here and anything left over is pruned at the end.
 const written = new Set();
 
 function track(file) {
@@ -246,7 +244,6 @@ async function copyStaticAssets(source, destination) {
       await copyStaticAssets(from, to);
       continue;
     }
-    // Raster sources ship as generated WebP variants, not as copies.
     if (rasterPattern.test(entry.name)) continue;
     await ensureParent(to);
     await cp(from, to);
@@ -262,15 +259,15 @@ async function buildStyles() {
 }
 
 async function buildScripts() {
-  await esbuild({
-    entryPoints: [path.join(publicDir, "scripts", "main.js")],
-    outfile: track(path.join(distDir, "scripts", "site.min.js")),
+  await Promise.all(["site", "404"].map(name => esbuild({
+    entryPoints: [path.join(publicDir, "scripts", `${name}.js`)],
+    outfile: track(path.join(distDir, "scripts", `${name}.min.js`)),
     bundle: true,
     minify: true,
     format: "iife",
     target: "es2020",
     legalComments: "none"
-  });
+  })));
 }
 
 async function exists(file) {
@@ -285,6 +282,7 @@ async function validateOutput() {
   const errors = [];
   const pages = [
     path.join(distDir, "index.html"),
+    path.join(distDir, "404.html"),
     ...(await readdir(path.join(distDir, "pages"))).filter(name => name.endsWith(".html")).map(name => path.join(distDir, "pages", name))
   ];
   const localPattern = /(?:href|src)="(\/[^"#?]+)(?:[?#][^"]*)?"/g;
@@ -300,8 +298,6 @@ async function validateOutput() {
   if (errors.length) throw new Error(`Broken local URLs:\n${errors.join("\n")}`);
 }
 
-// Removes outputs left behind by a previous build, plus any directory they
-// emptied, so the result matches a from-scratch build.
 async function pruneStale(directory) {
   let kept = 0;
   for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -341,9 +337,10 @@ async function main() {
     track(target);
   }
   await Promise.all([buildStyles(), buildScripts()]);
+  await cp(path.join(publicDir, ".htaccess"), track(path.join(distDir, ".htaccess")));
 
   for (const page of pages) {
-    const outputPath = page.name === "index.html" ? "/index.html" : `/pages/${page.name}`;
+    const outputPath = rootPages.has(page.name) ? `/${page.name}` : `/pages/${page.name}`;
     const outputFile = path.join(distDir, outputPath.slice(1));
     const transformed = transformPage(page.source, outputPath, images);
     await writeOutput(outputFile, `${minifyHtml(transformed)}\n`);
