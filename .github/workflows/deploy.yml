@@ -1,0 +1,64 @@
+
+name: Deploy to STRATO
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: strato-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+          test -f dist/index.html
+          test -f dist/.htaccess
+
+      - name: Install SFTP client
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y lftp
+
+      - name: Deploy
+        env:
+          STRATO_HOST: ${{ secrets.STRATO_HOST }}
+          STRATO_USER: ${{ secrets.STRATO_USER }}
+          STRATO_PASSWORD: ${{ secrets.STRATO_PASSWORD }}
+          STRATO_KNOWN_HOSTS: ${{ secrets.STRATO_KNOWN_HOSTS }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$STRATO_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+          lftp -u "$STRATO_USER","$STRATO_PASSWORD" \
+            "sftp://$STRATO_HOST:22" -e '
+              set cmd:fail-exit true
+              set net:max-retries 2
+              set sftp:connect-program "ssh -a -x -o StrictHostKeyChecking=yes"
+
+              mirror --reverse --verbose --no-perms dist .
+              put dist/.htaccess -o .htaccess
+
+              bye
+            '
