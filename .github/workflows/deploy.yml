@@ -48,14 +48,18 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
+
           printf '%s\n' "$STRATO_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
+
+          printf 'Host %s\n  StrictHostKeyChecking yes\n' "$STRATO_HOST" > ~/.ssh/config
+          chmod 600 ~/.ssh/config
 
           lftp -u "$STRATO_USER","$STRATO_PASSWORD" \
             "sftp://$STRATO_HOST:22" -e '
               set cmd:fail-exit true
               set net:max-retries 2
-              set sftp:connect-program "ssh -a -x -o StrictHostKeyChecking=yes"
+              set net:timeout 30
 
               mirror --reverse --verbose --no-perms dist .
               put dist/.htaccess -o .htaccess
