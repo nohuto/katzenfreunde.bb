@@ -1,0 +1,50 @@
+﻿---
+import Header from '../components/shell/Header.astro';
+import Footer from '../components/shell/Footer.astro';
+import Overlays from '../components/shell/Overlays.astro';
+import stylesheet from '../styles/katzenfreunde.css?url';
+
+interface Props {
+  title: string;
+  description: string;
+  page: string;
+  canonical: string;
+  preload?: string;
+  preloadMedia?: string;
+  noindex?: boolean;
+}
+
+const { title, description, page, canonical, preload, preloadMedia, noindex = false } = Astro.props;
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href={stylesheet} />
+    <link rel="icon" type="image/png" href="/assets/katzenfreunde-circle.png" />
+    <link rel="preload" href="/styles/fonts/Cabin-Variable-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/styles/fonts/AmaticSC-Bold-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    {preload && <link rel="preload" as="image" href={preload} media={preloadMedia} />}
+    <script is:inline>
+      try {
+        const theme = sessionStorage.getItem('theme_override');
+        if (theme) document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
+    {noindex && <script is:inline src="/scripts/404.js" />}
+  </head>
+  <body data-page={page}>
+    <Header page={page} path={canonical} />
+    <slot />
+    <Footer />
+    <Overlays />
+    <script>
+      import '../scripts/site.ts';
+    </script>
+  </body>
+</html>
+

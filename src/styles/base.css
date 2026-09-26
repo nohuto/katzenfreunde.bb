@@ -1,0 +1,246 @@
+﻿/* Copyright (c) nohuto (N.B.) */
+
+@layer tokens, reset, base, layout, content, components, utilities, overrides;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --container-xl: 1180px;
+    --container-content: 960px;
+    --gutter-inline: 1rem;
+
+    --bg: #f7f4ec;
+    --bg-accent: #efe9dc;
+    --surface: #fffdf8;
+    --surface-soft: #e9e0cf;
+    --bg-alt: #ebe4d7;
+
+    --text: #252a22;
+    --muted: #60665b;
+
+    --brand: #596b48;
+    --brand-hover: #4f613e;
+    --button-bg: #596b48;
+    --button-bg-hover: #4f613e;
+    --nav-active: #3f6b1c;
+
+    --line: #d6cab6;
+    --line-strong: #bdae94;
+
+    --accent: #d6cab6;
+    --paypal-blue: #005EA6;
+    --selection-text: #252a22;
+
+    --shadow-soft: 0 4px 10px rgba(45, 48, 38, 0.1);
+    --shadow-strong: 0 8px 14px rgba(36, 40, 31, 0.17);
+
+    --radius: 4px;
+    --on-accent: #f6f4ed;
+    --ui-transition: 180ms ease;
+
+    --font-main: "Cabin", "Segoe UI", Tahoma, sans-serif;
+    --font-display: "Amatic SC", "Segoe UI", Tahoma, sans-serif;
+
+    --cursor-main: url("/assets/cursor/dark/paw-filled.cur") 2 1, auto;
+    --cursor-action: url("/assets/cursor/dark/paw-filled.cur") 2 1, pointer;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+
+      --bg: #17150f;
+      --bg-accent: #1e1b14;
+      --surface: #242017;
+      --surface-soft: #302b20;
+      --bg-alt: #1e1b14;
+
+      --text: #f3f0e6;
+      --muted: #b6af9d;
+
+      --brand: #b0c793;
+      --brand-hover: #c3d8a8;
+      --button-bg: #596b48;
+      --button-bg-hover: #526440;
+      --nav-active: #a8d46a;
+
+      --line: #3a3428;
+      --line-strong: #5a5240;
+
+      --accent: #5a5240;
+      --paypal-blue: #00355F;
+      --selection-text: #f3f0e6;
+
+      --shadow-soft: 0 5px 10px rgba(0, 0, 0, 0.28);
+      --shadow-strong: 0 9px 14px rgba(0, 0, 0, 0.42);
+
+      --cursor-main: url("/assets/cursor/light/paw-filled.cur") 2 1, auto;
+      --cursor-action: url("/assets/cursor/light/paw-filled.cur") 2 1, pointer;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --bg: #17150f;
+    --bg-accent: #1e1b14;
+    --surface: #242017;
+    --surface-soft: #302b20;
+    --bg-alt: #1e1b14;
+
+    --text: #f3f0e6;
+    --muted: #b6af9d;
+
+    --brand: #b0c793;
+    --brand-hover: #c3d8a8;
+    --button-bg: #596b48;
+    --button-bg-hover: #526440;
+    --nav-active: #a8d46a;
+
+    --line: #3a3428;
+    --line-strong: #5a5240;
+
+    --accent: #5a5240;
+    --paypal-blue: #00355F;
+    --selection-text: #f3f0e6;
+
+    --shadow-soft: 0 5px 10px rgba(0, 0, 0, 0.28);
+    --shadow-strong: 0 9px 14px rgba(0, 0, 0, 0.42);
+
+    --cursor-main: url("/assets/cursor/light/paw-filled.cur") 2 1, auto;
+    --cursor-action: url("/assets/cursor/light/paw-filled.cur") 2 1, pointer;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    scrollbar-color: var(--line-strong) transparent;
+    scrollbar-width: thin;
+  }
+
+  *::selection {
+    background-color: var(--accent);
+    color: var(--selection-text);
+    text-shadow: none;
+    -webkit-text-fill-color: var(--selection-text);
+  }
+
+  *::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg-alt);
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-x: clip;
+    color: var(--text);
+    background: var(--bg);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    line-height: 1.62;
+    cursor: var(--cursor-main);
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  @media (pointer: coarse) {
+
+    html,
+    body {
+      overscroll-behavior-x: none;
+    }
+
+    body {
+      touch-action: pan-y pinch-zoom;
+    }
+  }
+
+  a,
+  button {
+    cursor: var(--cursor-action);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 5.4vw, 4.35rem);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 3.3vw, 3.25rem);
+  }
+
+  h3 {
+    font-size: clamp(1.7rem, 2.45vw, 2.6rem);
+  }
+
+  button {
+    font-family: var(--font-main);
+  }
+
+  a {
+    color: var(--brand);
+    text-decoration-thickness: 1.3px;
+    text-underline-offset: 3px;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--brand-hover, var(--brand));
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+  }
+}
+
