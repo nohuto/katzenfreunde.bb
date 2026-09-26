@@ -28,7 +28,7 @@
     --line-strong: #bdae94;
 
     --accent: #d6cab6;
-    --paypal-blue: #005EA6;
+    --paypal-blue: #005ea6;
     --selection-text: #252a22;
 
     --shadow-soft: 0 4px 10px rgba(45, 48, 38, 0.1);
@@ -38,15 +38,15 @@
     --on-accent: #f6f4ed;
     --ui-transition: 180ms ease;
 
-    --font-main: "Cabin", "Segoe UI", Tahoma, sans-serif;
-    --font-display: "Amatic SC", "Segoe UI", Tahoma, sans-serif;
+    --font-main: 'Cabin', 'Segoe UI', Tahoma, sans-serif;
+    --font-display: 'Amatic SC', 'Segoe UI', Tahoma, sans-serif;
 
-    --cursor-main: url("/assets/cursor/dark/paw-filled.cur") 2 1, auto;
-    --cursor-action: url("/assets/cursor/dark/paw-filled.cur") 2 1, pointer;
+    --cursor-main: url('/assets/cursor/dark/paw-filled.cur') 2 1, auto;
+    --cursor-action: url('/assets/cursor/dark/paw-filled.cur') 2 1, pointer;
   }
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
+    :root:not([data-theme='light']) {
       color-scheme: dark;
 
       --bg: #17150f;
@@ -68,18 +68,18 @@
       --line-strong: #5a5240;
 
       --accent: #5a5240;
-      --paypal-blue: #00355F;
+      --paypal-blue: #00355f;
       --selection-text: #f3f0e6;
 
       --shadow-soft: 0 5px 10px rgba(0, 0, 0, 0.28);
       --shadow-strong: 0 9px 14px rgba(0, 0, 0, 0.42);
 
-      --cursor-main: url("/assets/cursor/light/paw-filled.cur") 2 1, auto;
-      --cursor-action: url("/assets/cursor/light/paw-filled.cur") 2 1, pointer;
+      --cursor-main: url('/assets/cursor/light/paw-filled.cur') 2 1, auto;
+      --cursor-action: url('/assets/cursor/light/paw-filled.cur') 2 1, pointer;
     }
   }
 
-  :root[data-theme="dark"] {
+  :root[data-theme='dark'] {
     color-scheme: dark;
 
     --bg: #17150f;
@@ -101,14 +101,14 @@
     --line-strong: #5a5240;
 
     --accent: #5a5240;
-    --paypal-blue: #00355F;
+    --paypal-blue: #00355f;
     --selection-text: #f3f0e6;
 
     --shadow-soft: 0 5px 10px rgba(0, 0, 0, 0.28);
     --shadow-strong: 0 9px 14px rgba(0, 0, 0, 0.42);
 
-    --cursor-main: url("/assets/cursor/light/paw-filled.cur") 2 1, auto;
-    --cursor-action: url("/assets/cursor/light/paw-filled.cur") 2 1, pointer;
+    --cursor-main: url('/assets/cursor/light/paw-filled.cur') 2 1, auto;
+    --cursor-action: url('/assets/cursor/light/paw-filled.cur') 2 1, pointer;
   }
 
   *,
@@ -175,7 +175,6 @@
   }
 
   @media (pointer: coarse) {
-
     html,
     body {
       overscroll-behavior-x: none;
@@ -243,4 +242,3 @@
     outline-offset: 3px;
   }
 }
-

@@ -1,9 +1,10 @@
 import { qs, on } from './dom';
 
 const root = document.documentElement;
-const THEME_OVERRIDE_KEY = "theme_override";
+const THEME_OVERRIDE_KEY = 'theme_override';
 
-const systemTheme = () => (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+const systemTheme = () =>
+  matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
 function setThemeOverride(theme: string | null) {
   if (theme) root.dataset.theme = theme;
@@ -11,13 +12,13 @@ function setThemeOverride(theme: string | null) {
   try {
     if (theme) sessionStorage.setItem(THEME_OVERRIDE_KEY, theme);
     else sessionStorage.removeItem(THEME_OVERRIDE_KEY);
-  } catch (_) {
-  }
+  } catch (_) {}
 }
 
 export function setupTheme() {
-  on(qs("[data-theme-toggle]"), "click", () => {
-    const next = (root.dataset.theme || systemTheme()) === "dark" ? "light" : "dark";
+  on(qs('[data-theme-toggle]'), 'click', () => {
+    const next =
+      (root.dataset.theme || systemTheme()) === 'dark' ? 'light' : 'dark';
     setThemeOverride(next === systemTheme() ? null : next);
   });
 }

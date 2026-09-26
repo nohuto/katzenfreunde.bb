@@ -14,8 +14,18 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description, page, canonical, preload, preloadMedia, noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  page,
+  canonical,
+  preload,
+  preloadMedia,
+  noindex = false,
+} = Astro.props;
+const canonicalUrl = new URL(canonical, Astro.site ?? Astro.url);
 ---
+
 <!doctype html>
 <html lang="de">
   <head>
@@ -23,12 +33,30 @@ const { title, description, page, canonical, preload, preloadMedia, noindex = fa
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href={stylesheet} />
     <link rel="icon" type="image/png" href="/assets/katzenfreunde-circle.png" />
-    <link rel="preload" href="/styles/fonts/Cabin-Variable-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/styles/fonts/AmaticSC-Bold-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="/styles/fonts/Cabin-Variable-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/styles/fonts/AmaticSC-Bold-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
-    {preload && <link rel="preload" as="image" href={preload} media={preloadMedia} />}
+    {noindex ? (
+      <meta name="robots" content="noindex" />
+    ) : (
+      <link rel="canonical" href={canonicalUrl} />
+    )}
+    {preload && (
+      <link rel="preload" as="image" href={preload} media={preloadMedia} />
+    )}
     <script is:inline>
       try {
         const theme = sessionStorage.getItem('theme_override');
@@ -47,4 +75,3 @@ const { title, description, page, canonical, preload, preloadMedia, noindex = fa
     </script>
   </body>
 </html>
-

@@ -2,8 +2,13 @@
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 ---
 
-<KatzenfreundeLayout title="Vermittlung - Katzenfreunde BiBi" description="Aktuelle Katzenvermittlung, Pflegestellen und Vermittlungsanfragen der Katzenfreunde Bietigheim-Bissingen e.V." page="vermittlung" canonical="/pages/vermittlung.html">
-<main>
+<KatzenfreundeLayout
+  title="Vermittlung - Katzenfreunde BiBi"
+  description="Aktuelle Katzenvermittlung, Pflegestellen und Vermittlungsanfragen der Katzenfreunde Bietigheim-Bissingen e.V."
+  page="vermittlung"
+  canonical="/pages/vermittlung.html"
+>
+  <main>
     <section class="hero">
       <div class="hero__card hero__card--title-only">
         <div>
@@ -12,20 +17,39 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
       </div>
     </section>
     <div class="page-shell">
-    <article class="rich-content prose page-content vermittlung-page">
-      <section class="activity-header">
-        <p>Aktuelle Vermittlungsgesuche und Pflegestellen f&uuml;r Katzen, die ein passendes Zuhause brauchen. Wenn Sie Interesse haben, melden Sie sich bitte &uuml;ber die Kontaktseite oder direkt bei Iris Alberti.</p>
-      </section>
-      <section aria-label="Aktuelle Vermittlungsgesuche" class="vermittlung-gallery">
-        <article class="vermittlung-card">
-          <figure>
-            <a href="/assets/media/resources/katzenvermittlung1.jpg" rel="noopener noreferrer" target="_blank">
-              <img alt="Pflegestellen f&uuml;r Katzen im Raum Bietigheim-Bissingen gesucht" decoding="async" fetchpriority="high" height="1024" loading="eager" src="/assets/media/resources/katzenvermittlung1.jpg" width="1536" />
-            </a>
-          </figure>
-        </article>
-      </section>
-    </article>
+      <article class="rich-content prose page-content vermittlung-page">
+        <section class="activity-header">
+          <p>
+            Aktuelle Vermittlungsgesuche und Pflegestellen f&uuml;r Katzen, die
+            ein passendes Zuhause brauchen. Wenn Sie Interesse haben, melden Sie
+            sich bitte &uuml;ber die Kontaktseite oder direkt bei Iris Alberti.
+          </p>
+        </section>
+        <section
+          aria-label="Aktuelle Vermittlungsgesuche"
+          class="vermittlung-gallery"
+        >
+          <article class="vermittlung-card">
+            <figure>
+              <a
+                href="/assets/media/resources/katzenvermittlung1.jpg"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img
+                  alt="Pflegestellen f&uuml;r Katzen im Raum Bietigheim-Bissingen gesucht"
+                  decoding="async"
+                  fetchpriority="high"
+                  height="1024"
+                  loading="eager"
+                  src="/assets/media/resources/katzenvermittlung1.jpg"
+                  width="1536"
+                />
+              </a>
+            </figure>
+          </article>
+        </section>
+      </article>
     </div>
   </main>
 </KatzenfreundeLayout>

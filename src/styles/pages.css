@@ -5,44 +5,43 @@
     max-width: var(--container-xl);
   }
 
-  .page-content.rich-content--home>.home-intro,
-  .page-content.rich-content--home>.home-impact,
-  .page-content.rich-content--home>.home-cta {
+  .page-content.rich-content--home > .home-intro,
+  .page-content.rich-content--home > .home-impact,
+  .page-content.rich-content--home > .home-cta {
     max-width: var(--container-content);
     width: 100%;
     margin-inline: auto;
   }
 
-
-  body[data-page="home"] .home-gallery .media-tile--link-logo>img {
+  body[data-page='home'] .home-gallery .media-tile--link-logo > img {
     object-fit: contain;
     object-position: center;
     background: #fff;
   }
 
-  body[data-page="futter-shop"] .site-footer {
+  body[data-page='futter-shop'] .site-footer {
     margin-top: auto;
   }
 
-  body[data-page="futter-shop"] .hero {
+  body[data-page='futter-shop'] .hero {
     max-width: none;
     margin: 0;
     padding: 0;
   }
 
-  body[data-page="futter-shop"] .hero__media {
+  body[data-page='futter-shop'] .hero__media {
     justify-self: start;
     width: fit-content;
     max-width: min(100%, 250px);
     line-height: 0;
   }
 
-  body[data-page="futter-shop"] .hero__media picture {
+  body[data-page='futter-shop'] .hero__media picture {
     display: block;
     line-height: 0;
   }
 
-  body[data-page="futter-shop"] .hero__media img {
+  body[data-page='futter-shop'] .hero__media img {
     display: block;
     width: auto;
     max-width: 100%;
@@ -53,8 +52,7 @@
     animation: none;
   }
 
-  body[data-page="termine"] .donation-highlight {
+  body[data-page='termine'] .donation-highlight {
     grid-template-columns: 1fr;
   }
 }
-

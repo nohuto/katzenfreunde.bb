@@ -6,7 +6,9 @@
     "build": "astro build && node scripts/optimize-images.mjs",
     "dev": "astro dev",
     "check": "astro check",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "engines": {
     "node": ">=22.12.0"
@@ -15,6 +17,8 @@
     "@astrojs/check": "^0.9.10",
     "astro": "^7.3.5",
     "parse5": "7.3.0",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.0",
     "sharp": "0.35.4",
     "typescript": "^6.0.3"
   }

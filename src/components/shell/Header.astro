@@ -1,38 +1,99 @@
 ---
-import { activityLinks, mainLinks, sectionForPage } from '../../data/navigation';
+import {
+  activityLinks,
+  mainLinks,
+  sectionForPage,
+} from '../../data/navigation';
 
-interface Props { page: string; path: string }
+interface Props {
+  page: string;
+  path: string;
+}
 const { page, path } = Astro.props;
 const active = sectionForPage(page);
 ---
+
 <header class="site-header">
   <div class="header-main">
     <a class="brand" href="/index.html" aria-label="Startseite">
-      <img alt="" class="brand__logo" height="62" src="/assets/katzenfreunde-transparent.png" width="62" />
+      <img
+        alt=""
+        class="brand__logo"
+        height="62"
+        src="/assets/katzenfreunde-transparent.png"
+        width="62"
+      />
     </a>
     <div class="header-controls">
-      <button aria-label="Farbmodus wechseln" class="theme-toggle" data-theme-toggle type="button"></button>
-      <button aria-controls="site-nav" aria-expanded="false" aria-label="Menü öffnen" class="nav-toggle" data-icon="menu-2" data-nav-toggle type="button"></button>
+      <button
+        aria-label="Farbmodus wechseln"
+        class="theme-toggle"
+        data-theme-toggle
+        type="button"
+      ></button>
+      <button
+        aria-controls="site-nav"
+        aria-expanded="false"
+        aria-label="Menü öffnen"
+        class="nav-toggle"
+        data-icon="menu-2"
+        data-nav-toggle
+        type="button"
+      ></button>
     </div>
-    <nav aria-label="Hauptnavigation" class="nav-wrap" data-nav-wrap id="site-nav">
+    <nav
+      aria-label="Hauptnavigation"
+      class="nav-wrap"
+      data-nav-wrap
+      id="site-nav"
+    >
       <ul class="main-nav">
-        {mainLinks.map((link) => link.key === 'aktivitaeten' ? (
-          <li class:list={['has-dropdown', { 'is-active': active === link.key }]}>
-            <a class="nav-link--dropdown" href={link.href} aria-current={path === link.href ? 'page' : undefined}>{link.label}</a>
-            <button aria-expanded="false" aria-haspopup="true" aria-label="Untermenü umschalten" class="nav-dropdown-toggle" type="button"></button>
-            <ul class="submenu">
-              {activityLinks.map((item) => (
-                <li class:list={{ 'is-active': path === item.href }}>
-                  <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ) : (
-          <li class:list={{ 'is-active': active === link.key }}>
-            <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>{link.label}</a>
-          </li>
-        ))}
+        {mainLinks.map((link) =>
+          link.key === 'aktivitaeten' ? (
+            <li
+              class:list={[
+                'has-dropdown',
+                { 'is-active': active === link.key },
+              ]}
+            >
+              <a
+                class="nav-link--dropdown"
+                href={link.href}
+                aria-current={path === link.href ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+              <button
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-label="Untermenü umschalten"
+                class="nav-dropdown-toggle"
+                type="button"
+              ></button>
+              <ul class="submenu">
+                {activityLinks.map((item) => (
+                  <li class:list={{ 'is-active': path === item.href }}>
+                    <a
+                      href={item.href}
+                      aria-current={path === item.href ? 'page' : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li class:list={{ 'is-active': active === link.key }}>
+              <a
+                href={link.href}
+                aria-current={path === link.href ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ),
+        )}
       </ul>
     </nav>
   </div>

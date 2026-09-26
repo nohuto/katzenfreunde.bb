@@ -6,7 +6,7 @@
     font-family: var(--font-main);
   }
 
-  :where(.prose, .rich-content)>section {
+  :where(.prose, .rich-content) > section {
     position: relative;
     padding-top: 0.2rem;
   }
@@ -24,7 +24,9 @@
     color: var(--text);
   }
 
-  :where(.prose, .rich-content) :where(p, ul, ol, table)+ :where(p, ul, ol, table) {
+  :where(.prose, .rich-content)
+    :where(p, ul, ol, table)
+    + :where(p, ul, ol, table) {
     margin-top: var(--prose-flow-space);
   }
 
@@ -55,11 +57,11 @@
     padding-top: 1.35rem;
   }
 
-  .reading-section>h2 {
+  .reading-section > h2 {
     margin-bottom: 0.62rem;
   }
 
-  .reading-section--centered>h2 {
+  .reading-section--centered > h2 {
     text-align: center;
   }
 
@@ -70,7 +72,7 @@
     margin-top: 0.85rem;
   }
 
-  .reading-columns>div {
+  .reading-columns > div {
     min-width: 0;
   }
 
@@ -79,7 +81,7 @@
     color: var(--brand);
   }
 
-  .content-prose p+p {
+  .content-prose p + p {
     margin-top: var(--prose-flow-space, 0.72rem);
   }
 
@@ -131,11 +133,11 @@
     min-width: 0;
   }
 
-  .content-grid__cell>* {
+  .content-grid__cell > * {
     margin-top: 0;
   }
 
-  .content-grid__cell>*+* {
+  .content-grid__cell > * + * {
     margin-top: 0.6rem;
   }
 
@@ -171,14 +173,13 @@
     max-width: 100%;
   }
 
-  .content-prose picture>img {
+  .content-prose picture > img {
     display: block;
     width: 100%;
     height: auto;
   }
 
   @media (max-width: 1100px) {
-
     :where(.prose, .rich-content) a,
     .pdf-inline-card__caption,
     .bank-item__value,
@@ -198,4 +199,3 @@
     }
   }
 }
-
