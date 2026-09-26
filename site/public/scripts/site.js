@@ -194,12 +194,6 @@ function setThemeOverride(theme) {
 }
 
 function setupTheme() {
-  try {
-    const stored = sessionStorage.getItem(THEME_OVERRIDE_KEY);
-    if (stored === "light" || stored === "dark") root.dataset.theme = stored;
-  } catch (_) {
-  }
-
   on(qs("[data-theme-toggle]"), "click", () => {
     const next = (root.dataset.theme || systemTheme()) === "dark" ? "light" : "dark";
     setThemeOverride(next === systemTheme() ? null : next);
