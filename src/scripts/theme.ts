@@ -10,8 +10,8 @@ function setThemeOverride(theme: string | null) {
   if (theme) root.dataset.theme = theme;
   else delete root.dataset.theme;
   try {
-    if (theme) sessionStorage.setItem(THEME_OVERRIDE_KEY, theme);
-    else sessionStorage.removeItem(THEME_OVERRIDE_KEY);
+    if (theme) localStorage.setItem(THEME_OVERRIDE_KEY, theme);
+    else localStorage.removeItem(THEME_OVERRIDE_KEY);
   } catch (_) {}
 }
 

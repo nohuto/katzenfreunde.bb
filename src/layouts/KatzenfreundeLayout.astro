@@ -59,8 +59,9 @@ const canonicalUrl = new URL(canonical, Astro.site ?? Astro.url);
     )}
     <script is:inline>
       try {
-        const theme = sessionStorage.getItem('theme_override');
-        if (theme) document.documentElement.dataset.theme = theme;
+        const theme = localStorage.getItem('theme_override');
+        if (theme === 'dark' || theme === 'light')
+          document.documentElement.dataset.theme = theme;
       } catch {}
     </script>
     {noindex && <script is:inline src="/scripts/404.js" />}
