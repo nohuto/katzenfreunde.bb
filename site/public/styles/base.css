@@ -45,7 +45,41 @@
     --cursor-action: url("../assets/cursor/dark/paw-filled.cur") 2 1, pointer;
   }
 
-  html[data-theme="dark"] {
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+
+      --bg: #17150f;
+      --bg-accent: #1e1b14;
+      --surface: #242017;
+      --surface-soft: #302b20;
+      --bg-alt: #1e1b14;
+
+      --text: #f3f0e6;
+      --muted: #b6af9d;
+
+      --brand: #b0c793;
+      --brand-hover: #c3d8a8;
+      --button-bg: #596b48;
+      --button-bg-hover: #526440;
+      --nav-active: #a8d46a;
+
+      --line: #3a3428;
+      --line-strong: #5a5240;
+
+      --accent: #5a5240;
+      --paypal-blue: #00355F;
+      --selection-text: #f3f0e6;
+
+      --shadow-soft: 0 5px 10px rgba(0, 0, 0, 0.28);
+      --shadow-strong: 0 9px 14px rgba(0, 0, 0, 0.42);
+
+      --cursor-main: url("../assets/cursor/light/paw-filled.cur") 2 1, auto;
+      --cursor-action: url("../assets/cursor/light/paw-filled.cur") 2 1, pointer;
+    }
+  }
+
+  :root[data-theme="dark"] {
     color-scheme: dark;
 
     --bg: #17150f;

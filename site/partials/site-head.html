@@ -2,16 +2,4 @@
 <link rel="preload" href="/styles/fonts/Cabin-Variable-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/styles/fonts/AmaticSC-Bold-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="/styles/site.min.css" />
-<script>
-  (() => {
-    let theme;
-    try {
-      theme = sessionStorage.getItem("theme_override");
-    } catch (_) {}
-    if (theme !== "light" && theme !== "dark") {
-      theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    }
-    document.documentElement.dataset.theme = theme;
-  })();
-</script>
 <script defer src="/scripts/site.min.js"></script>

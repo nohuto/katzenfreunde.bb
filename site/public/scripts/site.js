@@ -10,7 +10,6 @@ const NOT_FOUND_KEY = "kf-not-found-path";
 function setupNavigation() {
   const navToggle = qs("[data-nav-toggle]");
   const navWrap = qs("[data-nav-wrap]");
-  const header = qs(".site-header");
 
   const isMobileNav = () =>
     window.matchMedia && window.matchMedia("(max-width: 1100px)").matches;
@@ -145,67 +144,30 @@ function setupNavigation() {
     });
   }
 
-  const dropdownItems = qsa(".has-dropdown");
-  const setDropdownState = (item, open) => {
-    item.classList.toggle("is-open", open);
-    const toggle = item.querySelector(".nav-dropdown-toggle");
-    if (toggle) toggle.setAttribute("aria-expanded", String(open));
+  const dropdown = qs(".has-dropdown");
+  const dropdownToggle = qs(".nav-dropdown-toggle");
+  const setDropdown = (open) => {
+    if (!dropdown || !dropdownToggle) return;
+    dropdown.classList.toggle("is-open", open);
+    dropdownToggle.setAttribute("aria-expanded", String(open));
   };
 
-  const closeAllDropdowns = () => {
-    dropdownItems.forEach((item) => setDropdownState(item, false));
-  };
+  on(dropdownToggle, "click", () => setDropdown(!dropdown.classList.contains("is-open")));
 
-  dropdownItems.forEach((item) => {
-    const trigger = item.querySelector(".nav-link--dropdown");
-    const toggle = item.querySelector(".nav-dropdown-toggle");
-    if (!trigger || !toggle) return;
-
-    trigger.removeAttribute("aria-expanded");
-    trigger.removeAttribute("aria-haspopup");
-    toggle.setAttribute("aria-haspopup", "true");
-    toggle.setAttribute("aria-expanded", "false");
-
-    on(toggle, "click", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      const isOpen = item.classList.contains("is-open");
-      closeAllDropdowns();
-      setDropdownState(item, !isOpen);
-    });
-
-    on(toggle, "keydown", (event) => {
-      if (event.key !== "Enter" && event.key !== " ") return;
-      event.preventDefault();
-      toggle.click();
-    });
-
-    on(trigger, "click", () => {
-      closeAllDropdowns();
-      closeMobileNav();
-    });
-
-    item.querySelectorAll(".submenu a").forEach((link) =>
-      on(link, "click", () => {
-        closeAllDropdowns();
-        closeMobileNav();
-      })
-    );
+  delegate("click", ".nav-wrap a", () => {
+    setDropdown(false);
+    closeMobileNav();
   });
 
-  on(document, "click", (event) => {
-    const target = event.target instanceof Element ? event.target : null;
-    if (target && target.closest(".has-dropdown")) return;
-    closeAllDropdowns();
-
-    if (!isMobileNav() || !header || !target) return;
-    if (target.closest(".site-header")) return;
-    closeMobileNav();
+  on(document, "click", ({ target }) => {
+    if (!(target instanceof Element) || target.closest(".has-dropdown")) return;
+    setDropdown(false);
+    if (isMobileNav() && !target.closest(".site-header")) closeMobileNav();
   });
 
   on(document, "keydown", (event) => {
     if (event.key !== "Escape") return;
-    closeAllDropdowns();
+    setDropdown(false);
     closeMobileNav();
   });
 
@@ -218,99 +180,29 @@ function setupNavigation() {
 
 const root = document.documentElement;
 const THEME_OVERRIDE_KEY = "theme_override";
-let transientThemeOverride = null;
 
-function readThemeOverride() {
+const systemTheme = () => (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+function setThemeOverride(theme) {
+  if (theme) root.dataset.theme = theme;
+  else delete root.dataset.theme;
   try {
-    const value = sessionStorage.getItem(THEME_OVERRIDE_KEY);
-    if (value === "light" || value === "dark") {
-      transientThemeOverride = value;
-      return value;
-    }
-    return transientThemeOverride;
-  } catch (_) {
-    return transientThemeOverride;
-  }
-}
-
-function writeThemeOverride(theme) {
-  const normalized = theme === "light" || theme === "dark" ? theme : null;
-  transientThemeOverride = normalized;
-
-  try {
-    if (normalized) {
-      sessionStorage.setItem(THEME_OVERRIDE_KEY, normalized);
-    } else {
-      sessionStorage.removeItem(THEME_OVERRIDE_KEY);
-    }
+    if (theme) sessionStorage.setItem(THEME_OVERRIDE_KEY, theme);
+    else sessionStorage.removeItem(THEME_OVERRIDE_KEY);
   } catch (_) {
   }
-}
-
-function readSystemTheme() {
-  const prefersDark =
-    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  return prefersDark ? "dark" : "light";
-}
-
-function bindSystemThemeSync(onChange) {
-  const systemThemeQuery =
-    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
-  if (!systemThemeQuery) return () => { };
-
-  const handleChange = () => {
-    if (readThemeOverride()) return;
-    onChange(readSystemTheme());
-  };
-
-  if (typeof systemThemeQuery.addEventListener === "function") {
-    systemThemeQuery.addEventListener("change", handleChange);
-    return () => systemThemeQuery.removeEventListener("change", handleChange);
-  }
-
-  if (typeof systemThemeQuery.addListener === "function") {
-    systemThemeQuery.addListener(handleChange);
-    return () => systemThemeQuery.removeListener(handleChange);
-  }
-
-  return () => { };
-}
-
-function resolveTheme() {
-  const override = readThemeOverride();
-  const systemTheme = readSystemTheme();
-  if (override && override === systemTheme) {
-    writeThemeOverride(null);
-    return systemTheme;
-  }
-  return override || systemTheme;
-}
-
-function setTheme(theme) {
-  root.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
 }
 
 function setupTheme() {
-  setTheme(resolveTheme());
+  try {
+    const stored = sessionStorage.getItem(THEME_OVERRIDE_KEY);
+    if (stored === "light" || stored === "dark") root.dataset.theme = stored;
+  } catch (_) {
+  }
 
-  const themeToggle = qs("[data-theme-toggle]");
-  bindSystemThemeSync(setTheme);
-
-  if (!themeToggle) return;
-
-  on(themeToggle, "click", () => {
-    const current = root.getAttribute("data-theme") || "light";
-    const nextTheme = current === "dark" ? "light" : "dark";
-    const systemTheme = readSystemTheme();
-
-    if (nextTheme === systemTheme) {
-      writeThemeOverride(null);
-      setTheme(systemTheme);
-      return;
-    }
-
-    writeThemeOverride(nextTheme);
-    setTheme(nextTheme);
+  on(qs("[data-theme-toggle]"), "click", () => {
+    const next = (root.dataset.theme || systemTheme()) === "dark" ? "light" : "dark";
+    setThemeOverride(next === systemTheme() ? null : next);
   });
 }
 
@@ -413,46 +305,29 @@ function readablePath(path) {
 }
 
 function showNotFoundDialog(path) {
-  const modal = document.createElement("div");
-  modal.className = "modal open";
-  modal.innerHTML = `
-    <div class="modal__backdrop" data-not-found-close></div>
-    <div class="modal__dialog modal__dialog--compact" role="alertdialog" aria-modal="true" aria-labelledby="not-found-title" aria-describedby="not-found-message">
-      <div class="modal__head">
-        <p class="modal__title" id="not-found-title">404</p>
-        <div class="modal__actions">
-          <button aria-label="Schließen" class="modal__close modal__close--icon" data-icon="x" data-not-found-close type="button"></button>
-        </div>
-      </div>
-      <div class="modal__body">
-        <p id="not-found-message">Die angeforderte Seite wurde nicht gefunden.</p>
-        <code class="modal__path"></code>
-      </div>
+  const dialog = document.createElement("dialog");
+  dialog.className = "modal__dialog modal__dialog--compact";
+  dialog.setAttribute("role", "alertdialog");
+  dialog.setAttribute("aria-labelledby", "not-found-title");
+  dialog.setAttribute("aria-describedby", "not-found-message");
+  dialog.innerHTML = `
+    <div class="modal__head">
+      <p class="modal__title" id="not-found-title">404</p>
+      <form class="modal__actions" method="dialog">
+        <button aria-label="Schließen" class="modal__close modal__close--icon" data-icon="x"></button>
+      </form>
+    </div>
+    <div class="modal__body">
+      <p id="not-found-message">Die angeforderte Seite wurde nicht gefunden.</p>
+      <code class="modal__path"></code>
     </div>`;
-  qs(".modal__path", modal).textContent = readablePath(path);
-
-  const closeButton = qs("button[data-not-found-close]", modal);
-  const returnFocus = document.activeElement;
-  const close = () => {
-    modal.remove();
-    body.style.overflow = "";
-    document.removeEventListener("keydown", onKeydown);
-    if (returnFocus instanceof HTMLElement) returnFocus.focus({ preventScroll: true });
-  };
-  const onKeydown = (event) => {
-    if (event.key === "Escape") {
-      close();
-    } else if (event.key === "Tab") {
-      event.preventDefault();
-      closeButton.focus();
-    }
-  };
-
-  qsa("[data-not-found-close]", modal).forEach((element) => on(element, "click", close));
-  document.addEventListener("keydown", onKeydown);
-  body.append(modal);
-  body.style.overflow = "hidden";
-  closeButton.focus({ preventScroll: true });
+  qs(".modal__path", dialog).textContent = readablePath(path);
+  on(dialog, "click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  on(dialog, "close", () => dialog.remove());
+  body.append(dialog);
+  dialog.showModal();
 }
 
 const notFoundPath = consumeNotFoundPath();

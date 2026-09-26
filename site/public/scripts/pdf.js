@@ -2,8 +2,6 @@
 
 import { qs, qsa, on, delegate } from "./dom.js";
 
-const body = document.body;
-
 function normalizePdfUrl(url) {
   const value = (url || "").trim();
   if (!value || value === "#") return "";
@@ -121,110 +119,43 @@ export function setupPdfPreviews() {
 }
 
 export function setupPdfModal() {
-  const modal = qs("[data-pdf-modal]");
-  const modalBackdrop = modal ? qs("[data-modal-backdrop]", modal) : null;
-  const modalClose = modal ? qs("[data-modal-close]", modal) : null;
-  const modalTitle = modal ? qs("[data-modal-title]", modal) : null;
-  const modalDialog = modal ? qs(".modal__dialog", modal) : null;
-
-  if (!modal || !modalTitle || !modalDialog) return;
-  let returnFocus = null;
-
-  let modalFrame = null;
-  const ensureFrame = () => {
-    if (!modalFrame) {
-      modalFrame = document.createElement("iframe");
-      modalFrame.className = "modal__frame";
-      modalFrame.title = "PDF-Vorschau";
-      modalDialog.append(modalFrame);
-    }
-    return modalFrame;
-  };
+  const dialog = qs("[data-pdf-modal]");
+  if (!dialog) return;
+  const title = qs("[data-modal-title]", dialog);
+  let frame = null;
 
   qsa(".pdf-preview[data-pdf]").forEach((link) => {
     const pdfUrl = (link.getAttribute("data-pdf") || "").trim();
     const href = (link.getAttribute("href") || "").trim();
-    if (pdfUrl && (!href || href === "#")) {
-      link.setAttribute("href", pdfUrl);
-    }
+    if (pdfUrl && (!href || href === "#")) link.setAttribute("href", pdfUrl);
   });
-
-  const openPdf = (url, title, trigger) => {
-    const pdfUrl = normalizePdfUrl(url);
-    if (!pdfUrl) return;
-    returnFocus = trigger instanceof HTMLElement ? trigger : document.activeElement;
-    modalTitle.textContent = title || "PDF-Vorschau";
-    const frame = ensureFrame();
-    if (frame.getAttribute("data-current-pdf") !== pdfUrl) {
-      frame.setAttribute("src", pdfUrl);
-      frame.setAttribute("data-current-pdf", pdfUrl);
-    }
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-    body.style.overflow = "hidden";
-    if (modalClose) modalClose.focus({ preventScroll: true });
-  };
-
-  const closePdf = () => {
-    if (!modal.classList.contains("open")) return;
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-    body.style.overflow = "";
-    if (returnFocus instanceof HTMLElement) returnFocus.focus({ preventScroll: true });
-    returnFocus = null;
-  };
 
   delegate("click", ".pdf-preview", (event, link) => {
-    const url = link.getAttribute("data-pdf") || link.getAttribute("href");
-    const pdfUrl = normalizePdfUrl(url);
+    const pdfUrl = normalizePdfUrl(link.getAttribute("data-pdf") || link.getAttribute("href"));
     if (!pdfUrl) return;
+    event.preventDefault();
 
-    const prefersNativePdf = prefersNativePdfOpen();
-    if (prefersNativePdf) {
-      event.preventDefault();
-      link.setAttribute("href", pdfUrl);
-      link.setAttribute("target", "_blank");
-      link.setAttribute("rel", "noopener");
-      const opened = window.open(pdfUrl, "_blank", "noopener");
-      if (!opened) {
-        window.location.href = pdfUrl;
-      }
+    if (prefersNativePdfOpen()) {
+      if (!window.open(pdfUrl, "_blank", "noopener")) window.location.href = pdfUrl;
       return;
     }
 
-    event.preventDefault();
-    const title = link.getAttribute("data-title") || link.textContent.trim();
-    openPdf(pdfUrl, title, link);
+    if (!frame) {
+      frame = document.createElement("iframe");
+      frame.className = "modal__frame";
+      frame.title = "PDF-Vorschau";
+      dialog.append(frame);
+    }
+    title.textContent = link.getAttribute("data-title") || link.textContent.trim();
+    if (frame.getAttribute("src") !== pdfUrl) frame.setAttribute("src", pdfUrl);
+    dialog.showModal();
   });
 
-  if (modalBackdrop) on(modalBackdrop, "click", closePdf);
-  if (modalClose) on(modalClose, "click", closePdf);
-
-  on(document, "keydown", (event) => {
-    if (event.key === "Escape") {
-      closePdf();
-      return;
-    }
-    if (event.key !== "Tab" || !modal.classList.contains("open")) return;
-
-    const focusable = qsa("button, [href], iframe, [tabindex]:not([tabindex='-1'])", modal)
-      .filter(element => !element.hasAttribute("disabled"));
-    if (!focusable.length) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
+  on(dialog, "click", (event) => {
+    if (event.target === dialog) dialog.close();
   });
 
   on(window, "pagehide", () => {
-    if (!modalFrame) return;
-    modalFrame.setAttribute("src", "about:blank");
-    modalFrame.removeAttribute("data-current-pdf");
+    if (frame) frame.setAttribute("src", "about:blank");
   });
-
 }

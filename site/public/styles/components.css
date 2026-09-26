@@ -67,7 +67,13 @@
     --icon-mask: url("../assets/icons/sun.svg");
   }
 
-  html[data-theme="dark"] .theme-toggle {
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle {
+      --icon-mask: url("../assets/icons/moon.svg");
+    }
+  }
+
+  :root[data-theme="dark"] .theme-toggle {
     --icon-mask: url("../assets/icons/moon.svg");
   }
 
@@ -1433,34 +1439,28 @@
     --icon-mask: url("../assets/icons/x.svg");
   }
 
-  .modal {
-    position: fixed;
-    inset: 0;
-    z-index: 92;
-    display: none;
+  .modal__dialog {
+    width: min(1040px, calc(100% - 1.2rem));
+    max-width: none;
+    height: min(88vh, 860px);
+    max-height: none;
+    margin: clamp(0.9rem, 4vh, 2rem) auto auto;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    overflow: hidden;
+    box-shadow: var(--shadow-strong);
   }
 
-  .modal.open {
-    display: block;
-  }
-
-  .modal__backdrop {
-    position: absolute;
-    inset: 0;
+  .modal__dialog::backdrop {
     background: rgba(6, 12, 8, 0.66);
     backdrop-filter: blur(6px);
   }
 
-  .modal__dialog {
-    position: relative;
-    width: min(1040px, calc(100% - 1.2rem));
-    height: min(88vh, 860px);
-    margin: clamp(0.9rem, 4vh, 2rem) auto;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: var(--surface);
+  :root:has(.modal__dialog[open]) {
     overflow: hidden;
-    box-shadow: var(--shadow-strong);
   }
 
   .modal__head {
@@ -1513,7 +1513,7 @@
 
   .modal__dialog--compact {
     width: min(440px, calc(100% - 2rem));
-    height: auto;
+    height: fit-content;
     margin-top: clamp(4rem, 18vh, 9rem);
   }
 
