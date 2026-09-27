@@ -31,6 +31,7 @@ const canonicalUrl = new URL(canonical, Astro.site ?? Astro.url);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href={stylesheet} />
     <script is:inline>
       try {
         const theme = localStorage.getItem('theme_override');
@@ -38,7 +39,6 @@ const canonicalUrl = new URL(canonical, Astro.site ?? Astro.url);
           document.documentElement.dataset.theme = theme;
       } catch {}
     </script>
-    <link rel="stylesheet" href={stylesheet} />
     <link rel="icon" type="image/png" href="/assets/katzenfreunde-circle.png" />
     <link
       rel="preload"
