@@ -19,6 +19,10 @@
     background: #fff;
   }
 
+  body[data-page='futter-shop'] .site-footer {
+    margin-top: auto;
+  }
+
   body[data-page='futter-shop'] .hero {
     max-width: none;
     margin: 0;
