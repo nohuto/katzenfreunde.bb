@@ -8,7 +8,8 @@
     --container-xl: 1180px;
     --container-content: 960px;
     --gutter-inline: 1rem;
-    --site-header-height: 3.6875rem;
+    --header-height: calc(3.6875rem + 1px);
+    --footer-height: 3.3125rem;
 
     --bg: #f7f4ec;
     --bg-accent: #efe9dc;
@@ -151,7 +152,9 @@
 
   html {
     scroll-behavior: smooth;
-    background: var(--bg);
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+    scroll-padding-bottom: var(--footer-height);
+    background: var(--bg-alt);
     overflow-x: hidden;
     overflow-x: clip;
   }
@@ -161,19 +164,34 @@
     min-height: 100svh;
     display: flex;
     flex-direction: column;
-    padding-top: calc(var(--site-header-height) + 1px);
+    padding-top: var(--header-height);
+    padding-bottom: var(--footer-height);
     overflow-x: hidden;
     overflow-x: clip;
     color: var(--text);
-    background: var(--bg);
     font-family: var(--font-main);
     font-size: 1rem;
     line-height: 1.62;
     cursor: var(--cursor-main);
   }
 
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: var(--bg);
+    pointer-events: none;
+  }
+
   main {
     flex: 1 0 auto;
+  }
+
+  @media (max-width: 1100px) {
+    :root {
+      --footer-height: 2.75rem;
+    }
   }
 
   @media (pointer: coarse) {

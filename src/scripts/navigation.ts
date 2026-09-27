@@ -111,7 +111,7 @@ export function setupNavigation() {
       navClose.className = 'nav-drawer-close';
       navClose.setAttribute('data-nav-close', '');
       navClose.setAttribute('data-icon', 'x');
-      navClose.setAttribute('aria-label', 'MenÃ¼ schlieÃŸen');
+      navClose.setAttribute('aria-label', 'Menü schließen');
       drawerHead.appendChild(navClose);
     }
   }
