@@ -8,6 +8,7 @@
     --container-xl: 1180px;
     --container-content: 960px;
     --gutter-inline: 1rem;
+    --site-header-height: 3.6875rem;
 
     --bg: #f7f4ec;
     --bg-accent: #efe9dc;
@@ -150,7 +151,7 @@
 
   html {
     scroll-behavior: smooth;
-    background: var(--bg-alt);
+    background: var(--bg);
     overflow-x: hidden;
     overflow-x: clip;
   }
@@ -160,6 +161,7 @@
     min-height: 100svh;
     display: flex;
     flex-direction: column;
+    padding-top: calc(var(--site-header-height) + 1px);
     overflow-x: hidden;
     overflow-x: clip;
     color: var(--text);
