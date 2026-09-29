@@ -15,9 +15,10 @@ ErrorDocument 404 /404.html
 
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
   Header set Cache-Control "public, max-age=0, must-revalidate"
 
-  <FilesMatch "\.woff2$">
+  <FilesMatch "(\.woff2|\.[\w-]{8}(_[\w-]+)?\.(css|js|webp|png))$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 </IfModule>

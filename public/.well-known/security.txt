@@ -1,0 +1,4 @@
+Contact: mailto:katzenfreunde@noverse.dev
+Expires: 2028-09-29T12:00:00Z
+Canonical: https://www.katzenfreunde-bietigheim-bissingen.de/.well-known/security.txt
+Preferred-Languages: de, en

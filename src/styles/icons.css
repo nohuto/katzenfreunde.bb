@@ -1,0 +1,76 @@
+/* Copyright (c) nohuto (N.B.) */
+
+@layer components {
+  [data-icon]::before,
+  .theme-toggle::before,
+  .copy-inline::before {
+    content: '';
+    display: inline-block;
+    flex: 0 0 auto;
+    width: var(--icon-size, 18px);
+    height: var(--icon-size, 18px);
+    background-color: currentColor;
+    -webkit-mask: var(--icon-mask) center / contain no-repeat;
+    mask: var(--icon-mask) center / contain no-repeat;
+  }
+
+  [data-icon='brand-facebook'] {
+    --icon-mask: url('../icons/brand-facebook.svg');
+  }
+
+  [data-icon='brand-instagram'] {
+    --icon-mask: url('../icons/brand-instagram.svg');
+  }
+
+  [data-icon='brand-paypal'] {
+    --icon-mask: url('../icons/brand-paypal.svg');
+  }
+
+  [data-icon='brand-whatsapp'] {
+    --icon-mask: url('../icons/brand-whatsapp.svg');
+  }
+
+  [data-icon='building-store'] {
+    --icon-mask: url('../icons/building-store.svg');
+  }
+
+  [data-icon='fish'] {
+    --icon-mask: url('../icons/fish.svg');
+  }
+
+  [data-icon='heart-handshake'] {
+    --icon-mask: url('../icons/heart-handshake.svg');
+  }
+
+  [data-icon='home-heart'] {
+    --icon-mask: url('../icons/home-heart.svg');
+  }
+
+  [data-icon='mail'] {
+    --icon-mask: url('../icons/mail.svg');
+  }
+
+  [data-icon='menu-2'] {
+    --icon-mask: url('../icons/menu-2.svg');
+  }
+
+  [data-icon='phone'] {
+    --icon-mask: url('../icons/phone.svg');
+  }
+
+  [data-icon='shield-dollar'] {
+    --icon-mask: url('../icons/shield-dollar.svg');
+  }
+
+  [data-icon='shopping-cart'] {
+    --icon-mask: url('../icons/shopping-cart.svg');
+  }
+
+  [data-icon='stethoscope'] {
+    --icon-mask: url('../icons/stethoscope.svg');
+  }
+
+  [data-icon='x'] {
+    --icon-mask: url('../icons/x.svg');
+  }
+}

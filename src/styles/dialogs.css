@@ -1,0 +1,200 @@
+/* Copyright (c) nohuto (N.B.) */
+
+@layer components {
+  .modal__close {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    padding: 0.42rem 0.8rem;
+    transition: color var(--ui-transition);
+  }
+
+  .modal__close:hover,
+  .modal__close:focus-visible {
+    color: var(--brand-hover);
+  }
+
+  .modal__dialog {
+    width: min(1040px, calc(100% - 1.2rem));
+    max-width: none;
+    height: min(88vh, 860px);
+    max-height: none;
+    margin: clamp(0.9rem, 4vh, 2rem) auto auto;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    overflow: hidden;
+    box-shadow: var(--shadow-strong);
+  }
+
+  .modal__dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal__dialog::backdrop {
+    background: rgba(6, 12, 8, 0.66);
+    backdrop-filter: blur(6px);
+  }
+
+  :root:has(.modal__dialog[open]) {
+    overflow: hidden;
+  }
+
+  .modal__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+    border-bottom: 1px solid var(--button-bg);
+    background: var(--button-bg);
+    padding: 0.52rem 0.7rem;
+  }
+
+  .modal__title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-family: var(--font-main);
+    color: var(--on-accent);
+  }
+
+  .modal__actions {
+    display: flex;
+    gap: 0.42rem;
+  }
+
+  .modal__close--icon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: var(--on-accent);
+    --icon-size: 16px;
+  }
+
+  .modal__close--icon:hover,
+  .modal__close--icon:focus-visible {
+    color: #fff;
+  }
+
+  .modal__frame {
+    flex: 1;
+    width: 100%;
+    border: 0;
+  }
+
+  .modal__dialog--compact {
+    width: min(440px, calc(100% - 2rem));
+    height: fit-content;
+    margin-top: clamp(4rem, 18vh, 9rem);
+  }
+
+  .modal__dialog--compact .modal__head {
+    padding: 0.3rem 0.4rem 0.3rem 1.1rem;
+  }
+
+  .modal__dialog--compact .modal__title {
+    font-size: 1rem;
+  }
+
+  .modal__dialog--compact .modal__close--icon {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+  }
+
+  .modal__body {
+    display: grid;
+    gap: 0.7rem;
+    padding: 1rem 1.1rem 1.15rem;
+  }
+
+  .modal__body p {
+    margin: 0;
+  }
+
+  .modal__path {
+    display: block;
+    padding: 0.4rem 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface-soft);
+    color: var(--text);
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 0.86rem;
+    overflow-wrap: anywhere;
+  }
+
+  .toast {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 95;
+    min-width: 220px;
+    max-width: min(340px, calc(100vw - 2rem));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    padding: 0.64rem 0.86rem;
+    box-shadow: var(--shadow-soft);
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition:
+      opacity var(--ui-transition),
+      transform var(--ui-transition);
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .paw-click {
+    position: fixed;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    z-index: 120;
+    opacity: 0.58;
+    background-color: var(--text);
+    -webkit-mask: url('../icons/paw.svg') center / contain no-repeat;
+    mask: url('../icons/paw.svg') center / contain no-repeat;
+    transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+    animation: paw-burst 500ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+
+  @keyframes paw-burst {
+    0% {
+      opacity: 0.58;
+      transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+    }
+
+    65% {
+      opacity: 0.24;
+      transform: translate(-50%, -50%) scale(1) rotate(10deg);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.2) rotate(17deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .paw-click {
+      display: none !important;
+    }
+  }
+}

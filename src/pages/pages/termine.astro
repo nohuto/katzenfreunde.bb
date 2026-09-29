@@ -1,5 +1,9 @@
 ---
+import Img from '../../components/ui/Img.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
+import { webpImage } from '../../utils/images';
+
+const flyer = await webpImage('/assets/media/resources/flohmarkt2026.jpg');
 ---
 
 <KatzenfreundeLayout
@@ -7,7 +11,6 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
   description="Anstehende Aktionen, Veranstaltungen und Treffpunkte."
   page="termine"
   canonical="/pages/termine.html"
-  preload="/assets/media/resources/flohmarkt2026.jpg"
 >
   <main>
     <section class="hero">
@@ -37,18 +40,16 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
           <figure class="termine-flyer">
             <a
               class="termine-flyer__link"
-              href="/assets/media/resources/flohmarkt2026.jpg"
+              href={flyer.src}
               rel="noopener noreferrer"
               target="_blank"
             >
-              <img
+              <Img
                 alt="Flohmarkt-Flyer 2026 der Katzenfreunde Bietigheim-Bissingen"
-                decoding="async"
-                height="1492"
-                loading="lazy"
+                fetchpriority="high"
+                loading="eager"
                 sizes="(max-width: 700px) 300px, 420px"
                 src="/assets/media/resources/flohmarkt2026.jpg"
-                width="1054"
               />
             </a>
           </figure>

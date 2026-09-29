@@ -1,4 +1,5 @@
 ---
+import PdfCard from '../../components/ui/PdfCard.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 ---
 
@@ -41,35 +42,18 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
           <div class="activity-section-divider section-divider section-divider--solid">
             <h2>Formulare und Unterlagen</h2>
             <div class="pdf-inline-grid">
-              <a
-                class="pdf-preview pdf-inline-card"
-                data-pdf="/assets/media/data/Hoenig/Interessenten-Kontaktformular.pdf"
-                data-title="Interessenten-Kontaktformular"
+              <PdfCard
                 href="/assets/media/data/Hoenig/Interessenten-Kontaktformular.pdf"
-                target="_blank"
-              >
-                <span aria-hidden="true" class="pdf-inline-card__frame">
-                  <span class="pdf-placeholder">PDF Vorschau</span>
-                </span>{' '}
-                <span class="pdf-inline-card__caption">
-                  Interessenten-Kontaktformular.pdf{' '}
-                  <span class="pdf-badge">Vorschau</span>
-                </span>
-              </a>
-              <a
-                class="pdf-preview pdf-inline-card"
-                data-pdf="/assets/media/data/Abgabevereinbarung.pdf"
-                data-title="Abgabevereinbarung"
+                label="Interessenten-Kontaktformular.pdf"
+                sizes="(max-width: 545px) 100vw, 480px"
+                title="Interessenten-Kontaktformular"
+              />
+              <PdfCard
                 href="/assets/media/data/Abgabevereinbarung.pdf"
-                target="_blank"
-              >
-                <span aria-hidden="true" class="pdf-inline-card__frame">
-                  <span class="pdf-placeholder">PDF Vorschau</span>
-                </span>{' '}
-                <span class="pdf-inline-card__caption">
-                  Abgabevereinbarung.pdf <span class="pdf-badge">Vorschau</span>
-                </span>
-              </a>
+                label="Abgabevereinbarung.pdf"
+                sizes="(max-width: 545px) 100vw, 480px"
+                title="Abgabevereinbarung"
+              />
             </div>
             <p>
               <a

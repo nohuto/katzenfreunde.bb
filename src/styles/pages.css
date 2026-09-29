@@ -1,4 +1,4 @@
-﻿/* Copyright (c) nohuto (N.B.) */
+/* Copyright (c) nohuto (N.B.) */
 
 @layer overrides {
   .page-content.rich-content--home {
@@ -34,22 +34,6 @@
     width: fit-content;
     max-width: min(100%, 250px);
     line-height: 0;
-  }
-
-  body[data-page='futter-shop'] .hero__media picture {
-    display: block;
-    line-height: 0;
-  }
-
-  body[data-page='futter-shop'] .hero__media img {
-    display: block;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    min-height: 0;
-    object-fit: contain;
-    transform: none;
-    animation: none;
   }
 
   body[data-page='termine'] .donation-highlight {

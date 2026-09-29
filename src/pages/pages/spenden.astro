@@ -1,4 +1,6 @@
 ---
+import Img from '../../components/ui/Img.astro';
+import PdfCard from '../../components/ui/PdfCard.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 ---
 
@@ -7,7 +9,6 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
   description="Ihre Spende hilft direkt Katzen in Not."
   page="spenden"
   canonical="/pages/spenden.html"
-  preload="/assets/media/resources/spenden-vereinsarchiv-katze.jpg"
 >
   <main class="page-shell page-shell--compact">
     <article class="rich-content prose page-content">
@@ -85,20 +86,12 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
           Spendenformular herunter:
         </p>
         <div class="pdf-inline-grid">
-          <a
-            class="pdf-preview pdf-inline-card"
-            data-pdf="/assets/media/data/Spendenformular.pdf"
-            data-title="Spendenformular"
+          <PdfCard
             href="/assets/media/data/Spendenformular.pdf"
-            target="_blank"
-          >
-            <span aria-hidden="true" class="pdf-inline-card__frame">
-              <span class="pdf-placeholder">PDF Vorschau</span>
-            </span>{' '}
-            <span class="pdf-inline-card__caption">
-              Spendenformular.pdf <span class="pdf-badge">Vorschau</span>
-            </span>
-          </a>
+            label="Spendenformular.pdf"
+            loading="eager"
+            title="Spendenformular"
+          />
         </div>
         <p>Und senden Sie es uns an:</p>
         <div aria-label="Postanschrift" class="bank-grid bank-grid--address">
@@ -180,15 +173,11 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
         </p>
         <p>
           <picture>
-            <img
+            <Img
               alt="Bild aus dem Vereinsarchiv"
-              decoding="async"
               fetchpriority="high"
-              height="450"
               loading="eager"
-              sizes="(max-width: 980px) 100vw, 960px"
               src="/assets/media/resources/spenden-vereinsarchiv-katze.jpg"
-              width="600"
             />
           </picture>
         </p>
@@ -277,14 +266,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             <div class="content-grid__cell">
               <p>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
-                    height="375"
                     loading="lazy"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/katzenratgeber-seitenbild.jpg"
-                    width="500"
                   />
                 </picture>
               </p>
@@ -292,14 +277,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             <div class="content-grid__cell">
               <p>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
-                    height="245"
                     loading="lazy"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/spenden-katzenhilfe-seitenbild.jpg"
-                    width="347"
                   />
                 </picture>
               </p>

@@ -1,5 +1,11 @@
 ---
+import Img from '../../components/ui/Img.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
+import { webpImage } from '../../utils/images';
+
+const poster = await webpImage(
+  '/assets/media/resources/katzenvermittlung1.jpg',
+);
 ---
 
 <KatzenfreundeLayout
@@ -31,19 +37,13 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
         >
           <article class="vermittlung-card">
             <figure>
-              <a
-                href="/assets/media/resources/katzenvermittlung1.jpg"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt="Pflegestellen f&uuml;r Katzen im Raum Bietigheim-Bissingen gesucht"
-                  decoding="async"
+              <a href={poster.src} rel="noopener noreferrer" target="_blank">
+                <Img
+                  alt="Pflegestellen für Katzen im Raum Bietigheim-Bissingen gesucht"
                   fetchpriority="high"
-                  height="1024"
                   loading="eager"
+                  sizes="(max-width: 1000px) 100vw, 960px"
                   src="/assets/media/resources/katzenvermittlung1.jpg"
-                  width="1536"
                 />
               </a>
             </figure>

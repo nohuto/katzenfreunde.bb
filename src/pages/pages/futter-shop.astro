@@ -1,4 +1,5 @@
 ---
+import Img from '../../components/ui/Img.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 ---
 
@@ -7,7 +8,6 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
   description="Bei Einkäufen über den Futter-Shop können Sie den Verein indirekt unterstützen."
   page="futter-shop"
   canonical="/pages/futter-shop.html"
-  preload="/assets/media/resources/futter-shuttle-plakat.jpg"
 >
   <main class="page-shell">
     <article class="rich-content prose page-content">
@@ -35,15 +35,11 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
           </div>
           <div class="hero__media">
             <picture>
-              <img
+              <Img
                 alt="Bildmotiv zur Seite Futter Shop"
-                decoding="async"
                 fetchpriority="high"
-                height="250"
                 loading="eager"
-                sizes="(max-width: 980px) 100vw, 960px"
                 src="/assets/media/resources/futter-shuttle-plakat.jpg"
-                width="250"
               />
             </picture>
           </div>

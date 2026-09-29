@@ -1,4 +1,6 @@
 ---
+import Img from '../../components/ui/Img.astro';
+import PdfCard from '../../components/ui/PdfCard.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 ---
 
@@ -7,7 +9,6 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
   description="Unterstützen Sie den Verein dauerhaft als Mitglied."
   page="mitglied-werden"
   canonical="/pages/mitglied-werden.html"
-  preload="/assets/media/resources/mitgliedschaft-katze-zuhause.jpg"
 >
   <main>
     <section class="hero">
@@ -35,15 +36,11 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
           </p>
           <figure class="membership-media membership-media--right">
             <picture>
-              <img
+              <Img
                 alt="Bild aus dem Vereinsarchiv"
-                decoding="async"
                 fetchpriority="high"
-                height="336"
                 loading="eager"
-                sizes="(max-width: 980px) 100vw, 960px"
                 src="/assets/media/resources/mitgliedschaft-katze-zuhause.jpg"
-                width="448"
               />
             </picture>
           </figure>
@@ -64,14 +61,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
           </p>
           <figure class="membership-media membership-media--left">
             <picture>
-              <img
+              <Img
                 alt="Miri wartet nahe ihrer Futterstelle"
-                decoding="async"
-                height="450"
                 loading="lazy"
-                sizes="(max-width: 980px) 100vw, 960px"
                 src="/assets/media/resources/futterstelle-miri.jpg"
-                width="600"
               />
             </picture>
             <figcaption>
@@ -104,34 +97,18 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             class="membership-docs section-divider section-divider--solid"
           >
             <div class="pdf-inline-grid">
-              <a
-                class="pdf-preview pdf-inline-card"
-                data-pdf="/assets/media/data/Aufnahmeantrag.pdf"
-                data-title="Aufnahmeantrag"
+              <PdfCard
                 href="/assets/media/data/Aufnahmeantrag.pdf"
-                target="_blank"
-              >
-                <span aria-hidden="true" class="pdf-inline-card__frame">
-                  <span class="pdf-placeholder">PDF Vorschau</span>
-                </span>{' '}
-                <span class="pdf-inline-card__caption">
-                  Aufnahmeantrag.pdf <span class="pdf-badge">Vorschau</span>
-                </span>
-              </a>
-              <a
-                class="pdf-preview pdf-inline-card"
-                data-pdf="/assets/media/data/Hoenig/SEPA.pdf"
-                data-title="SEPA / Erl&auml;uterungen zu SEPA-Bezahlvorg&auml;ngen"
+                label="Aufnahmeantrag.pdf"
+                sizes="(max-width: 545px) 100vw, 480px"
+                title="Aufnahmeantrag"
+              />
+              <PdfCard
                 href="/assets/media/data/Hoenig/SEPA.pdf"
-                target="_blank"
-              >
-                <span aria-hidden="true" class="pdf-inline-card__frame">
-                  <span class="pdf-placeholder">PDF Vorschau</span>
-                </span>{' '}
-                <span class="pdf-inline-card__caption">
-                  SEPA.pdf <span class="pdf-badge">Vorschau</span>
-                </span>
-              </a>
+                label="SEPA.pdf"
+                sizes="(max-width: 545px) 100vw, 480px"
+                title="SEPA / Erläuterungen zu SEPA-Bezahlvorgängen"
+              />
             </div>
             <p>
               <em>

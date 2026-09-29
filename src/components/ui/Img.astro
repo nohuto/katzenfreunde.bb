@@ -1,0 +1,29 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { webpImage } from '../../utils/images';
+
+interface Props extends Omit<
+  HTMLAttributes<'img'>,
+  'src' | 'srcset' | 'width' | 'height'
+> {
+  src: string;
+  width?: number;
+}
+
+const { src, width, sizes, ...attrs } = Astro.props;
+const image = await webpImage(src, width);
+---
+
+<img
+  src={image.src}
+  srcset={image.srcset}
+  sizes={
+    image.srcset && !width
+      ? (sizes ?? `(max-width: ${image.width}px) 100vw, ${image.width}px`)
+      : undefined
+  }
+  width={image.width}
+  height={image.height}
+  decoding="async"
+  {...attrs}
+/>

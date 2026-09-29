@@ -1,4 +1,6 @@
 ---
+import Img from '../../components/ui/Img.astro';
+import PdfCard from '../../components/ui/PdfCard.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 ---
 
@@ -7,7 +9,6 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
   description="Praktische Hinweise für einen tiergerechten Alltag."
   page="tipps"
   canonical="/pages/tipps.html"
-  preload="/assets/media/resources/katzenratgeber-seitenbild.jpg"
 >
   <main class="page-shell">
     <article class="rich-content prose page-content">
@@ -58,15 +59,11 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
           </p>
           <figure class="tips-inline-media">
             <picture>
-              <img
+              <Img
                 alt="Katze im Ratgeberbereich"
-                decoding="async"
                 fetchpriority="high"
-                height="375"
                 loading="eager"
-                sizes="(max-width: 980px) 100vw, 960px"
                 src="/assets/media/resources/katzenratgeber-seitenbild.jpg"
-                width="499"
               />
             </picture>
           </figure>
@@ -115,20 +112,11 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             werden:
           </p>
           <div class="pdf-inline-grid">
-            <a
-              class="pdf-preview pdf-inline-card"
-              data-pdf="/assets/media/data/Katze_und_Urlaub.pdf"
-              data-title="Katze und Urlaub"
+            <PdfCard
               href="/assets/media/data/Katze_und_Urlaub.pdf"
-              target="_blank"
-            >
-              <span aria-hidden="true" class="pdf-inline-card__frame">
-                <span class="pdf-placeholder">PDF Vorschau</span>
-              </span>{' '}
-              <span class="pdf-inline-card__caption">
-                Katze und Urlaub.pdf <span class="pdf-badge">Vorschau</span>
-              </span>
-            </a>
+              label="Katze und Urlaub.pdf"
+              title="Katze und Urlaub"
+            />
           </div>
         </section>
       </div>

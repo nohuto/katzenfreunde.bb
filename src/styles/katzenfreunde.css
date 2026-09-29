@@ -2,5 +2,8 @@
 @import './base.css';
 @import './layout.css';
 @import './content.css';
+@import './icons.css';
+@import './shell.css';
 @import './components.css';
+@import './dialogs.css';
 @import './pages.css';

@@ -41,7 +41,7 @@ export function showNotFoundDialog(path: string) {
     <div class="modal__head">
       <p class="modal__title" id="not-found-title">404</p>
       <form class="modal__actions" method="dialog">
-        <button aria-label="SchlieÃŸen" class="modal__close modal__close--icon" data-icon="x"></button>
+        <button aria-label="Schließen" class="modal__close modal__close--icon" data-icon="x"></button>
       </form>
     </div>
     <div class="modal__body">

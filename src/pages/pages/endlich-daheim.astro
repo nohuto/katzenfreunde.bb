@@ -1,4 +1,5 @@
 ---
+import Img from '../../components/ui/Img.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 ---
 
@@ -27,10 +28,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
         <p>Vereinsmitglied und seiner Famile gefunden...</p>
         <p>
           <picture>
-            <img
+            <Img
               alt="Benno und Leni im neuen Zuhause"
-              decoding="async"
-              loading="lazy"
+              fetchpriority="high"
+              loading="eager"
               src="/assets/media/resources/benno-leni.jpg"
             />
           </picture>
@@ -52,17 +53,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
         </p>
         <p>
           <picture>
-            <img
+            <Img
               alt="Bild aus dem Vereinsarchiv"
-              decoding="async"
-              fetchpriority="high"
-              height="436"
-              id="55201314"
-              loading="eager"
-              sizes="(max-width: 980px) 100vw, 960px"
+              loading="lazy"
               src="/assets/media/resources/pinkus-zuhause.png"
-              title=""
-              width="380"
             />
           </picture>
         </p>
@@ -79,16 +73,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
         </p>
         <p>
           <picture>
-            <img
+            <Img
               alt="Bild aus dem Vereinsarchiv"
-              decoding="async"
-              height="367"
-              id="55201334"
               loading="lazy"
-              sizes="(max-width: 980px) 100vw, 960px"
               src="/assets/media/resources/peggy-zuhause.png"
-              title=""
-              width="380"
             />
           </picture>
         </p>
@@ -105,16 +93,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
         </p>
         <p>
           <picture>
-            <img
+            <Img
               alt="Bild aus dem Vereinsarchiv"
-              decoding="async"
-              height="340"
-              id="55201379"
               loading="lazy"
-              sizes="(max-width: 980px) 100vw, 960px"
               src="/assets/media/resources/mieke-zuhause.jpg"
-              title=""
-              width="340"
             />
           </picture>
         </p>
@@ -136,16 +118,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
         </p>
         <p>
           <picture>
-            <img
+            <Img
               alt="Bild aus dem Vereinsarchiv"
-              decoding="async"
-              height="370"
-              id="52614677"
               loading="lazy"
-              sizes="(max-width: 980px) 100vw, 960px"
               src="/assets/media/resources/balu-und-baghira-zuhause.png"
-              title=""
-              width="300"
             />
           </picture>
         </p>
@@ -157,16 +133,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             <div class="content-grid__cell">
               <p>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
-                    height="300"
-                    id="37820995"
                     loading="lazy"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/sammy-zuhause.jpg"
-                    title=""
-                    width="400"
                   />
                 </picture>
               </p>
@@ -190,16 +160,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             <div class="content-grid__cell">
               <p>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
-                    height="169"
-                    id="37820155"
                     loading="lazy"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/maja-und-willi-1.jpg"
-                    title=""
-                    width="300"
                   />
                 </picture>
               </p>
@@ -207,16 +171,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             <div class="content-grid__cell">
               <p>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
-                    height="169"
-                    id="37820310"
                     loading="lazy"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/maja-und-willi-2.jpg"
-                    title=""
-                    width="300"
                   />
                 </picture>
               </p>
@@ -251,16 +209,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
               </p>
               <p>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
-                    height="200"
-                    id="37312846"
                     loading="lazy"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/mia-prinzessin-seidenfell-portraet.jpg"
-                    title=""
-                    width="299"
                   />
                 </picture>
               </p>
@@ -271,16 +223,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
               </p>
               <p>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
-                    height="200"
-                    id="37312849"
                     loading="lazy"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/lilly-ella-rabiata-portraet.jpg"
-                    title=""
-                    width="297"
                   />
                 </picture>
               </p>
@@ -312,16 +258,10 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             <div class="content-grid__cell">
               <p>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
-                    height="337"
-                    id="36432751"
                     loading="lazy"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/mia-prinzessin-seidenfell.jpg"
-                    title=""
-                    width="600"
                   />
                 </picture>
               </p>
@@ -364,42 +304,24 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             <div class="content-grid__cell">
               <p>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
-                    height="160"
-                    id="35170416"
                     loading="lazy"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/endlich-daheim-geschwister-1.jpg"
-                    title=""
-                    width="151"
                   />
                 </picture>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
-                    height="160"
-                    id="35170418"
                     loading="lazy"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/endlich-daheim-geschwister-3.jpg"
-                    title=""
-                    width="259"
                   />
                 </picture>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
-                    height="160"
-                    id="35170417"
                     loading="lazy"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/endlich-daheim-geschwister-2.jpg"
-                    title=""
-                    width="227"
                   />
                 </picture>
               </p>
@@ -427,46 +349,28 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
         </p>
         <p>
           <picture>
-            <img
+            <Img
               alt="Bild aus dem Vereinsarchiv"
-              decoding="async"
-              height="336"
-              id="30883939"
               loading="lazy"
-              sizes="(max-width: 980px) 100vw, 960px"
               src="/assets/media/resources/endlich-daheim-katzengruppe-1.jpg"
-              title=""
-              width="448"
             />
           </picture>
         </p>
         <p>
           <picture>
-            <img
+            <Img
               alt="Bild aus dem Vereinsarchiv"
-              decoding="async"
-              height="331"
-              id="30420729"
               loading="lazy"
-              sizes="(max-width: 980px) 100vw, 960px"
               src="/assets/media/resources/endlich-daheim-katzengruppe-2.jpg"
-              title=""
-              width="448"
             />
           </picture>
         </p>
         <p>
           <picture>
-            <img
+            <Img
               alt="Bild aus dem Vereinsarchiv"
-              decoding="async"
-              height="336"
-              id="30420767"
               loading="lazy"
-              sizes="(max-width: 980px) 100vw, 960px"
               src="/assets/media/resources/mitgliedschaft-katze-zuhause.jpg"
-              title=""
-              width="448"
             />
           </picture>
         </p>

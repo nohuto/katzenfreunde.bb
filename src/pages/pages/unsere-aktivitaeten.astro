@@ -1,4 +1,5 @@
 ---
+import Img from '../../components/ui/Img.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 ---
 
@@ -121,14 +122,11 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
               <h2>Tierschutz vor Ort</h2>
               <figure class="activity-feature__media">
                 <picture>
-                  <img
+                  <Img
                     alt="Helferin bei einer Einfangaktion"
-                    decoding="async"
-                    height="439"
                     loading="lazy"
                     sizes="(max-width: 700px) 100vw, 360px"
                     src="/assets/media/resources/einfangaktion-zwei-helferinnen.jpg"
-                    width="600"
                   />
                 </picture>
               </figure>

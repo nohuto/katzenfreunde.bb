@@ -1,0 +1,36 @@
+---
+import Img from './Img.astro';
+
+interface Props {
+  href: string;
+  title: string;
+  label: string;
+  sizes?: string;
+  loading?: 'eager' | 'lazy';
+}
+
+const {
+  href,
+  title,
+  label,
+  sizes = '(max-width: 1000px) 100vw, 960px',
+  loading = 'lazy',
+} = Astro.props;
+const thumbnail = href
+  .replace('/assets/media/data/', '/assets/media/pdf/')
+  .replace(/\.pdf$/, '.jpg');
+---
+
+<a
+  class="pdf-preview pdf-inline-card"
+  data-title={title}
+  href={href}
+  target="_blank"
+>
+  <span class="pdf-inline-card__frame">
+    <Img alt="" loading={loading} sizes={sizes} src={thumbnail} />
+  </span>
+  <span class="pdf-inline-card__caption">
+    {label} <span class="pdf-badge">Vorschau</span>
+  </span>
+</a>

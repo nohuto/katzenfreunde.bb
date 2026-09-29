@@ -1,0 +1,30 @@
+---
+import { contactEmail, contactLinks } from '../../data/contact';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+{contactLinks.map((item) =>
+  'href' in item ? (
+    <a
+      aria-label={item.label}
+      class:list={['icon-link', className]}
+      data-icon={item.icon}
+      href={item.href}
+      rel={item.href.startsWith('https:') ? 'noopener noreferrer' : undefined}
+      target={item.href.startsWith('https:') ? '_blank' : undefined}
+    />
+  ) : (
+    <button
+      aria-label={item.label}
+      class:list={['icon-btn', className]}
+      data-copy-email={contactEmail}
+      data-icon={item.icon}
+      type="button"
+    />
+  ),
+)}

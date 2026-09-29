@@ -1,4 +1,4 @@
-﻿/* Copyright (c) nohuto (N.B.) */
+/* Copyright (c) nohuto (N.B.) */
 
 @layer tokens, reset, base, layout, content, components, utilities, overrides;
 
@@ -42,8 +42,9 @@
     --font-main: 'Cabin', 'Segoe UI', Tahoma, sans-serif;
     --font-display: 'Amatic SC', 'Segoe UI', Tahoma, sans-serif;
 
-    --cursor-main: url('/assets/cursor/dark/paw-filled.cur') 2 1, auto;
-    --cursor-action: url('/assets/cursor/dark/paw-filled.cur') 2 1, pointer;
+    --cursor-image: url('../cursors/paw-dark.cur');
+    --cursor-main: var(--cursor-image) 2 1, auto;
+    --cursor-action: var(--cursor-image) 2 1, pointer;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -75,8 +76,7 @@
       --shadow-soft: 0 5px 10px rgba(0, 0, 0, 0.28);
       --shadow-strong: 0 9px 14px rgba(0, 0, 0, 0.42);
 
-      --cursor-main: url('/assets/cursor/light/paw-filled.cur') 2 1, auto;
-      --cursor-action: url('/assets/cursor/light/paw-filled.cur') 2 1, pointer;
+      --cursor-image: url('../cursors/paw-light.cur');
     }
   }
 
@@ -108,8 +108,7 @@
     --shadow-soft: 0 5px 10px rgba(0, 0, 0, 0.28);
     --shadow-strong: 0 9px 14px rgba(0, 0, 0, 0.42);
 
-    --cursor-main: url('/assets/cursor/light/paw-filled.cur') 2 1, auto;
-    --cursor-action: url('/assets/cursor/light/paw-filled.cur') 2 1, pointer;
+    --cursor-image: url('../cursors/paw-light.cur');
   }
 
   *,

@@ -1,4 +1,5 @@
 ---
+import Img from '../../components/ui/Img.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 ---
 
@@ -20,17 +21,11 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             <div class="content-grid__cell">
               <p>
                 <picture>
-                  <img
+                  <Img
                     alt="Bild aus dem Vereinsarchiv"
-                    decoding="async"
                     fetchpriority="high"
-                    height="160"
-                    id="30501305"
                     loading="eager"
-                    sizes="(max-width: 980px) 100vw, 960px"
                     src="/assets/media/resources/schutzgebuehren-seitenmotiv.jpg"
-                    title=""
-                    width="225"
                   />
                 </picture>
               </p>

@@ -1,4 +1,5 @@
 ---
+import Img from '../components/ui/Img.astro';
 import KatzenfreundeLayout from '../layouts/KatzenfreundeLayout.astro';
 ---
 
@@ -7,23 +8,22 @@ import KatzenfreundeLayout from '../layouts/KatzenfreundeLayout.astro';
   description="Seit 1991 setzt sich der Verein für Streunerkatzen, Vermittlung, medizinische Versorgung und Futterstellen ein."
   page="home"
   canonical="/index.html"
-  preload="/assets/media/resources/einfangaktion-zwei-helferinnen.jpg"
-  preloadMedia="(min-width: 981px)"
 >
   <main class="page-shell">
     <article class="rich-content prose page-content rich-content--home">
       <section class="home-intro">
         <div class="home-intro__media">
           <picture>
-            <img
+            <source
+              media="(max-width: 980px)"
+              srcset="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+            />
+            <Img
               alt="Katze wird von zwei Helferinnen betreut"
-              decoding="async"
               fetchpriority="high"
-              height="439"
               loading="eager"
-              sizes="(max-width: 980px) 100vw, 45vw"
+              sizes="45vw"
               src="/assets/media/resources/einfangaktion-zwei-helferinnen.jpg"
-              width="600"
             />
           </picture>
         </div>
@@ -59,7 +59,6 @@ import KatzenfreundeLayout from '../layouts/KatzenfreundeLayout.astro';
           m&ouml;chten, lesen Sie den
           <a
             class="pdf-preview"
-            data-pdf="/assets/media/data/Der_grosse_Katzenschutzreport.pdf"
             data-title="Der gro&szlig;e Katzenschutzreport"
             href="/assets/media/data/Der_grosse_Katzenschutzreport.pdf"
             rel="noopener noreferrer"
@@ -106,14 +105,11 @@ import KatzenfreundeLayout from '../layouts/KatzenfreundeLayout.astro';
       >
         <figure class="media-tile">
           <picture>
-            <img
+            <Img
               alt="Streunerkatzen an einer Futterstelle"
-              decoding="async"
-              height="375"
               loading="lazy"
               sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
               src="/assets/media/resources/streunerkatzen-futterstelle.jpg"
-              width="250"
             />
           </picture>
           <figcaption class="media-tile__caption">
@@ -128,14 +124,11 @@ import KatzenfreundeLayout from '../layouts/KatzenfreundeLayout.astro';
           target="_blank"
         >
           <picture>
-            <img
+            <Img
               alt="Plakat zur Vereinsarbeit"
-              decoding="async"
-              height="250"
               loading="lazy"
               sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
               src="/assets/media/resources/futter-shuttle-plakat.jpg"
-              width="250"
             />
           </picture>
           <span class="media-tile__caption">
@@ -168,13 +161,10 @@ import KatzenfreundeLayout from '../layouts/KatzenfreundeLayout.astro';
           rel="noopener noreferrer"
           target="_blank"
         >
-          <img
+          <Img
             alt="Tierarztpraxis Bietigheim-Bissingen"
-            decoding="async"
-            height="211"
             loading="lazy"
             src="/assets/media/resources/tierarztpraxis-bietigheim-bissingen-logo.webp"
-            width="520"
           />
           <span class="media-tile__caption">
             Tierarztpraxis Bietigheim-Bissingen: medizinische Versorgung und

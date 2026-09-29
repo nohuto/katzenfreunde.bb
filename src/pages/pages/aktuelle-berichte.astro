@@ -1,4 +1,6 @@
 ---
+import Img from '../../components/ui/Img.astro';
+import PdfCard from '../../components/ui/PdfCard.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 ---
 
@@ -30,15 +32,12 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             </header>
             <div class="report-media">
               <picture>
-                <img
+                <Img
                   alt="Bericht Mai 2026"
-                  decoding="async"
                   fetchpriority="high"
-                  height="1024"
                   loading="eager"
                   sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
                   src="/assets/media/resources/mai2026.jpg"
-                  width="1536"
                 />
               </picture>
             </div>
@@ -92,32 +91,20 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
               </time>
             </header>
             <div class="pdf-inline-grid">
-              <a
-                class="pdf-preview pdf-inline-card"
-                data-pdf="/assets/media/data/Bericht_Spende400.pdf"
-                data-title="Bericht Spende 400 EUR"
+              <PdfCard
                 href="/assets/media/data/Bericht_Spende400.pdf"
-                target="_blank"
-              >
-                <span aria-hidden="true" class="pdf-inline-card__frame">
-                  <span class="pdf-placeholder">PDF Vorschau</span>
-                </span>{' '}
-                <span class="pdf-inline-card__caption">
-                  Bericht_Spende400.pdf <span class="pdf-badge">Vorschau</span>
-                </span>
-              </a>
+                label="Bericht_Spende400.pdf"
+                title="Bericht Spende 400 EUR"
+              />
             </div>
             <div class="report-media">
               <picture>
-                <img
+                <Img
                   alt="Spendenbericht 400 EUR"
-                  decoding="async"
                   fetchpriority="high"
-                  height="446"
                   loading="eager"
                   sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
                   src="/assets/media/resources/spendenbericht-400-euro.jpg"
-                  width="600"
                 />
               </picture>
             </div>
@@ -138,14 +125,11 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             </p>
             <div class="report-media">
               <picture>
-                <img
+                <Img
                   alt="Katzenkinder Piroschkas"
-                  decoding="async"
-                  height="443"
                   loading="lazy"
                   sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
                   src="/assets/media/resources/katzenkinder-piroschkas.jpg"
-                  width="508"
                 />
               </picture>
             </div>
@@ -168,25 +152,19 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             </p>
             <div class="report-media">
               <picture>
-                <img
+                <Img
                   alt="Gerettetes Katzenbaby 1"
-                  decoding="async"
-                  height="224"
                   loading="lazy"
                   sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
                   src="/assets/media/resources/gerettetes-katzenbaby-1.jpg"
-                  width="300"
                 />
               </picture>
               <picture>
-                <img
+                <Img
                   alt="Gerettetes Katzenbaby 2"
-                  decoding="async"
-                  height="401"
                   loading="lazy"
                   sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
                   src="/assets/media/resources/gerettetes-katzenbaby-2.jpg"
-                  width="300"
                 />
               </picture>
             </div>
@@ -206,25 +184,19 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
             </p>
             <div class="report-media">
               <picture>
-                <img
+                <Img
                   alt="Ehrung Jutta Framenau 1"
-                  decoding="async"
-                  height="177"
                   loading="lazy"
                   sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
                   src="/assets/media/resources/ehrung-jutta-framenau-1.jpg"
-                  width="249"
                 />
               </picture>
               <picture>
-                <img
+                <Img
                   alt="Ehrung Jutta Framenau 2"
-                  decoding="async"
-                  height="176"
                   loading="lazy"
                   sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
                   src="/assets/media/resources/ehrung-jutta-framenau-2.jpg"
-                  width="265"
                 />
               </picture>
             </div>
@@ -304,35 +276,18 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
               und weiteren &ouml;ffentlichen Orten.
             </p>
             <div class="pdf-inline-grid">
-              <a
-                class="pdf-preview pdf-inline-card"
-                data-pdf="/assets/media/data/Flyer_Vorderseite.pdf"
-                data-title="Flyer Vorderseite"
+              <PdfCard
                 href="/assets/media/data/Flyer_Vorderseite.pdf"
-                target="_blank"
-              >
-                <span aria-hidden="true" class="pdf-inline-card__frame">
-                  <span class="pdf-placeholder">PDF Vorschau</span>
-                </span>{' '}
-                <span class="pdf-inline-card__caption">
-                  Flyer Vorderseite.pdf <span class="pdf-badge">Vorschau</span>
-                </span>
-              </a>
-              <a
-                class="pdf-preview pdf-inline-card"
-                data-pdf="/assets/media/data/Flyer_Rueckseite.pdf"
-                data-title="Flyer R&uuml;ckseite"
+                label="Flyer Vorderseite.pdf"
+                sizes="(max-width: 545px) 100vw, 480px"
+                title="Flyer Vorderseite"
+              />
+              <PdfCard
                 href="/assets/media/data/Flyer_Rueckseite.pdf"
-                target="_blank"
-              >
-                <span aria-hidden="true" class="pdf-inline-card__frame">
-                  <span class="pdf-placeholder">PDF Vorschau</span>
-                </span>{' '}
-                <span class="pdf-inline-card__caption">
-                  Flyer R&uuml;ckseite.pdf{' '}
-                  <span class="pdf-badge">Vorschau</span>
-                </span>
-              </a>
+                label="Flyer Rückseite.pdf"
+                sizes="(max-width: 545px) 100vw, 480px"
+                title="Flyer Rückseite"
+              />
             </div>
           </article>
         </section>
