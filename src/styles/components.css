@@ -827,6 +827,12 @@
     box-shadow: none;
   }
 
+  .vermittlung-cats {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 330px));
+    justify-content: center;
+    margin-top: 0;
+  }
+
   .contact-page {
     display: grid;
     gap: 0.95rem;
