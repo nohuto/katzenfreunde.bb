@@ -251,10 +251,6 @@
     pointer-events: auto;
   }
 
-  .nav-drawer-head {
-    display: none;
-  }
-
   .nav-drawer-foot {
     display: none;
   }
@@ -270,27 +266,7 @@
     height: 44px;
     min-width: 44px;
     min-height: 44px;
-    --icon-size: 15px;
-  }
-
-  .nav-drawer-close {
-    border: 0;
-    background: transparent;
-    color: var(--text);
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.2rem;
-    --icon-size: 16px;
-  }
-
-  .nav-drawer-close:hover,
-  .nav-drawer-close:focus-visible {
-    color: var(--brand-hover);
+    --icon-size: 20px;
   }
 
   .site-footer {
@@ -330,7 +306,10 @@
   .icon-row {
     display: flex;
     flex: 0 0 auto;
-    gap: 0.2rem;
+  }
+
+  .icon-row > * {
+    width: 36px;
   }
 
   .icon-btn,
@@ -344,6 +323,7 @@
     background: transparent;
     color: var(--muted);
     text-decoration: none;
+    --icon-size: 20px;
   }
 
   .icon-btn:hover,
@@ -356,7 +336,6 @@
   .theme-toggle,
   .nav-toggle,
   .nav-dropdown-toggle,
-  .nav-drawer-close,
   .icon-btn,
   .icon-link {
     transition: color var(--ui-transition);
@@ -373,18 +352,24 @@
       display: inline-flex;
     }
 
+    .nav-toggle[aria-expanded='true'] {
+      --icon-mask: url('../icons/x.svg');
+    }
+
     .nav-wrap {
       display: flex;
       flex-direction: column;
       position: fixed;
-      top: 0;
+      top: var(--header-height);
       right: 0;
       z-index: 72;
+      justify-self: stretch;
+      align-self: start;
       width: min(78vw, 320px);
-      height: 100vh;
-      height: 100dvh;
-      padding: max(env(safe-area-inset-top), 0.74rem) 0.7rem
-        max(env(safe-area-inset-bottom), 0.9rem);
+      max-width: none;
+      height: calc(100vh - var(--header-height));
+      height: calc(100dvh - var(--header-height));
+      padding: 0.6rem 0.7rem max(env(safe-area-inset-bottom), 0.9rem);
       border-left: 1px solid var(--line);
       background: var(--surface);
       box-shadow: -14px 0 34px rgba(8, 12, 10, 0.22);
@@ -394,6 +379,10 @@
       pointer-events: none;
       overflow-y: auto;
       overflow-x: hidden;
+      overscroll-behavior: contain;
+    }
+
+    .nav-wrap[data-motion] {
       transition:
         transform 240ms ease,
         opacity 200ms ease,
@@ -401,26 +390,9 @@
     }
 
     .nav-wrap.open {
-      transform: translateX(0);
+      transform: none;
       opacity: 1;
       visibility: visible;
-      pointer-events: auto;
-      transition-property: transform, opacity;
-    }
-
-    .nav-drawer-head {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      position: absolute;
-      top: max(env(safe-area-inset-top), 0.64rem);
-      right: 0.64rem;
-      z-index: 1;
-      margin-bottom: 0;
-      pointer-events: none;
-    }
-
-    .nav-drawer-head > * {
       pointer-events: auto;
     }
 
@@ -445,12 +417,32 @@
     }
 
     .main-nav > li > a {
-      width: fit-content;
-      max-width: 100%;
+      display: flex;
+      width: 100%;
       margin: 0;
-      padding: 0.5rem 0.18rem 0.55rem;
+      padding: 0.42rem 0.56rem;
+      border-radius: var(--radius);
+      line-height: inherit;
       justify-content: flex-start;
       text-align: left;
+      transition:
+        color var(--ui-transition),
+        background-color var(--ui-transition);
+    }
+
+    .main-nav > li > a::before {
+      display: none;
+    }
+
+    .main-nav > li > a:hover,
+    .main-nav > li > a:focus-visible {
+      background: var(--surface-soft);
+    }
+
+    .main-nav > li:not(.is-active) > a:hover,
+    .main-nav > li:not(.is-active) > a:focus-visible,
+    .main-nav > li:not(.is-active) > a:active {
+      color: var(--muted);
     }
 
     .main-nav > li.has-dropdown {
@@ -458,15 +450,12 @@
       flex-wrap: wrap;
       align-items: center;
       column-gap: 0.16rem;
-      width: fit-content;
-      max-width: 100%;
     }
 
     .main-nav > li.has-dropdown > .nav-link--dropdown {
+      flex: 1 1 0;
       min-width: 0;
-      width: max-content;
-      max-width: 100%;
-      padding-left: 0;
+      width: auto;
     }
 
     .nav-dropdown-toggle {
@@ -487,7 +476,11 @@
       position: static;
       display: none;
       box-shadow: none;
-      margin-top: 0.16rem;
+      margin: 0.16rem 0 0.3rem 0.2rem;
+      padding: 0 0 0 0.6rem;
+      border-left: 1px solid var(--line);
+      border-radius: 0;
+      background: transparent;
     }
 
     .has-dropdown.is-open > .submenu {

@@ -4,12 +4,8 @@
   .page-shell {
     width: 100%;
     max-width: var(--container-xl);
-    margin: 1.3rem auto 2.1rem;
+    margin: var(--space-page) auto var(--space-section);
     padding: 0 var(--gutter-inline);
-  }
-
-  .page-shell--compact {
-    margin-top: 1rem;
   }
 
   .page-content {
@@ -20,6 +16,6 @@
   }
 
   .page-content > * + * {
-    margin-top: 2.1rem;
+    margin-top: var(--space-section);
   }
 }

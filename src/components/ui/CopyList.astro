@@ -1,0 +1,72 @@
+---
+interface Item {
+  label: string;
+  value: string;
+  copy?: string;
+  href?: string;
+  external?: boolean;
+  mono?: boolean;
+}
+
+interface Group {
+  title: string;
+  icon: string;
+  items: Item[];
+  copyAll?: string;
+}
+
+interface Props {
+  groups: Group[];
+  split?: boolean;
+  class?: string;
+}
+
+const { groups, split = false, class: className } = Astro.props;
+---
+
+<div class:list={['copy-list', className]}>
+  {groups.map((group) => (
+    <div aria-label={group.title} class="copy-list__group" role="group">
+      <div class="copy-list__head">
+        <span class="copy-list__title" data-icon={group.icon}>
+          {group.title}
+        </span>
+        {group.copyAll && (
+          <button
+            class="copy-list__all"
+            data-copy-text={group.copyAll}
+            type="button"
+          >
+            Alle kopieren
+          </button>
+        )}
+      </div>
+      <dl class:list={['copy-list__rows', { 'copy-list__rows--split': split }]}>
+        {group.items.map((item) => (
+          <div class="copy-list__row">
+            <dt>{item.label}</dt>
+            <dd class:list={{ 'copy-list__mono': item.mono }}>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                  target={item.external ? '_blank' : undefined}
+                >
+                  {item.value}
+                </a>
+              ) : (
+                item.value
+              )}
+            </dd>
+            <button
+              aria-label={`${item.label} kopieren`}
+              class="copy-button copy-list__copy"
+              data-copy-text={item.copy ?? item.value}
+              type="button"
+            />
+          </div>
+        ))}
+      </dl>
+    </div>
+  ))}
+</div>

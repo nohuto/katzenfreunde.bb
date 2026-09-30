@@ -12,39 +12,45 @@ import KatzenfreundeLayout from '../layouts/KatzenfreundeLayout.astro';
   <main class="page-shell">
     <article class="rich-content prose page-content rich-content--home">
       <section class="home-intro">
-        <div class="home-intro__media">
-          <picture>
-            <source
-              media="(max-width: 980px)"
-              srcset="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-            />
-            <Img
-              alt="Katze wird von zwei Helferinnen betreut"
-              fetchpriority="high"
-              loading="eager"
-              sizes="45vw"
-              src="/assets/media/resources/einfangaktion-zwei-helferinnen.jpg"
-            />
-          </picture>
-        </div>
-        <div class="content-prose">
-          <h1>
-            Schutz, medizinische Hilfe und Vermittlung f&uuml;r Katzen in Not
-          </h1>
-          <p>
-            Die Katzenfreunde Bietigheim-Bissingen e.V. helfen herrenlosen,
-            ausgesetzten und verletzten Katzen in der Region. Unsere Arbeit
-            reicht von Kastrationen und tier&auml;rztlicher Versorgung bis zur
-            Vermittlung in sichere Zuhause.
-          </p>
-          <p>
-            Wir handeln dort, wo Tiere sofort Unterst&uuml;tzung brauchen: an
-            Futterstellen, bei Notf&auml;llen und in der t&auml;glichen
-            Betreuung unserer Sch&uuml;tzlinge.
-          </p>
+        <h1>
+          Schutz, medizinische Hilfe und Vermittlung f&uuml;r
+          <span
+            aria-label="Katzen"
+            class="home-intro__cat"
+            data-icon="cat"
+            role="img"
+          ></span>
+          in Not
+        </h1>
+        <p>
+          Die Katzenfreunde Bietigheim-Bissingen e.V. helfen herrenlosen,
+          ausgesetzten und verletzten Katzen in der Region. Unsere Arbeit reicht
+          von Kastrationen und tier&auml;rztlicher Versorgung bis zur
+          Vermittlung in sichere Zuhause. Wir handeln dort, wo Tiere sofort
+          Unterst&uuml;tzung brauchen: an Futterstellen, bei Notf&auml;llen und
+          in der t&auml;glichen Betreuung unserer Sch&uuml;tzlinge.
+        </p>
+        <p>
+          Sie helfen uns am meisten, wenn Sie unsere Arbeit bekannt machen oder
+          Mitglied werden. Jede zus&auml;tzliche Unterst&uuml;tzung st&auml;rkt
+          Schutz und Versorgung f&uuml;r Katzen in Not.
+        </p>
+        <div class="cta-group">
+          <a class="btn btn--soft" href="/pages/unsere-aktivitaeten.html">
+            Unsere Aktivit&auml;ten
+          </a>
+          <a class="btn" href="/pages/mitglied-werden.html">
+            Mitglied werden
+          </a>
+          <a
+            class="btn btn--soft"
+            href="/pages/vermittlung.html#aktuelle-vermittlungen"
+          >
+            Aktuelle Vermittlungen
+          </a>
         </div>
       </section>
-      <section class="home-impact schedule-section section-divider section-divider--fade">
+      <section class="home-impact schedule-section section-divider">
         <h2>Streunerkatzen leiden oft im Verborgenen</h2>
         <p>
           Viele freilebende Katzen suchen t&auml;glich nach Futter und Schutz.
@@ -65,112 +71,103 @@ import KatzenfreundeLayout from '../layouts/KatzenfreundeLayout.astro';
             target="_blank"
           >gro&szlig;en Katzenschutzreport des Deutschen Tierschutzbundes (PDF)</a>.
         </p>
-        <div class="home-impact__grid">
-          <article class="stat-chip">
-            <h3>Kastration</h3>
-            <p>Verhindert weiteres Leid und unkontrollierte Vermehrung.</p>
-          </article>
-          <article class="stat-chip">
-            <h3>Versorgung</h3>
-            <p>Behandlung, Medikamente und Nachsorge f&uuml;r kranke Tiere.</p>
-          </article>
-          <article class="stat-chip">
-            <h3>Vermittlung</h3>
-            <p>Passende Familien f&uuml;r Katzen, die ein Zuhause suchen.</p>
-          </article>
-        </div>
+        <ol class="impact-path">
+          {[
+            {
+              title: 'Kastration',
+              text: 'Verhindert weiteres Leid und unkontrollierte Vermehrung.',
+              icon: 'shield-check',
+            },
+            {
+              title: 'Versorgung',
+              text: 'Behandlung, Medikamente und Nachsorge für kranke Tiere.',
+              icon: 'stethoscope',
+              href: '/pages/tieraerztl-versorgung.html',
+              page: 'Tierärztliche Versorgung',
+            },
+            {
+              title: 'Vermittlung',
+              text: 'Passende Familien für Katzen, die ein Zuhause suchen.',
+              icon: 'home-heart',
+              href: '/pages/vermittlung.html',
+              page: 'Katzenvermittlung',
+            },
+          ].map((step) => (
+            <li class="impact-path__step">
+              {step.href ? (
+                <a
+                  aria-label={`${step.title}: ${step.page}`}
+                  class="impact-path__dot"
+                  data-icon={step.icon}
+                  href={step.href}
+                />
+              ) : (
+                <span class="impact-path__dot" data-icon={step.icon} />
+              )}
+              <span class="impact-path__title">{step.title}</span>
+              <span class="impact-path__text">{step.text}</span>
+            </li>
+          ))}
+        </ol>
       </section>
-      <section class="home-cta">
-        <h2 class="home-cta__title">Mitmachen, Mitglied werden, weitersagen</h2>
-        <p class="home-cta__lead">
-          Sie helfen uns am meisten, wenn Sie unsere Arbeit bekannt machen oder
-          Mitglied werden. Jede zus&auml;tzliche Unterst&uuml;tzung st&auml;rkt
-          Schutz und Versorgung f&uuml;r Katzen in Not.
-        </p>
-        <div class="cta-group home-cta__actions">
-          <a class="btn" href="/pages/mitglied-werden.html">
-            Mitglied werden
+      <section class="home-links">
+        <h2 class="home-links__title">Interessante Links</h2>
+        <div class="home-gallery">
+          <a
+            class="media-tile media-tile--link"
+            href="https://www.futter-shuttle.de/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <picture>
+              <Img
+                alt="Plakat zur Vereinsarbeit"
+                loading="lazy"
+                sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
+                src="/assets/media/resources/futter-shuttle-plakat.jpg"
+              />
+            </picture>
+            <span class="media-tile__caption">
+              Futter-Shuttle: Tierfutter bestellen und den Tierschutz
+              unterst&uuml;tzen.
+            </span>
           </a>
-          <a class="btn btn--soft" href="/pages/unsere-aktivitaeten.html">
-            Unsere Aktivit&auml;ten
+          <a
+            class="media-tile media-tile--link media-tile--link-logo"
+            href="https://www.tierschutzbund.de"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img
+              alt="Deutscher Tierschutzbund"
+              decoding="async"
+              height="61"
+              loading="lazy"
+              src="/assets/media/resources/deutscher-tierschutzbund-logo.svg"
+              width="61"
+            />
+            <span class="media-tile__caption">
+              Deutscher Tierschutzbund: Informationen, Kampagnen und Hilfe
+              f&uuml;r Tiere.
+            </span>
           </a>
-          <a class="btn btn--soft" href="/pages/kontakt.html">
-            Kontakt
+          <a
+            class="media-tile media-tile--link media-tile--link-logo"
+            href="https://www.tierarzt-bietigheim-bissingen.de/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Img
+              alt="Tierarztpraxis Bietigheim-Bissingen"
+              loading="lazy"
+              src="/assets/media/resources/tierarztpraxis-bietigheim-bissingen-logo.webp"
+            />
+            <span class="media-tile__caption">
+              Tierarztpraxis Bietigheim-Bissingen: medizinische Versorgung und
+              Notfallhilfe.
+            </span>
           </a>
         </div>
-      </section>
-      <section
-        aria-label="Einblicke und weiterf&uuml;hrende Links"
-        class="home-gallery"
-      >
-        <figure class="media-tile">
-          <picture>
-            <Img
-              alt="Streunerkatzen an einer Futterstelle"
-              loading="lazy"
-              sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
-              src="/assets/media/resources/streunerkatzen-futterstelle.jpg"
-            />
-          </picture>
-          <figcaption class="media-tile__caption">
-            Regelm&auml;&szlig;ige Futterstellen mit Beobachtung des
-            Gesundheitszustands.
-          </figcaption>
-        </figure>
-        <a
-          class="media-tile media-tile--link"
-          href="https://www.futter-shuttle.de/"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <picture>
-            <Img
-              alt="Plakat zur Vereinsarbeit"
-              loading="lazy"
-              sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
-              src="/assets/media/resources/futter-shuttle-plakat.jpg"
-            />
-          </picture>
-          <span class="media-tile__caption">
-            Futter-Shuttle: Tierfutter bestellen und den Tierschutz
-            unterst&uuml;tzen.
-          </span>
-        </a>
-        <a
-          class="media-tile media-tile--link media-tile--link-logo"
-          href="https://www.tierschutzbund.de"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <img
-            alt="Deutscher Tierschutzbund"
-            decoding="async"
-            height="61"
-            loading="lazy"
-            src="/assets/media/resources/deutscher-tierschutzbund-logo.svg"
-            width="61"
-          />
-          <span class="media-tile__caption">
-            Deutscher Tierschutzbund: Informationen, Kampagnen und Hilfe
-            f&uuml;r Tiere.
-          </span>
-        </a>
-        <a
-          class="media-tile media-tile--link media-tile--link-logo"
-          href="https://www.tierarzt-bietigheim-bissingen.de/"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <Img
-            alt="Tierarztpraxis Bietigheim-Bissingen"
-            loading="lazy"
-            src="/assets/media/resources/tierarztpraxis-bietigheim-bissingen-logo.webp"
-          />
-          <span class="media-tile__caption">
-            Tierarztpraxis Bietigheim-Bissingen: medizinische Versorgung und
-            Notfallhilfe.
-          </span>
-        </a>
       </section>
     </article>
   </main>

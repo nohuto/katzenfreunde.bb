@@ -3,7 +3,7 @@
 @layer components {
   [data-icon]::before,
   .theme-toggle::before,
-  .copy-inline::before {
+  .copy-button::before {
     content: '';
     display: inline-block;
     flex: 0 0 auto;
@@ -12,6 +12,10 @@
     background-color: currentColor;
     -webkit-mask: var(--icon-mask) center / contain no-repeat;
     mask: var(--icon-mask) center / contain no-repeat;
+  }
+
+  [data-icon='bank'] {
+    --icon-mask: url('../icons/bank.svg');
   }
 
   [data-icon='brand-facebook'] {
@@ -34,6 +38,10 @@
     --icon-mask: url('../icons/building-store.svg');
   }
 
+  [data-icon='cat'] {
+    --icon-mask: url('../icons/cat.svg');
+  }
+
   [data-icon='fish'] {
     --icon-mask: url('../icons/fish.svg');
   }
@@ -46,6 +54,10 @@
     --icon-mask: url('../icons/home-heart.svg');
   }
 
+  [data-icon='link-simple'] {
+    --icon-mask: url('../icons/link-simple.svg');
+  }
+
   [data-icon='mail'] {
     --icon-mask: url('../icons/mail.svg');
   }
@@ -56,6 +68,14 @@
 
   [data-icon='phone'] {
     --icon-mask: url('../icons/phone.svg');
+  }
+
+  [data-icon='printer'] {
+    --icon-mask: url('../icons/printer.svg');
+  }
+
+  [data-icon='shield-check'] {
+    --icon-mask: url('../icons/shield-check.svg');
   }
 
   [data-icon='shield-dollar'] {

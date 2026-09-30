@@ -1,5 +1,6 @@
 ---
 import Img from '../../components/ui/Img.astro';
+import PdfCard from '../../components/ui/PdfCard.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 import { webpImage } from '../../utils/images';
 
@@ -9,8 +10,8 @@ const poster = await webpImage(
 ---
 
 <KatzenfreundeLayout
-  title="Vermittlung - Katzenfreunde BiBi"
-  description="Aktuelle Katzenvermittlung, Pflegestellen und Vermittlungsanfragen der Katzenfreunde Bietigheim-Bissingen e.V."
+  title="Katzenvermittlung - Katzenfreunde BiBi"
+  description="Aktuelle Katzen, Pflegestellen und Vermittlung in ein sicheres, liebevolles Zuhause bei den Katzenfreunden Bietigheim-Bissingen e.V."
   page="vermittlung"
   canonical="/pages/vermittlung.html"
 >
@@ -24,30 +25,35 @@ const poster = await webpImage(
     </section>
     <div class="page-shell">
       <article class="rich-content prose page-content vermittlung-page">
-        <section class="activity-header">
+        <section>
           <p>
-            Aktuelle Vermittlungsgesuche und Pflegestellen f&uuml;r Katzen, die
-            ein passendes Zuhause brauchen. Wenn Sie Interesse haben, melden Sie
-            sich bitte &uuml;ber die Kontaktseite oder direkt bei Iris Alberti.
+            Vermittlung in ein sicheres und liebevolles Zuhause auf Lebenszeit.
+            Wir suchen Menschen mit Herz und Verstand, die unseren Katzen in Not
+            ein liebevolles und gesch&uuml;tztes Zuhause geben.
           </p>
+          <p>
+            F&uuml;r Vermittlungsanfragen nutzen Sie bitte unsere
+            <a href="/pages/kontakt.html">Kontaktseite</a>. Zust&auml;ndig ist
+            dort Iris Alberti (Katzenvermittlung).
+          </p>
+          <div class="pdf-inline-grid">
+            <PdfCard
+              href="/assets/media/data/Hoenig/Interessenten-Kontaktformular.pdf"
+              label="Interessenten-Kontaktformular.pdf"
+              sizes="(max-width: 545px) 100vw, 480px"
+              title="Interessenten-Kontaktformular"
+            />
+            <PdfCard
+              href="/assets/media/data/Abgabevereinbarung.pdf"
+              label="Abgabevereinbarung.pdf"
+              sizes="(max-width: 545px) 100vw, 480px"
+              title="Abgabevereinbarung"
+            />
+          </div>
         </section>
-        <section
-          aria-label="Aktuelle Vermittlungsgesuche"
-          class="vermittlung-gallery"
-        >
-          <article class="vermittlung-card">
-            <figure>
-              <a href={poster.src} rel="noopener noreferrer" target="_blank">
-                <Img
-                  alt="Pflegestellen für Katzen im Raum Bietigheim-Bissingen gesucht"
-                  fetchpriority="high"
-                  loading="eager"
-                  sizes="(max-width: 1000px) 100vw, 960px"
-                  src="/assets/media/resources/katzenvermittlung1.jpg"
-                />
-              </a>
-            </figure>
-          </article>
+
+        <section class="section-divider">
+          <h2>Aktuelle Vermittlungen</h2>
           <div class="vet-gallery vermittlung-cats">
             <figure class="vet-gallery__item">
               <picture>
@@ -63,6 +69,22 @@ const poster = await webpImage(
               </figcaption>
             </figure>
           </div>
+        </section>
+
+        <section class="section-divider">
+          <h2>Pflegestellen gesucht</h2>
+          <article class="vermittlung-card">
+            <figure>
+              <a href={poster.src} rel="noopener noreferrer" target="_blank">
+                <Img
+                  alt="Pflegestellen für Katzen im Raum Bietigheim-Bissingen gesucht"
+                  loading="lazy"
+                  sizes="(max-width: 1000px) 100vw, 960px"
+                  src="/assets/media/resources/katzenvermittlung1.jpg"
+                />
+              </a>
+            </figure>
+          </article>
         </section>
       </article>
     </div>

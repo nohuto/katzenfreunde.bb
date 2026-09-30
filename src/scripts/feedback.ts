@@ -15,6 +15,17 @@ export function createToast() {
   };
 }
 
+const copiedTimers = new WeakMap<HTMLElement, ReturnType<typeof setTimeout>>();
+
+function markCopied(target: HTMLElement) {
+  target.dataset.copied = '';
+  clearTimeout(copiedTimers.get(target));
+  copiedTimers.set(
+    target,
+    setTimeout(() => delete target.dataset.copied, 1600),
+  );
+}
+
 export function setupCopyButtons(showToast: (message: string) => void) {
   delegate('click', '[data-copy-email], [data-copy-text]', (event, target) => {
     if (target.tagName.toLowerCase() === 'a') {
@@ -24,7 +35,10 @@ export function setupCopyButtons(showToast: (message: string) => void) {
     const value = target.dataset.copyText || target.dataset.copyEmail || '';
     navigator.clipboard
       .writeText(value)
-      .then(() => showToast(`Kopiert: ${value}`))
+      .then(() => {
+        markCopied(target);
+        showToast(`Kopiert: ${value}`);
+      })
       .catch(() => showToast(`Kopieren nicht möglich. Wert: ${value}`));
   });
 }

@@ -7,13 +7,14 @@
 
   .page-content.rich-content--home > .home-intro,
   .page-content.rich-content--home > .home-impact,
-  .page-content.rich-content--home > .home-cta {
+  .page-content.rich-content--home > .home-links {
     max-width: var(--container-content);
     width: 100%;
     margin-inline: auto;
   }
 
   body[data-page='home'] .home-gallery .media-tile--link-logo > img {
+    padding: 1.25rem 1.25rem 4.5rem;
     object-fit: contain;
     object-position: center;
     background: #fff;

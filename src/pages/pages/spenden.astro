@@ -1,7 +1,37 @@
 ---
+import CopyList from '../../components/ui/CopyList.astro';
 import Img from '../../components/ui/Img.astro';
 import PdfCard from '../../components/ui/PdfCard.astro';
 import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
+
+const owner = 'Katzenfreunde Bietigheim-Bissingen e. V.';
+const bank = [
+  {
+    label: 'Empfänger',
+    value: owner.replace('e. V.', 'e.\u00a0V.'),
+    copy: owner,
+  },
+  {
+    label: 'IBAN',
+    value: 'DE89 6045 0050 0007 8841 57',
+    copy: 'DE89604500500007884157',
+    mono: true,
+  },
+  { label: 'BIC', value: 'SOLADES1LBG', mono: true },
+  { label: 'Bank', value: 'Kreissparkasse Ludwigsburg' },
+];
+const address = [
+  {
+    label: 'Empfänger',
+    value: owner.replace('e. V.', 'e.\u00a0V.'),
+    copy: owner,
+  },
+  { label: 'Geschäftsstelle', value: 'z. H. Jutta Framenau' },
+  { label: 'Straße', value: 'Im Vogelsang 11' },
+  { label: 'PLZ / Ort', value: '74372 Sersheim' },
+];
+const lines = (items: { label: string; value: string }[]) =>
+  items.map((item) => `${item.label}: ${item.value}`).join('\n');
 ---
 
 <KatzenfreundeLayout
@@ -10,14 +40,15 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
   page="spenden"
   canonical="/pages/spenden.html"
 >
-  <main class="page-shell page-shell--compact">
+  <main class="page-shell">
     <article class="rich-content prose page-content">
       <section class="donation-highlight">
         <div>
-          <h1>Spenden auf einen Blick</h1>
+          <h1>Spenden tut Not</h1>
           <p>
-            Direkt, transparent und ohne Umwege: Ihre Unterst&uuml;tzung hilft
-            unseren Katzen sofort.
+            Jede Spende hilft, Tierelend zu lindern. Wir m&ouml;chten keine
+            Katze krank im Stich lassen. Durch Kastration von Streunerkatzen
+            wollen wir der Verwahrlosung vorbeugen.
           </p>
           <div class="cta-group">
             <a
@@ -37,109 +68,38 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
               E-Mail kopieren
             </button>
           </div>
-        </div>
-        <div aria-label="Bankverbindung" class="bank-grid bank-grid--copyable">
-          <div class="bank-item bank-item--copy">
-            <strong class="bank-item__label">Bank</strong>
-            <span class="bank-item__value">Kreissparkasse Ludwigsburg</span>
-            <button
-              aria-label="Bankname kopieren"
-              class="copy-inline bank-item__copy"
-              data-copy-text="Kreissparkasse Ludwigsburg"
-              type="button"
-            ></button>
-          </div>
-          <div class="bank-item bank-item--copy">
-            <strong class="bank-item__label">IBAN</strong>
-            <span class="bank-item__value">DE89 6045 0050 0007 8841 57</span>
-            <button
-              aria-label="IBAN kopieren"
-              class="copy-inline bank-item__copy"
-              data-copy-text="DE89604500500007884157"
-              type="button"
-            ></button>
-          </div>
-          <div class="bank-item bank-item--copy">
-            <strong class="bank-item__label">BIC</strong>
-            <span class="bank-item__value">SOLADES1LBG</span>
-            <button
-              aria-label="BIC kopieren"
-              class="copy-inline bank-item__copy"
-              data-copy-text="SOLADES1LBG"
-              type="button"
-            ></button>
+          <p>
+            Wenn Sie dauerhaft spenden m&ouml;chten, laden Sie bitte das
+            Spendenformular herunter und senden es ausgef&uuml;llt an uns (siehe
+            Postanschrift):
+          </p>
+          <div class="pdf-inline-grid">
+            <PdfCard
+              href="/assets/media/data/Spendenformular.pdf"
+              label="Spendenformular.pdf"
+              loading="eager"
+              title="Spendenformular"
+            />
           </div>
         </div>
+        <CopyList
+          groups={[
+            {
+              title: 'Bankverbindung',
+              icon: 'bank',
+              items: bank,
+              copyAll: lines(bank),
+            },
+            {
+              title: 'Postanschrift',
+              icon: 'mail',
+              items: address,
+              copyAll: address.map((item) => item.value).join('\n'),
+            },
+          ]}
+        />
       </section>
-      <section class="schedule-section section-divider section-divider--fade">
-        <h2>Spenden tut Not</h2>
-        <p>
-          <strong>
-            Bitte unterst&uuml;tzen Sie uns. Jede Spende hilft, Tierelend zu
-            lindern. Wir m&ouml;chten keine Katze krank im Stich lassen. Durch
-            Kastration von Streunerkatzen wollen wir der Verwahrlosung
-            vorbeugen.
-          </strong>
-        </p>
-        <p>
-          Wenn Sie dauerhaft spenden m&ouml;chten, laden Sie bitte das
-          Spendenformular herunter:
-        </p>
-        <div class="pdf-inline-grid">
-          <PdfCard
-            href="/assets/media/data/Spendenformular.pdf"
-            label="Spendenformular.pdf"
-            loading="eager"
-            title="Spendenformular"
-          />
-        </div>
-        <p>Und senden Sie es uns an:</p>
-        <div aria-label="Postanschrift" class="bank-grid bank-grid--address">
-          <div class="bank-item bank-item--copy">
-            <strong class="bank-item__label">Empf&auml;nger</strong>
-            <span class="bank-item__value">
-              Katzenfreunde Bietigheim-Bissingen e. V.
-            </span>
-            <button
-              aria-label="Empf&auml;nger kopieren"
-              class="copy-inline bank-item__copy"
-              data-copy-text="Katzenfreunde Bietigheim-Bissingen e. V."
-              type="button"
-            ></button>
-          </div>
-          <div class="bank-item bank-item--copy">
-            <strong class="bank-item__label">Gesch&auml;ftsstelle</strong>
-            <span class="bank-item__value">z. H. Jutta Framenau</span>
-            <button
-              aria-label="Gesch&auml;ftsstelle kopieren"
-              class="copy-inline bank-item__copy"
-              data-copy-text="z. H. Jutta Framenau"
-              type="button"
-            ></button>
-          </div>
-          <div class="bank-item bank-item--copy">
-            <strong class="bank-item__label">Stra&szlig;e</strong>
-            <span class="bank-item__value">Im Vogelsang 11</span>
-            <button
-              aria-label="Stra&szlig;e kopieren"
-              class="copy-inline bank-item__copy"
-              data-copy-text="Im Vogelsang 11"
-              type="button"
-            ></button>
-          </div>
-          <div class="bank-item bank-item--copy">
-            <strong class="bank-item__label">PLZ / Ort</strong>
-            <span class="bank-item__value">74372 Sersheim</span>
-            <button
-              aria-label="PLZ / Ort kopieren"
-              class="copy-inline bank-item__copy"
-              data-copy-text="74372 Sersheim"
-              type="button"
-            ></button>
-          </div>
-        </div>
-      </section>
-      <section class="schedule-section section-divider section-divider--fade">
+      <section class="schedule-section section-divider">
         <h2>Warum diese Hilfe wichtig ist</h2>
         <p>
           Sie schlie&szlig;en die Augen und stellen sich vor: den traurigen
@@ -188,7 +148,7 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
           </strong>
         </p>
       </section>
-      <section class="schedule-section section-divider-none section-divider section-divider--fade">
+      <section class="schedule-section section-divider-none section-divider">
         <h2>Wof&uuml;r wir finanzielle Unterst&uuml;tzung brauchen</h2>
         <p>
           Vielleicht ist es Ihnen ein besonderes Bed&uuml;rfnis, unseren Tieren
@@ -201,7 +161,7 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
           Spende macht unsere Arbeit erst m&ouml;glich. Helfen Sie damit den
           Tieren. Es lohnt sich! Wir schaffen es nicht allein.
         </p>
-        <p class="donation-impact-intro">
+        <p>
           Wir brauchen finanzielle Unterst&uuml;tzung zum Wohl unserer
           Sch&uuml;tzlinge:
         </p>
@@ -234,7 +194,7 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
           </article>
         </div>
       </section>
-      <section class="schedule-section section-divider section-divider--fade">
+      <section class="schedule-section section-divider">
         <h2>Ihre Spende kommt an</h2>
         <p>
           <strong>
@@ -309,7 +269,7 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
       </section>
       <section
         aria-label="Wichtiger Hinweis f&uuml;r Spender:innen"
-        class="toc-card section-divider section-divider--fade"
+        class="toc-card section-divider"
       >
         <h2>Wichtiger Hinweis</h2>
         <p>

@@ -11,7 +11,6 @@
     --header-height: calc(3.6875rem + 1px);
 
     --bg: #f7f4ec;
-    --bg-accent: #efe9dc;
     --surface: #fffdf8;
     --surface-soft: #e9e0cf;
     --bg-alt: #ebe4d7;
@@ -36,12 +35,17 @@
     --shadow-strong: 0 8px 14px rgba(36, 40, 31, 0.17);
 
     --radius: 4px;
+    --space-heading: 0.5rem;
+    --space-flow: 0.75rem;
+    --space-page: 1.25rem;
+    --space-section: 2rem;
     --on-accent: #f6f4ed;
     --ui-transition: 180ms ease;
 
     --font-main: 'Cabin', 'Segoe UI', Tahoma, sans-serif;
     --font-display: 'Amatic SC', 'Segoe UI', Tahoma, sans-serif;
 
+    --bg-texture: url('../textures/paper-light.svg');
     --cursor-image: url('../cursors/paw-dark.cur');
     --cursor-main: var(--cursor-image) 2 1, auto;
     --cursor-action: var(--cursor-image) 2 1, pointer;
@@ -52,7 +56,6 @@
       color-scheme: dark;
 
       --bg: #17150f;
-      --bg-accent: #1e1b14;
       --surface: #242017;
       --surface-soft: #302b20;
       --bg-alt: #1e1b14;
@@ -76,6 +79,7 @@
       --shadow-soft: 0 5px 10px rgba(0, 0, 0, 0.28);
       --shadow-strong: 0 9px 14px rgba(0, 0, 0, 0.42);
 
+      --bg-texture: url('../textures/paper-dark.svg');
       --cursor-image: url('../cursors/paw-light.cur');
     }
   }
@@ -84,7 +88,6 @@
     color-scheme: dark;
 
     --bg: #17150f;
-    --bg-accent: #1e1b14;
     --surface: #242017;
     --surface-soft: #302b20;
     --bg-alt: #1e1b14;
@@ -108,6 +111,7 @@
     --shadow-soft: 0 5px 10px rgba(0, 0, 0, 0.28);
     --shadow-strong: 0 9px 14px rgba(0, 0, 0, 0.42);
 
+    --bg-texture: url('../textures/paper-dark.svg');
     --cursor-image: url('../cursors/paw-light.cur');
   }
 
@@ -165,7 +169,7 @@
     overflow-x: hidden;
     overflow-x: clip;
     color: var(--text);
-    background: linear-gradient(var(--bg), var(--bg));
+    background: var(--bg-texture), linear-gradient(var(--bg), var(--bg));
     font-family: var(--font-main);
     font-size: 1rem;
     line-height: 1.62;

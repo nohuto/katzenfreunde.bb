@@ -3,14 +3,19 @@ import { qs, on, delegate } from './dom';
 export function setupNavigation() {
   const navToggle = qs('[data-nav-toggle]');
   const navWrap = qs('[data-nav-wrap]');
-  const navClose = qs('[data-nav-close]');
   const dropdown = qs('.has-dropdown');
   const dropdownToggle = qs('.nav-dropdown-toggle');
   const mobileNav = matchMedia('(max-width: 1100px)');
 
   const setNav = (open: boolean) => {
+    if (navWrap?.classList.contains('open') === open) return;
+    navWrap?.toggleAttribute('data-motion', mobileNav.matches);
     navWrap?.classList.toggle('open', open);
     navToggle?.setAttribute('aria-expanded', String(open));
+    navToggle?.setAttribute(
+      'aria-label',
+      open ? 'Menü schließen' : 'Menü öffnen',
+    );
     document.body.classList.toggle('nav-drawer-open', open);
   };
 
@@ -19,16 +24,7 @@ export function setupNavigation() {
     dropdownToggle?.setAttribute('aria-expanded', String(open));
   };
 
-  on(navToggle, 'click', () => {
-    const open = !navWrap?.classList.contains('open');
-    setNav(open);
-    if (open) navClose?.focus({ preventScroll: true });
-  });
-
-  on(navClose, 'click', () => {
-    setNav(false);
-    navToggle?.focus({ preventScroll: true });
-  });
+  on(navToggle, 'click', () => setNav(!navWrap?.classList.contains('open')));
 
   on(dropdownToggle, 'click', () =>
     setDropdown(!dropdown?.classList.contains('is-open')),
@@ -52,6 +48,7 @@ export function setupNavigation() {
   });
 
   on(mobileNav, 'change', () => {
+    navWrap?.removeAttribute('data-motion');
     if (!mobileNav.matches) setNav(false);
   });
 }
