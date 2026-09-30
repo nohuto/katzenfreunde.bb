@@ -153,11 +153,14 @@
   }
 
   html {
-    scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-height) + 1rem);
     background: var(--bg-alt);
     overflow-x: hidden;
     overflow-x: clip;
+  }
+
+  html:focus-within {
+    scroll-behavior: smooth;
   }
 
   body {
