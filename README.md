@@ -1,4 +1,4 @@
-# Katzenfreunde BB
+# Katzenfreunde BiBi
 
 Website code for a nonprofit club where I volunteer. You can contact me via [`katzenfreunde@noverse.dev`](mailto:katzenfreunde@noverse.dev) for questions/requests in relation to this club.
 
