@@ -1015,6 +1015,24 @@
     margin-top: 0;
   }
 
+  .vermittlung-cats__pair {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 640px) {
+    .vermittlung-cats__pair {
+      grid-template-columns: 1fr;
+    }
+
+    .vermittlung-cats__pair picture,
+    .vermittlung-cats__pair img {
+      height: auto;
+      min-height: 0;
+    }
+  }
+
   .person-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr));
