@@ -4,6 +4,9 @@ import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
 import { webpImage } from '../../utils/images';
 
 const flyer = await webpImage('/assets/media/resources/flohmarkt2026.jpg');
+const adventFlyer = await webpImage(
+  '/assets/media/resources/adventsbasar-flohmarkt-2026.webp',
+);
 ---
 
 <KatzenfreundeLayout
@@ -56,6 +59,39 @@ const flyer = await webpImage('/assets/media/resources/flohmarkt2026.jpg');
                 loading="eager"
                 sizes="(max-width: 700px) 300px, 420px"
                 src="/assets/media/resources/flohmarkt2026.jpg"
+              />
+            </a>
+          </figure>
+        </section>
+        <section class="schedule-section section-divider">
+          <h2>Adventsbasar trifft Flohmarkt</h2>
+          <p>
+            <strong>
+              <time datetime="2026-11-28">Samstag, 28. November 2026</time>,
+              9:30–15:30 Uhr
+            </strong>
+          </p>
+          <p>
+            Besen am Backhäusle, Enge Gasse 1, 71706 Unterriexingen
+            (Markgröningen-Unterriexingen).
+          </p>
+          <p>
+            Mit Adventsgestecken, Plätzchen, Flohmarktartikeln, Wurst, Punsch
+            und mehr. Veranstalter sind die Katzenfreunde Bietigheim-Bissingen
+            e.V., der Erlös kommt dem Verein zugute.
+          </p>
+          <figure class="termine-flyer">
+            <a
+              class="termine-flyer__link"
+              href={adventFlyer.src}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Img
+                alt="Flyer: Adventsbasar trifft Flohmarkt am 28. November 2026 in Unterriexingen"
+                loading="lazy"
+                sizes="(max-width: 700px) 300px, 420px"
+                src="/assets/media/resources/adventsbasar-flohmarkt-2026.webp"
               />
             </a>
           </figure>
