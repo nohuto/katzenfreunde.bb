@@ -1,5 +1,3 @@
-# Delivery rules for STRATO
-
 AddDefaultCharset utf-8
 ErrorDocument 404 /404.html
 
@@ -7,24 +5,38 @@ ErrorDocument 404 /404.html
   RewriteEngine On
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+  RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
+  RewriteRule ^index\.html$ / [R=301,L]
+  RewriteRule ^pages/termine\.html$ /pages/aktuelle-berichte.html [R=301,L]
+  RewriteRule ^pages/flohmaerkte\.html$ /pages/unsere-aktivitaeten.html#flohmarkt [R=301,NE,L]
+  RewriteRule ^pages/futterstellen\.html$ /pages/unsere-aktivitaeten.html#futterstellen [R=301,NE,L]
+  RewriteRule ^pages/tieraerztl-versorgung\.html$ /pages/unsere-aktivitaeten.html#tierarzt [R=301,NE,L]
+  RewriteRule ^pages/schutzgebuehren\.html$ /pages/vermittlung.html#gebuehren [R=301,NE,L]
+  RewriteRule ^pages/futter-shop\.html$ /pages/spenden.html#ueber-den-futter-shuttle [R=301,NE,L]
 </IfModule>
 
 <IfModule mod_mime.c>
   AddType font/woff2 .woff2
   AddType image/webp .webp
+  AddType image/avif .avif
   AddType image/svg+xml .svg
 </IfModule>
 
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript image/svg+xml text/plain
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript image/svg+xml text/plain application/xml
 </IfModule>
 
 <IfModule mod_headers.c>
-  Header set X-Content-Type-Options "nosniff"
-  Header set X-Frame-Options "SAMEORIGIN"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "no-referrer"
+  Header always set Permissions-Policy "accelerometer=(), autoplay=(), bluetooth=(), camera=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()"
   Header set Cache-Control "public, max-age=0, must-revalidate"
 
-  <FilesMatch "(\.woff2|\.[\w-]{8}(_[\w-]+)?\.(css|js|webp|png))$">
+  <FilesMatch "\.[\w-]{8}(_[\w-]+)?\.(css|js|avif|webp|png|jpg|svg|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 </IfModule>

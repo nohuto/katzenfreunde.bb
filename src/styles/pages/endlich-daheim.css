@@ -1,0 +1,85 @@
+.album {
+  list-style: none;
+  columns: 3 17rem;
+  column-gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.snap {
+  break-inside: avoid;
+  margin-bottom: 2.25rem;
+  font-size: 0.975rem;
+}
+.snap__photos {
+  display: grid;
+  gap: 0.5rem;
+}
+.snap__photos--2 {
+  grid-template-columns: 1fr 1fr;
+}
+.snap__photos--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.snap__img {
+  border-radius: 2px;
+  background: var(--tint);
+}
+:is(.snap__photos--2, .snap__photos--3) .snap__img {
+  aspect-ratio: 1;
+}
+.snap h2 {
+  margin: 0.9rem 0.25rem 0.35rem;
+  font-size: 1.35rem;
+}
+.snap__report {
+  margin-inline: 0.25rem;
+}
+.snap__intro,
+.from {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.snap__intro {
+  margin-bottom: 0.5rem;
+}
+.from {
+  margin-top: 0.5rem;
+}
+.album .snap__photos {
+  align-items: start;
+  padding: 0.55rem;
+  border-radius: 3px;
+  background: var(--surface);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.08),
+    0 10px 22px -16px rgb(0 0 0 / 0.35);
+}
+.album .snap__img {
+  aspect-ratio: auto;
+}
+.album .snap__img img {
+  height: auto;
+}
+.album .snap__text {
+  padding: 0.9rem 0.15rem 0;
+}
+.album .snap h2 {
+  margin: 0 0 0.35rem;
+}
+.more-photos {
+  margin-top: 0.5rem;
+  padding-bottom: clamp(3rem, 2rem + 4vw, 5.5rem);
+}
+.more-photos__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  gap: 1rem;
+  max-width: 52rem;
+}
+.more-photos__img {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-m);
+  background: var(--tint);
+}
+.album .snap__text h2 {
+  margin-top: 0.4rem;
+}

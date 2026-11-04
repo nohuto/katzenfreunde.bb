@@ -1,0 +1,121 @@
+.found-hero__img {
+  height: clamp(14rem, 32vw, 26rem);
+  background: var(--tint);
+}
+.found-hero__img img {
+  object-position: 50% 40%;
+}
+.found-hero__over {
+  position: relative;
+  margin-top: clamp(-5rem, -6vw, -2.5rem);
+}
+.sos {
+  max-width: 30rem;
+}
+.found-hero__over {
+  max-width: calc(52rem + 2 * var(--gutter));
+}
+.sos .tel {
+  margin-block: 0.25rem;
+}
+.folds {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: var(--space-m);
+}
+.fold {
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--panel-shadow);
+}
+.fold > summary {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  min-height: 64px;
+  padding: 0.9rem 1.25rem;
+  list-style: none;
+}
+.fold > summary::-webkit-details-marker {
+  display: none;
+}
+.fold__ic {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--brand);
+}
+.fold__t {
+  font-weight: 600;
+  font-size: 1.0625rem;
+}
+.fold__t small {
+  display: block;
+  margin-top: 0.15rem;
+  font-weight: 450;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+.fold__chev {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--muted);
+  transition: rotate var(--t) ease-out;
+}
+.fold[open] .fold__chev {
+  rotate: 180deg;
+}
+.fold__body {
+  padding: 0 1.25rem 1.25rem calc(1.25rem + 1.6rem + 1rem);
+}
+.fold__body > * + * {
+  margin-top: 0.75rem;
+}
+.fold--urgent {
+  background: var(--band);
+  color: var(--on-band);
+}
+.fold--urgent .fold__ic,
+.fold--urgent .fold__chev,
+.fold--urgent .fold__t small {
+  color: var(--band-muted);
+}
+.dont {
+  margin-top: var(--space-l);
+}
+.dont ul {
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+.dont li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: start;
+}
+.dont li svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.2rem;
+  color: light-dark(#a3412c, #f0a08c);
+}
+@media (max-width: 47.99rem) {
+  .fold__body {
+    padding-left: 1.25rem;
+  }
+}
+.fold--urgent .fold__t {
+  color: var(--on-band);
+}
+
+.fold__steps {
+  max-width: 80ch;
+}
+
+.fold__steps ol {
+  display: grid;
+  gap: 0.35rem;
+  padding-left: 1.25rem;
+}

@@ -1,0 +1,52 @@
+---
+import { getImage } from 'astro:assets';
+import { photo } from '../../data/photos';
+
+const wideSource = photo('stock-banner-breit');
+const narrowSource = photo('stock-schlafende-katze');
+const variant = (
+  src: typeof wideSource,
+  widths: number[],
+  format: 'avif' | 'webp',
+) => getImage({ src, widths, format, quality: format === 'avif' ? 42 : 80 });
+const [wideAvif, wideWebp, narrowAvif, narrowWebp, fallback] =
+  await Promise.all([
+    variant(wideSource, [1024, 1440, 1920], 'avif'),
+    variant(wideSource, [1024, 1440, 1920], 'webp'),
+    variant(narrowSource, [800, 1280], 'avif'),
+    variant(narrowSource, [800, 1280], 'webp'),
+    getImage({ src: narrowSource, width: 800, format: 'webp', quality: 80 }),
+  ]);
+---
+
+<figure class="photo a-banner">
+  <picture>
+    <source
+      media="(min-width: 48rem)"
+      type="image/avif"
+      srcset={wideAvif.srcSet.attribute}
+      sizes="100vw"
+    />
+    <source
+      media="(min-width: 48rem)"
+      type="image/webp"
+      srcset={wideWebp.srcSet.attribute}
+      sizes="100vw"
+    />
+    <source
+      type="image/avif"
+      srcset={narrowAvif.srcSet.attribute}
+      sizes="100vw"
+    />
+    <img
+      src={fallback.src}
+      srcset={narrowWebp.srcSet.attribute}
+      sizes="100vw"
+      width="1280"
+      height="853"
+      alt=""
+      fetchpriority="high"
+      decoding="async"
+    />
+  </picture>
+</figure>

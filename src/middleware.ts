@@ -30,24 +30,19 @@ function slug(html: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-function linkHeadings(html: string): string {
+function identifyHeadings(html: string): string {
   const used = new Set(
     Array.from(html.matchAll(/\sid="([^"]+)"/g), (match) => match[1]),
   );
   return html.replace(
     /<(h[23])(\s[^>]*)?>([\s\S]*?)<\/\1>/g,
     (heading, tag: string, attrs = '', inner: string) => {
-      let id = /\sid="([^"]+)"/.exec(attrs)?.[1];
-      if (!id) {
-        const base = slug(inner);
-        if (!base) return heading;
-        id = base;
-        for (let n = 2; used.has(id); n++) id = `${base}-${n}`;
-        used.add(id);
-        attrs = ` id="${id}"${attrs}`;
-      }
-      const anchor = `<a aria-hidden="true" class="heading-anchor" data-icon="link-simple" href="#${id}" tabindex="-1"></a>`;
-      return `<${tag}${attrs}>${inner}${anchor}</${tag}>`;
+      const base = slug(inner);
+      if (/\sid="/.test(attrs) || !base) return heading;
+      let id = base;
+      for (let n = 2; used.has(id); n++) id = `${base}-${n}`;
+      used.add(id);
+      return `<${tag} id="${id}"${attrs}>${inner}</${tag}>`;
     },
   );
 }
@@ -57,5 +52,5 @@ export const onRequest = defineMiddleware(async (_, next) => {
   if (!response.headers.get('content-type')?.includes('text/html')) {
     return response;
   }
-  return new Response(linkHeadings(await response.text()), response);
+  return new Response(identifyHeadings(await response.text()), response);
 });

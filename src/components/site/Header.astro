@@ -1,0 +1,88 @@
+---
+import Brand from './Brand.astro';
+import Icon from '../ui/Icon.astro';
+import {
+  contact,
+  navigation,
+  navigationParent,
+  routes,
+  type PageKey,
+} from '../../data/site';
+
+interface Props {
+  page: PageKey | null;
+}
+
+const { page } = Astro.props;
+const current = page ? (navigationParent[page] ?? page) : null;
+const donate = `${routes.helfen}#spenden`;
+---
+
+<header class="head" data-menu>
+  <div class="wrap head__bar">
+    <Brand />
+    <button
+      class="menu-btn"
+      type="button"
+      data-menu-toggle
+      aria-expanded="false"
+      aria-controls="hauptnavigation"
+    >
+      <Icon name="list" />
+      <span class="menu-btn__label" data-menu-label>
+        Menü
+      </span>
+    </button>
+    <nav
+      class="nav"
+      id="hauptnavigation"
+      data-menu-nav
+      aria-label="Hauptnavigation"
+    >
+      <ul>
+        {navigation.map(([key, label]) => (
+          <li>
+            <a
+              href={routes[key]}
+              aria-current={
+                key === page ? 'page' : key === current ? 'true' : undefined
+              }
+            >
+              <span>{label}</span>
+            </a>
+          </li>
+        ))}
+        <li class="nav__donate">
+          <a href={donate}>
+            <Icon name="heart" />
+            <span>Spenden</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <a class="head__donate" href={donate}>
+      <Icon name="heart" />
+      <span>Spenden</span>
+    </a>
+  </div>
+</header>
+<ul class="quick" aria-label="Schnellkontakt">
+  <li>
+    <a href={contact.tel}>
+      <Icon name="phone" />
+      Anrufen
+    </a>
+  </li>
+  <li>
+    <a href={contact.whatsappHref}>
+      <Icon name="whatsapp-logo" />
+      WhatsApp
+    </a>
+  </li>
+  <li>
+    <a href={contact.mailHref}>
+      <Icon name="envelope-simple" />
+      E-Mail
+    </a>
+  </li>
+</ul>

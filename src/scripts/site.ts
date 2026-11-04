@@ -1,21 +1,14 @@
-import { setupNavigation } from './navigation';
-import { setupTheme } from './theme';
-import { createToast, setupCopyButtons } from './feedback';
-import { setupPawClicks } from './paw-feedback';
-import { setupPdfModal } from './pdf';
-import {
-  consumeNotFoundPath,
-  rememberActivePage,
-  showNotFoundDialog,
-} from './not-found';
+import { initArt } from './art';
+import { initCopy } from './clipboard';
+import { initGalleries } from './gallery';
+import { initCounts, initDates } from './lists';
+import { initMenu } from './menu';
+import { initTheme } from './theme';
 
-const notFoundPath = consumeNotFoundPath();
-rememberActivePage();
-
-setupNavigation();
-setupTheme();
-setupCopyButtons(createToast());
-setupPdfModal();
-setupPawClicks();
-
-if (notFoundPath) showNotFoundDialog(notFoundPath);
+initTheme();
+initMenu();
+initCopy();
+initDates();
+initCounts();
+initGalleries();
+initArt();

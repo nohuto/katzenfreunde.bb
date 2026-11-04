@@ -1,174 +1,334 @@
 ---
-import Img from '../components/ui/Img.astro';
-import KatzenfreundeLayout from '../layouts/KatzenfreundeLayout.astro';
+import Site from '../layouts/Site.astro';
+import Banner from '../components/site/Banner.astro';
+import Photo from '../components/site/Photo.astro';
+import Icon from '../components/ui/Icon.astro';
+import { contact, external, routes } from '../data/site';
+import { events } from '../data/events';
 ---
 
-<KatzenfreundeLayout
-  title="Startseite - Katzenfreunde BiBi"
-  description="Seit 1991 setzt sich der Verein für Streunerkatzen, Vermittlung, medizinische Versorgung und Futterstellen ein."
-  page="home"
-  canonical="/index.html"
+<Site
+  title="Start"
+  description="Die Katzenfreunde Bietigheim-Bissingen helfen seit 1991 herrenlosen, ausgesetzten und verletzten Katzen in der Region."
+  page="start"
+  path="/"
 >
-  <main class="page-shell">
-    <article class="rich-content prose page-content rich-content--home">
-      <section class="home-intro">
-        <h1>
-          Schutz, medizinische Hilfe und Vermittlung f&uuml;r
-          <span
-            aria-label="Katzen"
-            class="home-intro__cat"
-            data-icon="cat"
-            role="img"
-          ></span>
-          in Not
-        </h1>
-        <p>
-          Die Katzenfreunde Bietigheim-Bissingen e.V. helfen herrenlosen,
-          ausgesetzten und verletzten Katzen in der Region. Unsere Arbeit reicht
-          von Kastrationen und tier&auml;rztlicher Versorgung bis zur
-          Vermittlung in sichere Zuhause. Wir handeln dort, wo Tiere sofort
-          Unterst&uuml;tzung brauchen: an Futterstellen, bei Notf&auml;llen und
-          in der t&auml;glichen Betreuung unserer Sch&uuml;tzlinge.
-        </p>
-        <p>
-          Sie helfen uns am meisten, wenn Sie unsere Arbeit bekannt machen oder
-          Mitglied werden. Jede zus&auml;tzliche Unterst&uuml;tzung st&auml;rkt
-          Schutz und Versorgung f&uuml;r Katzen in Not.
-        </p>
-        <div class="cta-group">
-          <a class="btn btn--soft" href="/pages/unsere-aktivitaeten.html">
-            Unsere Aktivit&auml;ten
+  <Banner />
+  <div class="wrap a-info">
+    <div class="a-info__grid">
+      <section class="info hot" aria-labelledby="t-hilfe-a">
+        <h2 id="t-hilfe-a">Katze gefunden oder in Not?</h2>
+        <a class="tel tel--xl" href={contact.tel}>
+          <Icon name="phone" />
+          <span class="num">{contact.phone}</span>
+        </a>
+
+        <div class="hot__more">
+          <a class="hot__wa" href={contact.whatsappHref}>
+            <Icon name="whatsapp-logo" />
+            <span class="sr-only">WhatsApp </span>
+            {contact.whatsapp}
           </a>
-          <a class="btn" href="/pages/mitglied-werden.html">
-            Mitglied werden
-          </a>
-          <a
-            class="btn btn--soft"
-            href="/pages/vermittlung.html#aktuelle-vermittlungen"
-          >
-            Aktuelle Vermittlungen
+          <a class="go" href={routes.kontakt}>
+            <span>Alle Kontakte</span>
+            <Icon name="arrow-right" />
           </a>
         </div>
       </section>
-      <section class="home-impact schedule-section section-divider">
-        <h2>Streunerkatzen leiden oft im Verborgenen</h2>
+      <section class="info glass" aria-labelledby="t-katzen-a">
+        <h2 id="t-katzen-a">Zwei Katzen suchen ein Zuhause</h2>
+        <div class="stack-av">
+          <Photo name="katze-getigert" widths={[160]} sizes="72px" />
+          <Photo name="franzi-portraet" widths={[160]} sizes="72px" />
+        </div>
         <p>
-          Viele freilebende Katzen suchen t&auml;glich nach Futter und Schutz.
-          Krankheiten, unkontrollierter Nachwuchs und fehlende Versorgung
-          f&uuml;hren schnell zu ernstem Tierleid. Mit konsequenter Kastration,
-          medizinischer Betreuung und stabilen Futterstellen helfen wir
-          nachhaltig.
+          Eine junge Tigerkatze und Franzi warten in ihren Pflegestellen auf ein
+          neues Zuhause.
         </p>
-        <!-- prettier-ignore -->
-        <p>
-          Wenn Sie tiefer in das Thema einsteigen und konkrete Zahlen sehen
-          m&ouml;chten, lesen Sie den
-          <a
-            class="pdf-preview"
-            data-title="Der gro&szlig;e Katzenschutzreport"
-            href="/assets/media/data/Der_grosse_Katzenschutzreport.pdf"
-            rel="noopener noreferrer"
-            target="_blank"
-          >gro&szlig;en Katzenschutzreport des Deutschen Tierschutzbundes (PDF)</a>.
-        </p>
-        <ol class="impact-path">
-          {[
-            {
-              title: 'Kastration',
-              text: 'Verhindert weiteres Leid und unkontrollierte Vermehrung.',
-              icon: 'shield-check',
-            },
-            {
-              title: 'Versorgung',
-              text: 'Behandlung, Medikamente und Nachsorge für kranke Tiere.',
-              icon: 'stethoscope',
-              href: '/pages/tieraerztl-versorgung.html',
-              page: 'Tierärztliche Versorgung',
-            },
-            {
-              title: 'Vermittlung',
-              text: 'Passende Familien für Katzen, die ein Zuhause suchen.',
-              icon: 'home-heart',
-              href: '/pages/vermittlung.html',
-              page: 'Katzenvermittlung',
-            },
-          ].map((step) => (
-            <li class="impact-path__step">
-              {step.href ? (
-                <a
-                  aria-label={`${step.title}: ${step.page}`}
-                  class="impact-path__dot"
-                  data-icon={step.icon}
-                  href={step.href}
-                />
-              ) : (
-                <span class="impact-path__dot" data-icon={step.icon} />
-              )}
-              <span class="impact-path__title">{step.title}</span>
-              <span class="impact-path__text">{step.text}</span>
+        <a class="go" href={routes.vermittlung}>
+          <span>Katzen kennenlernen</span>
+          <Icon name="arrow-right" />
+        </a>
+      </section>
+      <section class="info glass" aria-labelledby="t-termin-a">
+        <h2 id="t-termin-a">Nächste Termine</h2>
+        <ul class="dates" data-dates>
+          {events.map((event) => (
+            <li data-until={event.date}>
+              <b>
+                {event.weekdayShort}, {event.day}. {event.month}
+              </b>
+              <span>
+                {event.short}, {event.from} bis {event.to}&nbsp;Uhr
+              </span>
             </li>
           ))}
-        </ol>
+          <li class="dates__empty" hidden data-dates-empty>
+            Die nächsten Termine stehen noch nicht fest.
+          </li>
+        </ul>
+        <a class="go" href={routes.aktuelles}>
+          <span>Alle Termine</span>
+          <Icon name="arrow-right" />
+        </a>
       </section>
-      <section class="home-links">
-        <h2 class="home-links__title">Interessante Links</h2>
-        <div class="home-gallery">
+    </div>
+  </div>
+
+  <section class="section" data-art>
+    <div class="wrap a-intro">
+      <h1>Seit 1991 helfen wir Katzen in Not</h1>
+      <div>
+        <p class="lead">
+          Die Katzenfreunde Bietigheim-Bissingen e.&nbsp;V. helfen herrenlosen,
+          ausgesetzten und verletzten Katzen in der Region.
+        </p>
+        <p>
+          Wir lassen freilebende Katzen kastrieren, sorgen für ihre
+          tierärztliche Behandlung und vermitteln sie in ein sicheres Zuhause.
+          Außerdem betreuen wir Futterstellen, helfen in Notfällen und versorgen
+          die Katzen in unseren Pflegestellen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="helfen" aria-labelledby="t-tasks">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 id="t-tasks">Hilfe finden und mithelfen</h2>
+      </div>
+      <ul class="tasks">
+        <li>
+          <Photo
+            name="katze-getigert"
+            widths={[160, 320, 480, 800]}
+            sizes="(max-width: 63.99rem) 50vw, 290px"
+          />
+          <h3>
+            <a href={routes.vermittlung}>Katze adoptieren</a>
+          </h3>
+          <p>
+            Lernen Sie unsere Katzen kennen und erfahren Sie, wie die
+            Vermittlung abläuft.
+          </p>
+        </li>
+        <li>
+          <Photo
+            name="stock-katze-draussen"
+            widths={[200, 400, 640]}
+            sizes="(max-width: 47.99rem) 45vw, (max-width: 63.99rem) 50vw, 290px"
+          />
+          <h3>
+            <a href={routes.gefunden}>Katze gefunden?</a>
+          </h3>
+          <p>Was Sie jetzt tun können und wen Sie anrufen.</p>
+        </li>
+        <li>
+          <Photo
+            name="vereinsarchiv-garten"
+            widths={[200, 400, 600]}
+            sizes="(max-width: 47.99rem) 45vw, (max-width: 63.99rem) 50vw, 290px"
+          />
+          <h3>
+            <a href={`${routes.helfen}#spenden`}>Spenden</a>
+          </h3>
+          <p>Unsere Bankverbindung und wofür wir Ihre Spende verwenden.</p>
+        </li>
+        <li>
+          <Photo
+            name="einfangaktion"
+            widths={[200, 400, 600]}
+            sizes="(max-width: 47.99rem) 45vw, (max-width: 63.99rem) 50vw, 290px"
+          />
+          <h3>
+            <a href={`${routes.helfen}#mitglied`}>
+              Mitglied oder Pflegestelle werden
+            </a>
+          </h3>
+          <p>
+            Helfen Sie dauerhaft mit einem Mitgliedsbeitrag oder nehmen Sie eine
+            Katze auf Zeit bei sich auf.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="arbeit" aria-labelledby="t-arbeit">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 id="t-arbeit">So helfen wir Streunerkatzen</h2>
+        <p>
+          In unserer Region leben viele Katzen ohne Zuhause, die jeden Tag nach
+          Futter und einem geschützten Platz suchen.
+        </p>
+      </div>
+      <ol class="steps-ic">
+        <li>
+          <span class="steps-ic__dot">
+            <Icon name="shield-check" />
+          </span>
+          <h3>Kastration</h3>
+          <p>
+            Jede Kastration verhindert möglichen Nachwuchs, der sonst auf der
+            Straße aufwachsen könnte.
+          </p>
+        </li>
+        <li>
           <a
-            class="media-tile media-tile--link"
-            href="https://www.futter-shuttle.de/"
-            rel="noopener noreferrer"
-            target="_blank"
+            class="steps-ic__dot"
+            href={`${routes.arbeit}#tierarzt`}
+            aria-label="Tierärztliche Versorgung"
           >
-            <picture>
-              <Img
-                alt="Plakat zur Vereinsarbeit"
-                loading="lazy"
-                sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
-                src="/assets/media/resources/futter-shuttle-plakat.jpg"
-              />
-            </picture>
-            <span class="media-tile__caption">
-              Futter-Shuttle: Tierfutter bestellen und den Tierschutz
-              unterst&uuml;tzen.
-            </span>
+            <Icon name="stethoscope" />
           </a>
+          <h3>Versorgung</h3>
+          <p>
+            Kranke und verletzte Katzen werden tierärztlich behandelt und
+            versorgt.
+          </p>
+        </li>
+        <li>
           <a
-            class="media-tile media-tile--link media-tile--link-logo"
-            href="https://www.tierschutzbund.de"
-            rel="noopener noreferrer"
-            target="_blank"
+            class="steps-ic__dot"
+            href={routes.vermittlung}
+            aria-label="Katzen suchen ein Zuhause"
           >
-            <img
-              alt="Deutscher Tierschutzbund"
-              decoding="async"
-              height="61"
-              loading="lazy"
-              src="/assets/media/resources/deutscher-tierschutzbund-logo.svg"
-              width="61"
-            />
-            <span class="media-tile__caption">
-              Deutscher Tierschutzbund: Informationen, Kampagnen und Hilfe
-              f&uuml;r Tiere.
-            </span>
+            <Icon name="house-line" />
           </a>
-          <a
-            class="media-tile media-tile--link media-tile--link-logo"
-            href="https://www.tierarzt-bietigheim-bissingen.de/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Img
-              alt="Tierarztpraxis Bietigheim-Bissingen"
-              loading="lazy"
-              src="/assets/media/resources/tierarztpraxis-bietigheim-bissingen-logo.webp"
-            />
-            <span class="media-tile__caption">
-              Tierarztpraxis Bietigheim-Bissingen: medizinische Versorgung und
-              Notfallhilfe.
-            </span>
-          </a>
+          <h3>Vermittlung</h3>
+          <p>
+            Wir vermitteln die Katzen an Menschen, die ihnen ein dauerhaftes
+            Zuhause geben.
+          </p>
+        </li>
+      </ol>
+      <p class="facts">
+        Jede Katze, die zu uns kommt, wird tierärztlich untersucht und
+        behandelt, deshalb entfallen mehr als drei Viertel unserer Ausgaben auf
+        Tierarztkosten. Für Verwaltung und Öffentlichkeitsarbeit wenden wir
+        3&nbsp;% auf, zuschüsse aus öffentlicher Hand erhalten wir nicht.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="aktuelles" aria-labelledby="t-aktuell">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 id="t-aktuell">Aktuelles</h2>
+      </div>
+      <div class="news">
+        <div>
+          <h3 class="news__title">Termine</h3>
+          <ul class="agenda" data-dates>
+            {events.map((event) => (
+              <li data-until={event.date}>
+                <span class="leaf" aria-hidden="true">
+                  <span class="leaf__m">{event.monthShort}</span>
+                  <span class="leaf__d">{event.day}</span>
+                </span>
+                <div>
+                  <h4 class="agenda__title">{event.title}</h4>
+                  <p>
+                    <time datetime={event.date}>{event.longDate}</time>,{' '}
+                    {event.hours}
+                  </p>
+                  <p>{event.place}</p>
+                </div>
+              </li>
+            ))}
+            <li class="dates__empty" hidden data-dates-empty>
+              Neue Termine folgen. Fragen Sie uns gern:{' '}
+              <a href={contact.tel}>{contact.phone}</a>
+            </li>
+          </ul>
         </div>
-      </section>
-    </article>
-  </main>
-</KatzenfreundeLayout>
+        <div>
+          <h3 class="news__title">Berichte</h3>
+          <ul class="news-list">
+            <li>
+              <div>
+                <time datetime="2026-05-05">5. Mai 2026</time>
+                <h4>
+                  <a href={routes.aktuelles}>
+                    Wurst- und Getränkestopp mit Flohmarkt
+                  </a>
+                </h4>
+                <p>
+                  Vielen Dank an alle Gäste und Helfer. Der gesamte Erlös kommt
+                  den Katzen zugute.
+                </p>
+              </div>
+              <Photo
+                name="plakat-danke-mai2026"
+                widths={[256]}
+                sizes="7.5rem"
+                class="news-list__img"
+              />
+            </li>
+            <li>
+              <div>
+                <time datetime="2026-04-03">3. April 2026</time>
+                <h4>
+                  <a href={external.instagram}>Folgen Sie uns auf Instagram</a>
+                </h4>
+                <p>Aktuelle Neuigkeiten finden Sie auch auf Instagram.</p>
+              </div>
+            </li>
+          </ul>
+          <p class="news__more">
+            <a class="go" href={routes.aktuelles}>
+              <span>Alle Berichte</span>
+              <Icon name="arrow-right" />
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="section contact-strip"
+    id="kontakt"
+    aria-labelledby="t-kontakt"
+  >
+    <div class="wrap">
+      <h2 id="t-kontakt">Kontakt</h2>
+      <ul class="contact-grid">
+        <li>
+          <h3>Telefon</h3>
+          <a href={contact.tel} class="num">
+            <Icon name="phone" />
+            {contact.phone}
+          </a>
+        </li>
+        <li>
+          <h3>WhatsApp</h3>
+          <a href={contact.whatsappHref} class="num">
+            <Icon name="whatsapp-logo" />
+            {contact.whatsapp}
+          </a>
+        </li>
+        <li>
+          <h3>E-Mail</h3>
+          <a href={contact.mailHref} class="mail">
+            <Icon name="envelope-simple" />
+            {contact.mail}
+          </a>
+        </li>
+        <li>
+          <h3>Geschäftsstelle</h3>
+          <p>
+            Katzenfreunde Bietigheim-Bissingen e.&nbsp;V.
+            <br />
+            {contact.street}
+            <br />
+            {contact.city}
+          </p>
+          <a href={contact.map}>Auf der Karte zeigen</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</Site>

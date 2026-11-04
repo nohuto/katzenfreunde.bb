@@ -1,0 +1,68 @@
+---
+import { readFile } from 'node:fs/promises';
+
+const supported = [
+  'arrow-right',
+  'arrow-up-right',
+  'baby',
+  'bank',
+  'caret-down',
+  'caret-left',
+  'caret-right',
+  'cat',
+  'check',
+  'circle-half',
+  'copy',
+  'download-simple',
+  'envelope-simple',
+  'facebook-logo',
+  'file-pdf',
+  'first-aid',
+  'hand-coins',
+  'heart',
+  'house-line',
+  'info',
+  'instagram-logo',
+  'list',
+  'moon',
+  'package',
+  'paw-print',
+  'phone',
+  'printer',
+  'shield-check',
+  'stethoscope',
+  'sun',
+  'users-three',
+  'warning-circle',
+  'whatsapp-logo',
+  'x',
+] as const;
+
+export type IconName = (typeof supported)[number];
+
+interface Props {
+  name: IconName;
+  weight?: 'regular' | 'bold';
+  size?: string;
+  class?: string;
+}
+
+const { name, weight = 'regular', size, class: className = 'i' } = Astro.props;
+
+const file = weight === 'regular' ? `${name}.svg` : `${name}-${weight}.svg`;
+const source = await readFile(
+  new URL(
+    `../../../node_modules/@phosphor-icons/core/assets/${weight}/${file}`,
+    import.meta.url,
+  ),
+  'utf8',
+);
+
+const dimensions = size ? ` width="${size}" height="${size}"` : '';
+const markup = source.replace(
+  '<svg ',
+  `<svg class="${className}"${dimensions} aria-hidden="true" focusable="false" `,
+);
+---
+
+<Fragment set:html={markup} />

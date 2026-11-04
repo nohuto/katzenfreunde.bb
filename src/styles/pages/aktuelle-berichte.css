@@ -1,0 +1,184 @@
+:is(.chip) {
+  position: relative;
+}
+:is(.chip) input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+}
+:is(.chip):has(input:focus-visible) > span {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+.feed > * {
+  max-width: 56rem;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  min-width: 0;
+  margin: 1.5rem 0 1.25rem;
+  padding: 0;
+  border: 0;
+}
+.chip > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: var(--touch);
+  padding: 0.3rem 0;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+.chip__n {
+  color: var(--muted);
+  font-weight: 500;
+}
+.chip:hover > span {
+  color: var(--ink);
+}
+.chip:has(input:checked) > span {
+  color: var(--ink);
+  box-shadow: inset 0 -2px 0 var(--brand);
+}
+.list {
+  list-style: none;
+  border-top: 1.5px solid var(--ink);
+}
+.list__row {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr) 6.5rem;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.1rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+.list__row:not(:has(.photo)) {
+  grid-template-columns: 5rem minmax(0, 1fr);
+}
+.list__date time {
+  display: grid;
+  line-height: 1.15;
+}
+.list__d {
+  font: var(--head-weight) 1.25rem / 1.1 var(--font-head);
+}
+.list__y {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.list__t {
+  margin: 0 0 0.2rem;
+  font: 600 1.0625rem/1.35 var(--font-body);
+}
+.list__main p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+.list__img {
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  background: var(--tint);
+}
+.feed:has([value='termin']:checked) .list__row:not([data-kind='termin']),
+.feed:has([value='bericht']:checked) .list__row:not([data-kind='bericht']),
+.feed:has([value='verein']:checked) .list__row:not([data-kind='verein']) {
+  display: none;
+}
+@media (max-width: 47.99rem) {
+  .list__row,
+  .list__row:not(:has(.photo)) {
+    grid-template-columns: 3.75rem minmax(0, 1fr);
+    gap: 0.85rem;
+    padding-inline: 0.5rem;
+  }
+  .list__img {
+    display: none;
+  }
+}
+.list .go span {
+  overflow-wrap: anywhere;
+}
+.feed:has(.chip input:is([value='bericht'], [value='verein']):checked)
+  .dates__empty {
+  display: none;
+}
+.list__type {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.list__row[data-kind='termin'] .list__type {
+  color: var(--brand);
+  font-weight: 700;
+}
+.list__row {
+  padding-inline: 0;
+}
+.list__row[data-kind='termin'] {
+  background: none;
+}
+.feed {
+  padding-bottom: clamp(3rem, 2rem + 4vw, 5.5rem);
+}
+.list {
+  display: grid;
+  gap: var(--space-m);
+  margin-top: var(--space-m);
+}
+.list .list__row {
+  grid-template-columns: 9.5rem minmax(0, 1fr) 8rem;
+  gap: 1.5rem;
+  padding: 0;
+}
+.list .list__row.is-termin {
+  padding: 1.1rem 1.25rem;
+  margin-inline: -1.25rem;
+  border-radius: 16px;
+  background: var(--tint);
+}
+.list .list__d {
+  display: block;
+  font-weight: 700;
+}
+.list .list__y {
+  display: block;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.list .list__t {
+  font-size: 1.25rem;
+  margin-bottom: 0.3rem;
+}
+.list .list__img {
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+}
+.list__imgs {
+  display: grid;
+  gap: 0.5rem;
+}
+.flyer {
+  margin-top: var(--space-l);
+}
+.flyer > p {
+  color: var(--muted);
+}
+@media (max-width: 47.99rem) {
+  .list .list__row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+  }
+  .list .list__img,
+  .list__imgs {
+    display: none;
+  }
+  .list .list__row.is-termin {
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
+  }
+}

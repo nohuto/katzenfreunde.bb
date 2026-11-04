@@ -5,6 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -40,7 +44,8 @@ jobs:
           lftp -u "$STRATO_USER","$STRATO_PASSWORD" \
             "sftp://$STRATO_HOST:22" -e '
               set cmd:fail-exit true
-              mirror --reverse --no-perms dist .
+              mirror --reverse --delete --no-perms --exclude-glob .htaccess --exclude .well-known/ dist .
+              mirror --reverse --no-perms dist/.well-known .well-known
               put dist/.htaccess -o .htaccess
               bye
             '

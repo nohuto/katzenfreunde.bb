@@ -1,0 +1,52 @@
+:root {
+  color-scheme: light dark;
+  --font-body: 'Manrope', 'Manrope Fallback', system-ui, sans-serif;
+  --font-head: 'Fraunces', Georgia, serif;
+  --head-weight: 600;
+  --head-lh: 1.12;
+  --wrap: 76rem;
+  --gutter: clamp(1.125rem, 4vw, 2.5rem);
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --z-bar: 20;
+
+  --paper: light-dark(#f3f5ee, #121511);
+  --surface: light-dark(#ffffff, #1a1e18);
+  --tint: light-dark(#e2e9d8, #1d241a);
+  --ink: light-dark(#1c2519, #e5e9de);
+  --muted: light-dark(#4d5847, #aab4a1);
+  --line: light-dark(#cdd6c1, #343d30);
+  --line-strong: light-dark(#7b8a6e, #6a785f);
+  --brand: light-dark(#4a5f3c, #b4ca9b);
+  --brand-hover: light-dark(#364a2b, #cadcb4);
+  --on-brand: light-dark(#ffffff, #142010);
+  --band: light-dark(#2e3d28, #2b3a25);
+  --on-band: light-dark(#eef3e7, #e5ecdb);
+  --band-muted: light-dark(#c4d1b8, #b1bea6);
+  --focus: light-dark(#2e3d28, #d6e6c0);
+  --t-fast: 120ms;
+  --t: 180ms;
+  --touch: 44px;
+  --lift: 0 14px 34px -16px light-dark(rgb(28 37 25 / 0.45), rgb(0 0 0 / 0.7));
+  --radius-l: 18px;
+  --space-m: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  --space-l: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --panel-bg: var(--surface);
+  --panel-shadow:
+    0 1px 2px light-dark(rgb(28 37 25 / 0.05), rgb(0 0 0 / 0.3)),
+    0 18px 40px -28px light-dark(rgb(28 37 25 / 0.45), rgb(0 0 0 / 0.8));
+  --marker: light-dark(#d3e3a6, #3f5531);
+  --paw: url('../cursors/paw-dark.cur');
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paw: url('../cursors/paw-light.cur');
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paw: url('../cursors/paw-light.cur');
+  }
+}

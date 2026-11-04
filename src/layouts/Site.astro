@@ -1,0 +1,136 @@
+---
+import { getImage } from 'astro:assets';
+import Header from '../components/site/Header.astro';
+import Footer from '../components/site/Footer.astro';
+import faviconSource from '../image-sources/assets/katzenfreunde-circle.png';
+import manropeUrl from '../fonts/Manrope-latin.woff2?url';
+import frauncesUrl from '../fonts/Fraunces-600-latin.woff2?url';
+import { contact, external } from '../data/site';
+import { inlineJson } from '../lib/inline-json';
+import type { PageKey } from '../data/site';
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  description: string;
+  page: PageKey | null;
+  path: string;
+  noindex?: boolean;
+}
+
+const { title, description, page, path, noindex = false } = Astro.props;
+const canonical = new URL(path, Astro.site);
+const favicon = await getImage({
+  src: faviconSource,
+  width: 64,
+  format: 'webp',
+});
+const name = 'Katzenfreunde Bietigheim-Bissingen';
+const fullTitle = page === 'start' ? `${name} e. V.` : `${title} - ${name}`;
+const shareImage = new URL('/share.jpg', Astro.site);
+const international = (number: string) =>
+  `+49${number.replace(/\D/g, '').slice(1)}`;
+const logo =
+  page === 'start' &&
+  (await getImage({ src: faviconSource, width: 200, format: 'png' }));
+const organization = logo && {
+  '@context': 'https://schema.org',
+  '@type': 'NGO',
+  name: `${name} e. V.`,
+  url: canonical,
+  logo: new URL(logo.src, Astro.site),
+  foundingDate: '1991',
+  email: contact.mail,
+  telephone: international(contact.phone),
+  faxNumber: international(contact.fax),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: contact.street,
+    postalCode: contact.city.split(' ')[0],
+    addressLocality: contact.city.split(' ')[1],
+    addressCountry: 'DE',
+  },
+  sameAs: [external.facebook, external.instagram],
+};
+---
+
+<!doctype html>
+<html lang="de" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex ? (
+      <meta name="robots" content="noindex" />
+    ) : (
+      <link rel="canonical" href={canonical} />
+    )}
+    <meta
+      name="theme-color"
+      content="#f3f5ee"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#121511"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content={name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    {!noindex && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Logo der Katzenfreunde Bietigheim-Bissingen neben einer schlafenden getigerten Katze"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href={favicon.src} type="image/webp" />
+    <link
+      rel="preload"
+      href={manropeUrl}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={frauncesUrl}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        try {
+          const theme = localStorage.getItem('theme_override');
+          if (theme === 'light' || theme === 'dark') root.dataset.theme = theme;
+        } catch {}
+        root.classList.add('js');
+      })();
+    </script>
+    {organization && (
+      <script type="application/ld+json" set:html={inlineJson(organization)} />
+    )}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Zum Inhalt springen
+    </a>
+    <Header page={page} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <p class="sr-only" role="status" aria-atomic="true" data-live-region></p>
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>

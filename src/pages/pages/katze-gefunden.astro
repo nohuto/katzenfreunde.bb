@@ -1,0 +1,215 @@
+---
+import Site from '../../layouts/Site.astro';
+import Photo from '../../components/site/Photo.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { contact, routes } from '../../data/site';
+---
+
+<Site
+  title="Katze gefunden?"
+  description="Sie haben eine Katze gefunden, die verletzt oder in Not ist? Hier erfahren Sie, wen Sie anrufen und was Sie jetzt tun können."
+  page="gefunden"
+  path="/pages/katze-gefunden.html"
+>
+  <div>
+    <Photo
+      name="stock-katze-draussen"
+      widths={[640, 800]}
+      class="found-hero__img"
+      eager
+    />
+    <div class="wrap found-hero__over">
+      <section class="info hot sos" aria-labelledby="t-sos">
+        <h2 id="t-sos">Im Notfall rufen Sie uns an</h2>
+        <a class="tel tel--xl" href={contact.tel}>
+          <Icon name="phone" />
+          <span class="num">{contact.phone}</span>
+        </a>
+        <a class="hot__wa" href={contact.whatsappHref}>
+          <Icon name="whatsapp-logo" />
+          <span class="sr-only">WhatsApp </span>
+          {contact.whatsapp}
+        </a>
+      </section>
+    </div>
+  </div>
+  <div class="wrap col-l">
+    <h1>Katze gefunden?</h1>
+    <p class="lead">
+      Wählen Sie die Situation, die am besten passt. Wenn Sie unsicher sind,
+      rufen Sie uns an.
+    </p>
+    <div class="folds">
+      <details class="fold fold--urgent" id="verletzt" open>
+        <summary>
+          <Icon name="first-aid" class="i fold__ic" />
+          <span class="fold__t">
+            Die Katze ist verletzt oder in Gefahr
+            <small>
+              Zum Beispiel nach einem Unfall, bei starken Blutungen oder wenn
+              sie teilnahmslos wirkt.
+            </small>
+          </span>
+          <Icon name="caret-down" class="i fold__chev" />
+        </summary>
+        <div class="fold__body">
+          <div class="fold__steps">
+            <ol>
+              <li>
+                Liegt die Katze auf der Straße, sichern Sie zuerst sich selbst
+                und die Unfallstelle ab.
+              </li>
+              <li>
+                Legen Sie eine Decke in einen Karton oder eine Transportbox und
+                die Katze vorsichtig darauf.
+              </li>
+              <li>
+                Bringen Sie die Katze zu einer Tierarztpraxis oder einer
+                tierärztlichen Notdienstpraxis und rufen Sie uns an.
+              </li>
+              <li>
+                Lassen Sie parallel den Fund bei der Gemeinde oder Polizei
+                melden.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </details>
+      <details class="fold" id="kitten">
+        <summary>
+          <Icon name="baby" class="i fold__ic" />
+          <span class="fold__t">
+            Ich habe Kätzchen ohne Mutter gefunden
+            <small>
+              Oft ist die Mutter nur auf Futtersuche und kommt bald zurück.
+            </small>
+          </span>
+          <Icon name="caret-down" class="i fold__chev" />
+        </summary>
+        <div class="fold__body">
+          <div class="fold__steps">
+            <ol>
+              <li>
+                Nehmen Sie die Kätzchen nicht sofort mit, solange sie warm und
+                ruhig sind.
+              </li>
+              <li>
+                Beobachten Sie aus einiger Entfernung, ob die Mutter
+                zurückkehrt.
+              </li>
+              <li>
+                Wenn die Kätzchen kalt oder nass sind, lange schreien oder Sie
+                unsicher sind, rufen Sie uns an.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </details>
+      <details class="fold" id="zutraulich">
+        <summary>
+          <Icon name="paw-print" class="i fold__ic" />
+          <span class="fold__t">
+            Eine zutrauliche Katze ist mir zugelaufen
+            <small>Vielleicht wird sie vermisst und ist gechippt.</small>
+          </span>
+          <Icon name="caret-down" class="i fold__chev" />
+        </summary>
+        <div class="fold__body">
+          <div class="fold__steps">
+            <ol>
+              <li>
+                Füttern Sie eine gut genährte Katze nicht regelmäßig, damit sie
+                weiter nach Hause findet.
+              </li>
+              <li>
+                Eine Tierarztpraxis kann nachsehen, ob sie einen Chip trägt.
+              </li>
+              <li>
+                Melden Sie die Katze als Fundtier bei der Gemeinde und bei TASSO
+                oder FINDEFIX.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </details>
+      <details class="fold" id="streuner">
+        <summary>
+          <Icon name="cat" class="i fold__ic" />
+          <span class="fold__t">
+            In meiner Nähe lebt eine scheue Streunerkatze
+            <small>
+              Freilebende Katzen müssen kastriert und an einer betreuten
+              Futterstelle versorgt werden.
+            </small>
+          </span>
+          <Icon name="caret-down" class="i fold__chev" />
+        </summary>
+        <div class="fold__body">
+          <div class="fold__steps">
+            <ol>
+              <li>Bitte versuchen Sie nicht, die Katze selbst einzufangen.</li>
+              <li>Rufen Sie uns an.</li>
+              <li>
+                Sagen Sie uns, wo und zu welchen Zeiten Sie die Katze sehen.
+              </li>
+            </ol>
+          </div>
+          <p>
+            <a class="go" href={`${routes.arbeit}#futterstellen`}>
+              <span>Wie unsere Futterstellen helfen</span>
+              <Icon name="arrow-right" />
+            </a>
+          </p>
+        </div>
+      </details>
+      <details class="fold" id="tot">
+        <summary>
+          <Icon name="heart" class="i fold__ic" />
+          <span class="fold__t">
+            Ich habe eine tote Katze gefunden
+            <small>
+              Die Halter möchten meist erfahren, was mit ihrer Katze geschehen
+              ist.
+            </small>
+          </span>
+          <Icon name="caret-down" class="i fold__chev" />
+        </summary>
+        <div class="fold__body">
+          <div class="fold__steps">
+            <ol>
+              <li>
+                Melden Sie den Fund dem Fundbüro der Gemeinde oder der
+                Straßenmeisterei.
+              </li>
+              <li>
+                Eine Tierarztpraxis kann nach einem Chip suchen, damit die
+                Halter benachrichtigt werden.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </details>
+    </div>
+    <section class="dont" aria-labelledby="t-dont">
+      <h2 id="t-dont" class="h-small">
+        Bitte beachten Sie
+      </h2>
+      <ul>
+        <li>
+          <Icon name="x" />
+          <span>Geben Sie der Katze keine Kuhmilch.</span>
+        </li>
+        <li>
+          <Icon name="x" />
+          <span>Fassen Sie eine scheue Katze nicht mit bloßen Händen an.</span>
+        </li>
+        <li>
+          <Icon name="x" />
+          <span>
+            Nehmen Sie unverletzte, warme Kätzchen nicht vorschnell mit.
+          </span>
+        </li>
+      </ul>
+    </section>
+  </div>
+</Site>

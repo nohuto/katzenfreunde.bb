@@ -1,0 +1,130 @@
+---
+import Brand from './Brand.astro';
+import Icon from '../ui/Icon.astro';
+import { contact, external, routes } from '../../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="foot">
+  <div class="wrap foot__cols">
+    <div class="foot__about">
+      <Brand />
+      <p>
+        Seit 1991 helfen wir herrenlosen, ausgesetzten und verletzten Katzen in
+        der Region. Unsere Geschäftsstelle ist in Sersheim, {contact.street}.
+      </p>
+      <ul class="social">
+        <li>
+          <a href={external.facebook} aria-label="Facebook">
+            <Icon name="facebook-logo" />
+          </a>
+        </li>
+        <li>
+          <a href={external.instagram} aria-label="Instagram">
+            <Icon name="instagram-logo" />
+          </a>
+        </li>
+        <li>
+          <a href={contact.whatsappHref} aria-label="WhatsApp">
+            <Icon name="whatsapp-logo" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    <nav aria-labelledby="f-katzen">
+      <h2 id="f-katzen">Katzen</h2>
+      <ul>
+        <li>
+          <a href={routes.vermittlung}>Katzen suchen ein Zuhause</a>
+        </li>
+        <li>
+          <a href={`${routes.vermittlung}#gebuehren`}>Schutzgebühren</a>
+        </li>
+        <li>
+          <a href={routes.gefunden}>Katze gefunden?</a>
+        </li>
+        <li>
+          <a href={routes.daheim}>Endlich daheim</a>
+        </li>
+        <li>
+          <a href={routes.tipps}>Tipps</a>
+        </li>
+      </ul>
+    </nav>
+    <nav aria-labelledby="f-helfen">
+      <h2 id="f-helfen">Helfen</h2>
+      <ul>
+        <li>
+          <a href={`${routes.helfen}#spenden`}>Spenden</a>
+        </li>
+        <li>
+          <a href={routes.mitglied}>Mitglied werden</a>
+        </li>
+        <li>
+          <a href={`${routes.vermittlung}#pflegestelle`}>Pflegestelle werden</a>
+        </li>
+        <li>
+          <a href={`${routes.helfen}#sachspenden`}>
+            Sachspenden für den Flohmarkt
+          </a>
+        </li>
+        <li>
+          <a href={external.futterShuttle} referrerpolicy="origin">
+            Futter-Shuttle
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav aria-labelledby="f-verein">
+      <h2 id="f-verein">Verein</h2>
+      <ul>
+        <li>
+          <a href={routes.aktuelles}>Termine und Berichte</a>
+        </li>
+        <li>
+          <a href={routes.arbeit}>Unsere Arbeit</a>
+        </li>
+        <li>
+          <a href={routes.kontakt}>Kontakt</a>
+        </li>
+        <li>
+          <a href={external.tierschutzbund}>Deutscher Tierschutzbund</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap foot__legal">
+    <p>
+      © {year} Katzenfreunde Bietigheim-Bissingen e.&nbsp;V. - Mitglied im
+      Deutschen Tierschutzbund
+    </p>
+    <div
+      class="theme-switch"
+      role="group"
+      aria-label="Darstellung"
+      data-theme-group
+    >
+      <button type="button" data-theme-set="light" aria-pressed="false">
+        <Icon name="sun" />
+        <span class="sr-only">Hell</span>
+      </button>
+      <button type="button" data-theme-set="auto" aria-pressed="false">
+        <Icon name="circle-half" />
+        <span class="sr-only">Wie im System</span>
+      </button>
+      <button type="button" data-theme-set="dark" aria-pressed="false">
+        <Icon name="moon" />
+        <span class="sr-only">Dunkel</span>
+      </button>
+    </div>
+    <ul>
+      <li>
+        <a href={routes.impressum}>Impressum</a>
+      </li>
+      <li>
+        <a href={routes.datenschutz}>Datenschutz</a>
+      </li>
+    </ul>
+  </div>
+</footer>

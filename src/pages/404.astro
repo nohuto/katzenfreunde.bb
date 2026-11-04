@@ -1,25 +1,35 @@
 ---
-import KatzenfreundeLayout from '../layouts/KatzenfreundeLayout.astro';
+import Site from '../layouts/Site.astro';
+import Icon from '../components/ui/Icon.astro';
+import { routes } from '../data/site';
 ---
 
-<KatzenfreundeLayout
-  title="Seite nicht gefunden - Katzenfreunde BiBi"
+<Site
+  title="Seite nicht gefunden"
   description="Die angeforderte Seite wurde nicht gefunden."
-  page="not-found"
-  canonical="/pages/404.html"
+  page={null}
+  path="/404.html"
   noindex
 >
-  <main>
-    <section class="hero">
-      <div class="hero__card hero__card--title-only">
-        <div>
-          <h1>404</h1>
-          <p>Die angeforderte Seite wurde nicht gefunden.</p>
-          <p>
-            <a href="/index.html">Zur Startseite</a>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-</KatzenfreundeLayout>
+  <div class="page-head wrap">
+    <h1>Seite nicht gefunden</h1>
+    <p class="lead">
+      Unter dieser Adresse gibt es keine Seite. Vielleicht hilft Ihnen einer
+      dieser Links weiter.
+    </p>
+    <div class="btn-row">
+      <a class="go" href={routes.start}>
+        <span>Zur Startseite</span>
+        <Icon name="arrow-right" />
+      </a>
+      <a class="go" href={routes.vermittlung}>
+        <span>Katzen suchen ein Zuhause</span>
+        <Icon name="arrow-right" />
+      </a>
+      <a class="go" href={routes.kontakt}>
+        <span>Kontakt</span>
+        <Icon name="arrow-right" />
+      </a>
+    </div>
+  </div>
+</Site>

@@ -1,380 +1,325 @@
 ---
-import Img from '../../components/ui/Img.astro';
-import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
+import Site from '../../layouts/Site.astro';
+import Photo from '../../components/site/Photo.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { contact, routes } from '../../data/site';
 ---
 
-<KatzenfreundeLayout
-  title="Endlich daheim - Katzenfreunde BiBi"
-  description="Geschichten und Fotos ehemaliger Schützlinge im neuen Zuhause."
-  page="endlich-daheim"
-  canonical="/pages/endlich-daheim.html"
+<Site
+  title="Endlich daheim"
+  description="Geschichten und Fotos ehemaliger Schützlinge der Katzenfreunde aus ihrem neuen Zuhause."
+  page="daheim"
+  path="/pages/endlich-daheim.html"
 >
-  <main class="page-shell">
-    <article class="rich-content prose page-content">
-      <section class="activity-header">
-        <h1>Endlich daheim</h1>
-        <p>
-          Geschichten und Fotos ehemaliger Sch&uuml;tzlinge im neuen Zuhause.
-        </p>
-      </section>
-      <div class="content-prose">
-        <p>
-          <strong>Benno &amp; Leni</strong>
-        </p>
-        <p>
-          ... auch die zwei unzertrennlichen K&auml;tzchen Benno und Leni haben
-          ein sch&ouml;nes Zuhause bei einem
-        </p>
-        <p>Vereinsmitglied und seiner Familie gefunden...</p>
-        <p>
-          <picture>
-            <Img
-              alt="Benno und Leni im neuen Zuhause"
-              fetchpriority="high"
-              loading="eager"
-              src="/assets/media/resources/benno-leni.jpg"
-            />
-          </picture>
-        </p>
-        <p>
-          <strong>Pinkus</strong>
-        </p>
-        <p>
-          Pinkus hat eine lange Reise hinter sich. Von Mecklenburg-Vorpommern
-          ist er von einem Vereinsmitglied nun in das sch&ouml;ne
-          Baden-W&uuml;rttemberg in eine neue Familie gereist. Seine ehemalige
-          Besitzerin musste aufgrund eines sehr langen Krankenhausaufenthaltes
-          und gesundheitlicher Probleme leider ihren Kater Pinkus abgeben.
-        </p>
-        <p>
-          Pinkus hat ein liebevolles neue Zuhause gefunden, wo ihn seine neuen
-          Besitzer schon sehr ins Herz geschlossen haben. Ebenfalls hat er in
-          seiner neuen Familie auch einen neuen Spielkameraden gefunden.
-        </p>
-        <p>
-          <picture>
-            <Img
-              alt="Bild aus dem Vereinsarchiv"
-              loading="lazy"
-              src="/assets/media/resources/pinkus-zuhause.png"
-            />
-          </picture>
-        </p>
-        <p>
-          <strong>Peggy</strong>
-        </p>
-        <p>
-          Peggy eine sehr scheue Katzendame hat ein liebevolles Zuhause gefunden
-          und ist erfreulicherweise sehr "aufgetaut". Zu Beginn hat sie sich bei
-          ihrer neuen Besitzerin nur verkrochen, doch allm&auml;hlich ist sie
-          immer &ouml;fter raus gekommen zum Kuscheln. Mittlerweile hat sie ihre
-          scheue Art abgelegt und f&uuml;hlt sich in ihrer neuen Heimat super
-          wohl!
-        </p>
-        <p>
-          <picture>
-            <Img
-              alt="Bild aus dem Vereinsarchiv"
-              loading="lazy"
-              src="/assets/media/resources/peggy-zuhause.png"
-            />
-          </picture>
-        </p>
-        <p>
-          <strong>Mieke</strong>
-        </p>
-        <p>
-          Mieke hat sich sehr gut in ihrer neuen Familie eingelebt. Zwar ist sie
-          noch sehr vorsichtig, jedoch hat sie ihre neue Familie bereits ins
-          Herz geschlossen. Die neuen Besitzer schreiben, dass sich Mieke sehr
-          gut eingelebt hat und eine sehr liebe Katze ist, die sich sehr gerne
-          streicheln l&auml;sst. Ihre neuen Besitzer sind sehr happy mit ihrem
-          Familienzuwachs.
-        </p>
-        <p>
-          <picture>
-            <Img
-              alt="Bild aus dem Vereinsarchiv"
-              loading="lazy"
-              src="/assets/media/resources/mieke-zuhause.jpg"
-            />
-          </picture>
-        </p>
-        <p>
-          <strong>Balu und Baghira</strong>
-        </p>
-        <p>
-          Balu und Baghira haben ein liebevolles Zuhause gefunden und
-          f&uuml;hlen sich sehr wohl.
-        </p>
-        <p>
-          Frau V.S. berichtet, dass die Beiden an vielen Abenden ihre neue
-          Familie mit ins Bett begleiten und sich ihre Streicheleinheiten
-          abholen. Baghira schaut gerne beim Sp&uuml;len oder Kochen zu und
-          klaut hin und wieder den K&uuml;chenschwamm und versteckt diesen. Balu
-          hat es der Toaster angetan, er klaut gerne den Verschluss vom
-          Toastbrot und d&uuml;st davon. Selbst der Familienhund ist angetan vom
-          neuen Familienzuwachs.
-        </p>
-        <p>
-          <picture>
-            <Img
-              alt="Bild aus dem Vereinsarchiv"
-              loading="lazy"
-              src="/assets/media/resources/balu-und-baghira-zuhause.png"
-            />
-          </picture>
-        </p>
-        <p>
-          <strong>Sammy</strong>
-        </p>
-        <div class="content-grid">
-          <div class="content-grid__row">
-            <div class="content-grid__cell">
-              <p>
-                <picture>
-                  <Img
-                    alt="Bild aus dem Vereinsarchiv"
-                    loading="lazy"
-                    src="/assets/media/resources/sammy-zuhause.jpg"
-                  />
-                </picture>
-              </p>
-            </div>
-          </div>
+  <div data-art>
+    <div class="page-head wrap">
+      <h1>Endlich daheim</h1>
+      <p class="lead">
+        Viele unserer ehemaligen Schützlinge schicken uns Grüße aus ihrem neuen
+        Zuhause. Hier zeigen wir einige ihrer Fotos und Geschichten.
+      </p>
+    </div>
+  </div>
+  <div class="wrap">
+    <ul class="album">
+      <li class="snap" id="mia-lilly">
+        <div class="snap__photos snap__photos--2">
+          <Photo
+            name="daheim-mia-portraet"
+            widths={[299]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Mia, rotes langhaariges Kätzchen, schlafend"
+            class="snap__img"
+          />
+          <Photo
+            name="daheim-lilly-portraet"
+            widths={[297]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Lilly, dreifarbiges Kätzchen, auf einer roten Decke"
+            class="snap__img"
+          />
         </div>
-        <p>
-          Familie P&ouml;ndl berichtet: "Hallo Frau Framenau, ......seit kurzem
-          lassen wir ihn auch in den Garten, er hat Drang nach drau&szlig;en,
-          wie erwartet.....geht aber nicht so weit weg. Gott sei Dank.
-          .....Lediglich die Nachbarskatzen, zwei gro&szlig;e Kater, machen ihm
-          etwas Probleme wegen dem Revier. Was ihn aber nicht abh&auml;lt, nach
-          drau&szlig;en zu gehen. Sonst ist er sehr lieb und verschmust, lebhaft
-          halt nach wie vor, aber wir haben unseren Spa&szlig; mit ihm."
-        </p>
-        <p>
-          <strong>Maja und Willi</strong>
-        </p>
-        <div class="content-grid">
-          <div class="content-grid__row">
-            <div class="content-grid__cell">
-              <p>
-                <picture>
-                  <Img
-                    alt="Bild aus dem Vereinsarchiv"
-                    loading="lazy"
-                    src="/assets/media/resources/maja-und-willi-1.jpg"
-                  />
-                </picture>
-              </p>
-            </div>
-            <div class="content-grid__cell">
-              <p>
-                <picture>
-                  <Img
-                    alt="Bild aus dem Vereinsarchiv"
-                    loading="lazy"
-                    src="/assets/media/resources/maja-und-willi-2.jpg"
-                  />
-                </picture>
-              </p>
-            </div>
+        <div class="snap__text">
+          <h2>Mia und Lilly</h2>
+          <div class="snap__report">
+            <p>
+              Mia, „Prinzessin Seidenfell“, Spitzname „Puschie“, unser schönes,
+              rotes, langhaariges Mädchen, ist groß geworden und hat sich einen
+              extrem langen, puscheligen Schwanz, seidenweiche Pluderhosen,
+              einen hübschen Fellkragen und plüschige Fellschuhe zugelegt. Die
+              lustige Lilly ist ein Hansdampf in allen Gassen und beim Spielen
+              oft eine „Ella Rabiata“. Fünf Minuten später liegen die beiden
+              wieder aneinandergekuschelt zusammen.
+            </p>
           </div>
+          <p class="from">Nach einem Bericht von Frau P. N. aus Stuttgart</p>
         </div>
-        <p>
-          Maja und Willi kamen als 6 Wochen alte K&auml;tzchen in die Pflege zu
-          Frau Framenau und mussten von ihr ganze 5 Monate aufgep&auml;ppelt
-          werden.
-        </p>
-        <p>
-          Frau L.R. schreibt: "liebe frau framenau, ....wir wollten nochmal von
-          unseren zwei fellnasen berichten,..... maja, die bunte
-          Tigerk&auml;tzin und willi ihr schwarzer freund. wir k&ouml;nnen nur
-          sagen: denen zwei geht es wirklich prima und wir sind sehr
-          gl&uuml;cklich, die beiden bei uns zu haben. nach anf&auml;nglicher
-          skepsis hat sich auch maja zu einer sehr lieben und schmusigen
-          gesellin entwickelt. .....willi war ja von anfang an sehr zutraulich
-          und folgt uns &uuml;berall hin......... wir sind ihnen sehr dankbar,
-          dass sie uns die Katzen anvertraut haben und wollen sie nicht mehr
-          missen."
-        </p>
-        <p>
-          <strong>Mia "Prinzessin Seidenfell" und Lilly "Ella Rabiata"</strong>
-        </p>
-        <div class="content-grid">
-          <div class="content-grid__row">
-            <div class="content-grid__cell">
-              <p>
-                <strong>Mia</strong>
-              </p>
-              <p>
-                <picture>
-                  <Img
-                    alt="Bild aus dem Vereinsarchiv"
-                    loading="lazy"
-                    src="/assets/media/resources/mia-prinzessin-seidenfell-portraet.jpg"
-                  />
-                </picture>
-              </p>
-            </div>
-            <div class="content-grid__cell">
-              <p>
-                <strong>Lilly</strong>
-              </p>
-              <p>
-                <picture>
-                  <Img
-                    alt="Bild aus dem Vereinsarchiv"
-                    loading="lazy"
-                    src="/assets/media/resources/lilly-ella-rabiata-portraet.jpg"
-                  />
-                </picture>
-              </p>
-            </div>
-          </div>
+      </li>
+      <li class="snap" id="maja-willi">
+        <div class="snap__photos snap__photos--2">
+          <Photo
+            name="daheim-maja-willi-1"
+            widths={[300]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Maja und Willi zusammengerollt auf einem Sofa"
+            class="snap__img"
+          />
+          <Photo
+            name="daheim-maja-willi-2"
+            widths={[300]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Maja und Willi auf dem Sofa"
+            class="snap__img"
+          />
         </div>
-        <p>Frau P. N. aus Stuttgart schrieb uns von ihren "M&auml;usen":</p>
-        <p>Liebe Frau Framenau,</p>
-        <p>
-          ...........Mia, Prinzessin Seidenfell, Spitzname "Puschie", unser
-          sch&ouml;nes, rotes, langhaariges M&auml;dchen, ist gro&szlig;
-          geworden und hat sich inzwischen einen extrem langen, puscheligen
-          Schwanz, seidenweiche Pluderhosen, einen h&uuml;bschen Fellkragen und
-          pl&uuml;schige Fellschuhe zugelegt
-        </p>
-        <p>
-          .......... Die Lustige Lilly ist ein Hans--Dampf-in-allen-Gassen und
-          beim Spielen oft eine "Ella Rabiata". Manchmal hat Mia darauf keine
-          Lust und zieht sich dann zur&uuml;ck, aber meist bietet sie ihrer
-          Schwester Paroli und dann geht es auch mal kurz ruppig zu. F&uuml;nf
-          Minuten sp&auml;ter liegen die beiden dann wieder aneinander
-          gekuschelt zusammen.
-        </p>
-        <p>
-          <strong>Erfolgserlebnis f&uuml;r Mia zur Freude aller</strong>
-        </p>
-        <div class="content-grid">
-          <div class="content-grid__row">
-            <div class="content-grid__cell">
-              <p>
-                <picture>
-                  <Img
-                    alt="Bild aus dem Vereinsarchiv"
-                    loading="lazy"
-                    src="/assets/media/resources/mia-prinzessin-seidenfell.jpg"
-                  />
-                </picture>
-              </p>
-              <p>
-                <strong>Mia</strong>
-              </p>
-            </div>
+        <div class="snap__text">
+          <h2>Maja und Willi</h2>
+          <p class="snap__intro">
+            Die beiden kamen mit sechs Wochen zu Jutta Framenau in Pflege und
+            wurden fünf Monate lang aufgepäppelt.
+          </p>
+          <div class="snap__report">
+            <p>
+              Maja, die bunte Tigerkätzin, und Willi, ihr schwarzer Freund:
+              Denen zwei geht es wirklich prima, und wir sind sehr glücklich,
+              die beiden bei uns zu haben. Willi war von Anfang an sehr
+              zutraulich und folgt uns überall hin.
+            </p>
           </div>
+          <p class="from">Nach einem Bericht von Frau L. R.</p>
         </div>
-        <p>Familie Findeis schrieb uns: "Gr&uuml;&szlig;e von unserer Mia"</p>
-        <p>
-          "Liebe Frau Framenau, anbei ein paar Bilder von unserer Mia. Sie har
-          sich in der Zwischenzeit ganz gut eingelebt und hat uns voll im Griff.
-        </p>
-        <p>
-          Nach dem Aufstehen begleitet Sie uns auf Schritt und Tritt. Die
-          anf&auml;nglichen Schwierigkeiten mit der Katzentoilette haben sich
-          auch verbessert. Wir haben eine Katzenpsychologin um Rat gefragt und
-          sie gab uns wertvolle Tipps. Jetzt klappt es auch viel besser mit dem
-          kleinen Gesch&auml;ft. Auf jeden Fall haben wir sehr viel Freude und
-          Spa&szlig; mit unserer Mia. Sie bringt uns viel zum Schmunzeln.
-          Au&szlig;erdem ist sie eine ganz tolle Ballspielerin. Sie fordert uns
-          mit ihren Spieleinheiten und nat&uuml;rlich braucht sie auch ganz
-          viele Streicheleinheiten. Sie ist einfach eine kleine Genieserin!"
-        </p>
-        <p>
-          Im folgenden Text (hier nicht ver&ouml;ffentlicht) beschreibt Familie
-          Findeis die erfolgreichen Ma&szlig;nahmen und Tipps der
-          Katzenpsychologin. Falls Sie Interesse an solchen Tipps f&uuml;r
-          verhaltensauff&auml;llige Katzen haben, nehmen Sie bitte Kontakt per
-          eMail oder auch telefonisch (siehe Seite ganz unten) mit unserer
-          Vereinsvorsitzenden, Frau Framenau, auf.
-        </p>
-        <p>
-          <strong>Ein lebenswerter Platz f&uuml;r alle Felle gefunden</strong>
-        </p>
-        <div class="content-grid">
-          <div class="content-grid__row">
-            <div class="content-grid__cell"></div>
-            <div class="content-grid__cell">
-              <p>
-                <picture>
-                  <Img
-                    alt="Bild aus dem Vereinsarchiv"
-                    loading="lazy"
-                    src="/assets/media/resources/endlich-daheim-geschwister-1.jpg"
-                  />
-                </picture>
-                <picture>
-                  <Img
-                    alt="Bild aus dem Vereinsarchiv"
-                    loading="lazy"
-                    src="/assets/media/resources/endlich-daheim-geschwister-3.jpg"
-                  />
-                </picture>
-                <picture>
-                  <Img
-                    alt="Bild aus dem Vereinsarchiv"
-                    loading="lazy"
-                    src="/assets/media/resources/endlich-daheim-geschwister-2.jpg"
-                  />
-                </picture>
-              </p>
-            </div>
-            <div class="content-grid__cell">
-              <div class="content-grid">
-                <div class="content-grid__row">
-                  <div class="content-grid__cell"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="content-grid__row">
-            <div class="content-grid__cell"></div>
-          </div>
+      </li>
+      <li class="snap" id="mieke">
+        <div class="snap__photos">
+          <Photo
+            name="daheim-mieke"
+            widths={[340]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Mieke, weiß-getigerte Katze, auf einem Teppich"
+            class="snap__img"
+          />
         </div>
+        <div class="snap__text">
+          <h2>Mieke</h2>
+          <p>
+            Mieke ist noch etwas vorsichtig, hat ihre neue Familie aber schon
+            ins Herz geschlossen. Sie ist eine sehr liebe Katze, die sich gern
+            streicheln lässt.
+          </p>
+        </div>
+      </li>
+      <li class="snap" id="balu-baghira">
+        <div class="snap__photos">
+          <Photo
+            name="daheim-balu-baghira"
+            widths={[300]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Eine schwarze Katze auf einer Küchenablage"
+            class="snap__img"
+          />
+        </div>
+        <div class="snap__text">
+          <h2>Balu und Baghira</h2>
+          <div class="snap__report">
+            <p>
+              Die beiden begleiten ihre neue Familie an vielen Abenden mit ins
+              Bett und holen sich ihre Streicheleinheiten. Baghira schaut gern
+              beim Spülen oder Kochen zu und klaut hin und wieder den
+              Küchenschwamm. Der Toaster hat es Balu angetan: Er klaut gern den
+              Verschluss der Toastbrottüte und düst davon. Selbst der
+              Familienhund ist angetan.
+            </p>
+          </div>
+          <p class="from">Nach einem Bericht von Frau V. S.</p>
+        </div>
+      </li>
+      <li class="snap" id="mia">
+        <div class="snap__photos">
+          <Photo
+            name="daheim-mia"
+            widths={[600]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Mia, schwarze Katze, auf einer Fensterbank"
+            class="snap__img"
+          />
+        </div>
+        <div class="snap__text">
+          <h2>Mia</h2>
+          <div class="snap__report">
+            <p>
+              Sie hat sich in der Zwischenzeit ganz gut eingelebt und hat uns
+              voll im Griff. Nach dem Aufstehen begleitet sie uns auf Schritt
+              und Tritt. Außerdem ist sie eine ganz tolle Ballspielerin. Sie ist
+              einfach eine kleine Genießerin!
+            </p>
+          </div>
+          <p class="from">Nach einem Bericht von Familie Findeis</p>
+        </div>
+      </li>
+      <li class="snap" id="benno-leni">
+        <div class="snap__photos">
+          <Photo
+            name="daheim-benno-leni"
+            widths={[280]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Benno und Leni, zwei Kätzchen, eng umschlungen"
+            class="snap__img"
+          />
+        </div>
+        <div class="snap__text">
+          <h2>Benno und Leni</h2>
+          <p>
+            Die beiden unzertrennlichen Kätzchen haben bei einem Vereinsmitglied
+            und seiner Familie ein schönes Zuhause gefunden.
+          </p>
+        </div>
+      </li>
+      <li class="snap" id="sammy">
+        <div class="snap__photos">
+          <Photo
+            name="daheim-sammy"
+            widths={[400]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Sammy, schwarz-weißer Kater, auf einem Gartenstuhl"
+            class="snap__img"
+          />
+        </div>
+        <div class="snap__text">
+          <h2>Sammy</h2>
+          <div class="snap__report">
+            <p>
+              Seit Kurzem lassen wir ihn auch in den Garten. Wie erwartet zieht
+              es ihn nach draußen, aber er geht nicht so weit weg. Gott sei
+              Dank. Sonst ist er sehr lieb und verschmust, lebhaft halt nach wie
+              vor, aber wir haben unseren Spaß mit ihm.
+            </p>
+          </div>
+          <p class="from">Nach einem Bericht von Familie Pöndl</p>
+        </div>
+      </li>
+      <li class="snap" id="pinkus">
+        <div class="snap__photos">
+          <Photo
+            name="daheim-pinkus"
+            widths={[380]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Pinkus, getigerter Kater, auf einem Stuhl mit rotem Kissen"
+            class="snap__img"
+          />
+        </div>
+        <div class="snap__text">
+          <h2>Pinkus</h2>
+          <p>
+            Pinkus hat eine lange Reise hinter sich. Seine Besitzerin musste ihn
+            wegen eines langen Krankenhausaufenthalts abgeben, und ein
+            Vereinsmitglied hat ihn aus Mecklenburg-Vorpommern zu seiner neuen
+            Familie in Baden-Württemberg gebracht. Dort hat er auch einen
+            Spielkameraden gefunden.
+          </p>
+        </div>
+      </li>
+      <li class="snap" id="geschwister">
+        <div class="snap__photos snap__photos--3">
+          <Photo
+            name="daheim-geschwister-1"
+            widths={[151]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Rotes Kätzchen in einem Korb"
+            class="snap__img"
+          />
+          <Photo
+            name="daheim-geschwister-2"
+            widths={[227]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Weiß-rotes Kätzchen auf einer Decke"
+            class="snap__img"
+          />
+          <Photo
+            name="daheim-geschwister-3"
+            widths={[259]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Zwei Kätzchen nebeneinander"
+            class="snap__img"
+          />
+        </div>
+        <div class="snap__text">
+          <h2>Sechs Geschwister</h2>
+          <div class="snap__report">
+            <p>
+              Wir, insgesamt sechs kleine Geschwister, sind dank einer
+              Tierschützerin der ungewissen Zukunft auf einem Bauernhof
+              entronnen und kamen im Oktober 2014 zu unserer Pflegemutter. Sie
+              ging mit uns zur Frau Doktor und päppelte uns auf, bis wir richtig
+              gesund waren. Nun haben wir liebevolle Dienstleister gefunden.
+            </p>
+          </div>
+          <p class="from">erzählt von den Kätzchen selbst</p>
+        </div>
+      </li>
+      <li class="snap" id="peggy">
+        <div class="snap__photos">
+          <Photo
+            name="daheim-peggy"
+            widths={[380]}
+            sizes="(max-width: 47.99rem) 90vw, 22rem"
+            alt="Peggy liegt unter der Hängematte eines Kratzbaums"
+            class="snap__img"
+          />
+        </div>
+        <div class="snap__text">
+          <h2>Peggy</h2>
+          <p>
+            Peggy war anfangs sehr scheu und hat sich nur verkrochen. Mit der
+            Zeit kam sie immer öfter zum Kuscheln heraus, und inzwischen fühlt
+            sie sich in ihrem neuen Zuhause richtig wohl.
+          </p>
+        </div>
+      </li>
+    </ul>
+    <section class="more-photos" aria-labelledby="t-more">
+      <h2 id="t-more" class="h-small">
+        Weitere Fotos
+      </h2>
+      <div class="more-photos__row">
+        <Photo
+          name="daheim-gruppe-1"
+          widths={[448]}
+          sizes="(max-width: 47.99rem) 90vw, 20rem"
+          alt="Zwei schwarze Kätzchen, dazu ein Gruß ihrer neuen Familie"
+          class="more-photos__img"
+        />
+        <Photo
+          name="daheim-gruppe-2"
+          widths={[448]}
+          sizes="(max-width: 47.99rem) 90vw, 20rem"
+          alt="Ein Kätzchen mit Siam-Zeichnung und ein getigertes Kätzchen"
+          class="more-photos__img"
+        />
+        <Photo
+          name="daheim-zuhause"
+          widths={[448]}
+          sizes="(max-width: 47.99rem) 90vw, 20rem"
+          alt="Zwei Kätzchen schmiegen sich aneinander"
+          class="more-photos__img"
+        />
+      </div>
+    </section>
+  </div>
+  <section class="section section--tint section--slim" aria-labelledby="t-cta">
+    <div class="wrap cta-row">
+      <div>
+        <h2 id="t-cta" class="h-small">
+          Ihre Katze kommt von uns?
+        </h2>
         <p>
-          Wir, insgesamt sechs kleine Geschwister, sind dank einer
-          Tiersch&uuml;tzerin der ungewissen Zukunft auf einem Bauernhof
-          entronnen und kamen im Oktober 2014 zu unserer Pflegemutter. Sie
-          lie&szlig; uns eine geh&ouml;rige Portion Pflege zu Teil werden, ging
-          mit uns zur Frau Doktor und p&auml;ppelte uns auf bis wir richtig
-          gesund waren. So ganz allm&auml;hlich f&uuml;hlten wir uns tierisch
-          wohl und haben nun liebevolle Dienstleister gefunden.
-        </p>
-        <p>
-          <picture>
-            <Img
-              alt="Bild aus dem Vereinsarchiv"
-              loading="lazy"
-              src="/assets/media/resources/endlich-daheim-katzengruppe-1.jpg"
-            />
-          </picture>
-        </p>
-        <p>
-          <picture>
-            <Img
-              alt="Bild aus dem Vereinsarchiv"
-              loading="lazy"
-              src="/assets/media/resources/endlich-daheim-katzengruppe-2.jpg"
-            />
-          </picture>
-        </p>
-        <p>
-          <picture>
-            <Img
-              alt="Bild aus dem Vereinsarchiv"
-              loading="lazy"
-              src="/assets/media/resources/mitgliedschaft-katze-zuhause.jpg"
-            />
-          </picture>
+          Schicken Sie uns gern ein Foto und ein paar Zeilen an{' '}
+          <a href={contact.mailHref}>{contact.mail}</a>.
         </p>
       </div>
-    </article>
-  </main>
-</KatzenfreundeLayout>
+      <a class="btn btn--go" href={routes.vermittlung}>
+        <span>Katzen, die noch ein Zuhause suchen</span>
+        <Icon name="arrow-right" />
+      </a>
+    </div>
+  </section>
+</Site>

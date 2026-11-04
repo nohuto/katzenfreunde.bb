@@ -1,0 +1,114 @@
+.addr {
+  font-style: normal;
+  line-height: 1.6;
+  margin-block: 0.75rem 0.25rem;
+}
+.reach {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: var(--space-m) var(--space-l);
+  align-items: end;
+  margin-top: var(--space-l);
+}
+.reach__label {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.reach__more {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.5rem 2rem;
+}
+.reach__val {
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+.badges {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+  gap: 1.25rem;
+  margin-top: var(--space-m);
+}
+.badge {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem 1.5rem 1.25rem;
+  background: var(--surface);
+  border-radius: var(--radius-l);
+  box-shadow: var(--panel-shadow);
+  padding-top: 2.6rem;
+  text-align: center;
+}
+.badge__name {
+  font-size: 1.3rem;
+}
+.badge__role {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  margin-top: 0.2rem;
+}
+.badge__ways {
+  display: grid;
+  gap: 0.05rem;
+  margin-top: 0.75rem;
+  justify-items: center;
+}
+.badge__ways > * {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 40px;
+  color: var(--ink);
+}
+.badge__ways svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--brand);
+  flex: none;
+}
+.badge::before {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  translate: -50% 0;
+  width: 2.75rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: var(--paper);
+  box-shadow: inset 0 1px 2px light-dark(rgb(28 37 25 / 0.25), rgb(0 0 0 / 0.6));
+}
+@media (max-width: 63.99rem) {
+  .reach {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 47.99rem) {
+  .reach__more {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (pointer: coarse) {
+  .reach__val {
+    position: relative;
+  }
+  .reach__val::before {
+    content: '';
+    position: absolute;
+    inset: -12px 0;
+  }
+}
+@media (pointer: coarse) {
+  .badge__ways > a {
+    position: relative;
+  }
+  .badge__ways > a::before {
+    content: '';
+    position: absolute;
+    inset: -2px 0;
+  }
+}

@@ -1,126 +1,119 @@
 ---
-import Img from '../../components/ui/Img.astro';
-import PdfCard from '../../components/ui/PdfCard.astro';
-import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
+import Site from '../../layouts/Site.astro';
+import Photo from '../../components/site/Photo.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { contact, membershipRates } from '../../data/site';
 ---
 
-<KatzenfreundeLayout
-  title="Mitgliedschaft - Katzenfreunde BiBi"
-  description="Unterstützen Sie den Verein dauerhaft als Mitglied."
-  page="mitglied-werden"
-  canonical="/pages/mitglied-werden.html"
+<Site
+  title="Mitglied werden"
+  description="Mitglied bei den Katzenfreunden Bietigheim-Bissingen werden: Formulare, Ablauf und Beitrag."
+  page="mitglied"
+  path="/pages/mitglied-werden.html"
 >
-  <main>
-    <section class="hero">
-      <div class="hero__card hero__card--title-only">
-        <div>
-          <h1>Mitgliedschaft</h1>
-        </div>
-      </div>
-    </section>
-    <div class="page-shell">
-      <article class="rich-content prose page-content">
-        <section class="membership-header">
-          <p>
-            Mit Ihrer Mitgliedschaft unterst&uuml;tzen Sie den Verein dauerhaft
-            und verl&auml;sslich.
-          </p>
-        </section>
-        <div class="membership-content">
-          <p>
-            Irgendwann fragt sich jeder einmal:{' '}
-            <em>"Soll ich Mitglied im Verein werden"</em> Meist ist der
-            Entschluss schnell gefasst, wenn es sich um einen Verein handelt,
-            der Freizeitaktivit&auml;ten oder kulturelle Angebote im Programm
-            hat.
-          </p>
-          <figure class="membership-media membership-media--right">
-            <picture>
-              <Img
-                alt="Bild aus dem Vereinsarchiv"
-                fetchpriority="high"
-                loading="eager"
-                src="/assets/media/resources/mitgliedschaft-katze-zuhause.jpg"
-              />
-            </picture>
-          </figure>
-          <p>
-            Aber warum sollte man gerade in einem gemeinn&uuml;tzigen
-            Tierschutzverein Mitglied sein Da f&auml;llt die Entscheidung oft
-            schwerer. Manche Menschen wollen helfen, k&ouml;nnen das Tierleid
-            aber emotional kaum ertragen. Andere m&ouml;chten sich nicht binden,
-            obwohl sie den Tierschutz grunds&auml;tzlich Unterst&uuml;tzen.
-          </p>
-          <p>
-            Arthur Schopenhauer brachte es auf den Punkt: "Der Beweggrund des
-            ethischen Handelns ist das Mitleid mit den Mitgesch&ouml;pfen." Wenn
-            Hilfe gr&ouml;&szlig;er organisiert werden soll, gelingt das am
-            besten im Verein. Ein Verein braucht m&ouml;glichst viele
-            gleichgesinnte Mitglieder, um Aufgaben langfristig erf&uuml;llen zu
-            k&ouml;nnen und in der &Ouml;ffentlichkeit geh&ouml;rt zu werden.
-          </p>
-          <figure class="membership-media membership-media--left">
-            <picture>
-              <Img
-                alt="Miri wartet nahe ihrer Futterstelle"
-                loading="lazy"
-                src="/assets/media/resources/futterstelle-miri.jpg"
-              />
-            </picture>
-            <figcaption>
-              Miri, 6-j&auml;hrige Streunerk&auml;tzin, wartet nahe ihrer
-              Futterstelle.
-            </figcaption>
-          </figure>
-          <p>
-            Unsere Aufmunterung gilt allen, die bereits Mitglied sind und unsere
-            Arbeit weiterempfehlen. Jede Unterst&uuml;tzung hilft, neue
-            Mitglieder zu gewinnen und die Versorgung unserer Katzen zu sichern.
-          </p>
-          <p>
-            Aktive Mitarbeit ist sch&ouml;n, aber keine Bedingung. Ein gutes
-            Herz f&uuml;r Tiere reicht, um Teil unseres Vereins zu werden.
-            Treten Sie mit uns in Kontakt, wenn Sie Fragen haben.
-          </p>
-          <p>
-            Entscheiden Sie in Ruhe, ob Sie Mitglied werden m&ouml;chten. Wir
-            w&uuml;rden uns freuen, Sie in unserem Verein willkommen zu
-            hei&szlig;en. Die Tiere brauchen Sie.
-          </p>
-          <p class="membership-tax-note">
-            <strong>
-              Hinweis: Auch Mitgliedsbeitr&auml;ge sind steuerlich absetzbar.
-            </strong>
-          </p>
-          <section
-            aria-label="Dokumente zur Mitgliedschaft"
-            class="membership-docs section-divider"
-          >
-            <div class="pdf-inline-grid">
-              <PdfCard
-                href="/assets/media/data/Aufnahmeantrag.pdf"
-                label="Aufnahmeantrag.pdf"
-                sizes="(max-width: 545px) 100vw, 480px"
-                title="Aufnahmeantrag"
-              />
-              <PdfCard
-                href="/assets/media/data/Hoenig/SEPA.pdf"
-                label="SEPA.pdf"
-                sizes="(max-width: 545px) 100vw, 480px"
-                title="SEPA / Erläuterungen zu SEPA-Bezahlvorgängen"
-              />
-            </div>
+  <div class="page-head wrap">
+    <h1>Mitglied werden</h1>
+    <p class="lead lead--wide">
+      Mit einer Mitgliedschaft unterstützen Sie den Verein dauerhaft.
+    </p>
+  </div>
+  <section class="section section--tint" aria-labelledby="t-so">
+    <div class="wrap split">
+      <div>
+        <h2 id="t-so">So werden Sie Mitglied</h2>
+        <ol class="steps">
+          <li>
+            <h3>Antrag herunterladen</h3>
             <p>
-              <em>
-                Bitte laden Sie die Formulare herunter, f&uuml;llen Sie sie
-                vollst&auml;ndig aus und senden Sie sie an die angegebene
-                Adresse. Nach Vorstandsbeschluss erhalten Sie die
-                Best&auml;tigung Ihrer Mitgliedschaft.
-              </em>
+              Den Aufnahmeantrag finden Sie hier auf der Seite. Für die
+              Lastschrift enthält er bereits das SEPA-Lastschriftmandat.
             </p>
-          </section>
-        </div>
-      </article>
+          </li>
+          <li>
+            <h3>Ausfüllen und abschicken</h3>
+            <p>
+              Schicken Sie den Antrag ausgefüllt an Katzenfreunde
+              Bietigheim-Bissingen e.&nbsp;V., {contact.street}, {contact.city}.
+            </p>
+          </li>
+          <li>
+            <h3>Bestätigung erhalten</h3>
+            <p>
+              Nach dem Beschluss des Vorstands bestätigen wir Ihnen die
+              Mitgliedschaft.
+            </p>
+          </li>
+        </ol>
+      </div>
+      <div>
+        <ul class="docs">
+          <li>
+            <a href="/assets/media/data/Aufnahmeantrag.pdf">
+              <Icon name="file-pdf" />
+              <span>
+                <b>Aufnahmeantrag</b>
+                <small>PDF, 91&nbsp;kB - für neue Mitglieder</small>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="/assets/media/data/Hoenig/SEPA.pdf">
+              <Icon name="file-pdf" />
+              <span>
+                <b>Informationen zur SEPA-Umstellung</b>
+                <small>PDF, 61&nbsp;kB</small>
+              </span>
+            </a>
+          </li>
+        </ul>
+        <h3 class="h-small member__fee">Beitrag</h3>
+        <p>
+          {membershipRates} Mitgliedsbeiträge und Spenden sind steuerlich
+          absetzbar.
+        </p>
+      </div>
     </div>
-  </main>
-</KatzenfreundeLayout>
+  </section>
+  <section class="section" aria-labelledby="t-warum">
+    <div class="wrap split">
+      <div class="prose">
+        <h2 id="t-warum">Warum Mitglied in einem Tierschutzverein?</h2>
+        <p>
+          Sie können den Tierschutz auch ohne aktive Mitarbeit unterstützen.
+          Aktive Mitarbeit ist willkommen, aber keine Voraussetzung für die
+          Mitgliedschaft.
+        </p>
+        <blockquote class="pull">
+          <p>
+            „Grenzenloses Mitleid mit allen lebenden Wesen ist der festeste und
+            sicherste Bürge für das sittliche Wohlverhalten.“
+          </p>
+          <footer>Arthur Schopenhauer</footer>
+        </blockquote>
+        <p>
+          Im Verein lässt sich Hilfe gemeinsam organisieren. Ein Verein braucht
+          viele Mitglieder, damit er seine Aufgaben langfristig erfüllen kann
+          und in der Öffentlichkeit gehört wird.
+        </p>
+        <p>
+          Haben Sie Fragen? Dann rufen Sie uns an:{' '}
+          <a class="num" href={contact.tel}>
+            {contact.phone}
+          </a>
+        </p>
+      </div>
+      <figure class="captioned">
+        <Photo
+          name="futterstelle"
+          widths={[600]}
+          sizes="(max-width: 47.99rem) 100vw, 30rem"
+          alt="Miri, eine getigerte Streunerkätzin, im Gestrüpp"
+          tag="div"
+        />
+        <figcaption>
+          Miri, eine Streunerkätzin, wartet nahe ihrer Futterstelle.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+</Site>

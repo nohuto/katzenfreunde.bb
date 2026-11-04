@@ -1,174 +1,138 @@
 ---
-import CopyList from '../../components/ui/CopyList.astro';
-import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
-
-const quick = [
-  {
-    label: 'Telefon',
-    value: '07042 34355',
-    copy: '0704234355',
-    href: 'tel:+49704234355',
-    mono: true,
-  },
-  {
-    label: 'Zentrale E-Mail',
-    value: 'info@katzenfreunde-bietigheim-bissingen.de',
-    href: 'mailto:info@katzenfreunde-bietigheim-bissingen.de',
-  },
-  {
-    label: 'WhatsApp',
-    value: '01577 2702827',
-    copy: '015772702827',
-    href: 'https://wa.me/4915772702827',
-    external: true,
-    mono: true,
-  },
-  { label: 'Adresse', value: 'Im Vogelsang 11, 74372 Sersheim' },
-];
-
-interface Way {
-  icon: 'mail' | 'phone' | 'printer';
-  label: string;
-  value: string;
-  copy: string;
-  href?: string;
-}
-
-const info: Way = {
-  icon: 'mail',
-  label: 'E-Mail',
-  value: 'info@katzenfreunde-bietigheim-bissingen.de',
-  copy: 'info@katzenfreunde-bietigheim-bissingen.de',
-  href: 'mailto:info@katzenfreunde-bietigheim-bissingen.de',
-};
-
-const people: { name: string; roles: string[]; ways: Way[] }[] = [
-  {
-    name: 'Jutta Framenau',
-    roles: ['Vorsitzende'],
-    ways: [
-      info,
-      {
-        icon: 'phone',
-        label: 'Telefon',
-        value: '07042 34355',
-        copy: '0704234355',
-        href: 'tel:+49704234355',
-      },
-      {
-        icon: 'printer',
-        label: 'Fax',
-        value: '07042 816627',
-        copy: '07042816627',
-      },
-    ],
-  },
-  {
-    name: 'Iris Alberti',
-    roles: ['Stellvertretende', 'Katzenvermittlung'],
-    ways: [
-      {
-        icon: 'phone',
-        label: 'Telefon',
-        value: '01763 1325306',
-        copy: '017631325306',
-        href: 'tel:+4917631325306',
-      },
-    ],
-  },
-  { name: 'Marlis Kälber', roles: ['Finanzen'], ways: [info] },
-  {
-    name: 'Anni Kallert',
-    roles: ['Schriftführerin', 'Soziale Medien'],
-    ways: [info],
-  },
-  {
-    name: 'N. B.',
-    roles: ['Webmaster'],
-    ways: [
-      {
-        icon: 'mail',
-        label: 'E-Mail',
-        value: 'katzenfreunde@noverse.dev',
-        copy: 'katzenfreunde@noverse.dev',
-        href: 'mailto:katzenfreunde@noverse.dev',
-      },
-    ],
-  },
-];
-
-const initials = (name: string) =>
-  name
-    .split(' ')
-    .map((part) => part[0])
-    .join('');
+import Site from '../../layouts/Site.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { contact, routes } from '../../data/site';
 ---
 
-<KatzenfreundeLayout
-  title="Kontakt - Katzenfreunde BiBi"
-  description="Persönliche Ansprechpartner:innen und schnelle Kontaktwege."
+<Site
+  title="Kontakt"
+  description="Telefon, WhatsApp, E-Mail und Ansprechpartner der Katzenfreunde Bietigheim-Bissingen."
   page="kontakt"
-  canonical="/pages/kontakt.html"
+  path="/pages/kontakt.html"
 >
-  <main>
-    <section class="hero">
-      <div class="hero__card hero__card--title-only">
+  <div class="page-head wrap">
+    <h1>Kontakt</h1>
+    <p class="lead">Sie erreichen uns per Telefon, WhatsApp oder E-Mail.</p>
+    <div class="reach">
+      <div>
+        <p class="reach__label">Telefon</p>
+        <a class="tel tel--hero" href={contact.tel}>
+          <Icon name="phone" />
+          <span class="num">{contact.phone}</span>
+        </a>
+      </div>
+      <div class="reach__more">
         <div>
-          <h1>Kontakt</h1>
+          <p class="reach__label">WhatsApp</p>
+          <a class="num reach__val" href={contact.whatsappHref}>
+            {contact.whatsapp}
+          </a>
+        </div>
+        <div>
+          <p class="reach__label">E-Mail</p>
+          <a class="mail reach__val" href={contact.mailHref}>
+            {contact.mail}
+          </a>
         </div>
       </div>
-    </section>
-    <div class="page-shell">
-      <article class="rich-content prose page-content">
-        <section>
-          <p>
-            Hier finden Sie alle direkten Kontaktwege und Ansprechpartner:innen.
-            Bitte geben Sie bei E-Mail-Anfragen nach M&ouml;glichkeit eine
-            Telefonnummer an, damit wir Sie bei R&uuml;ckfragen schnell
-            erreichen k&ouml;nnen.
-          </p>
-          <CopyList
-            groups={[{ title: 'Schnellkontakt', icon: 'phone', items: quick }]}
-            split
-          />
-        </section>
-        <section aria-labelledby="ansprechpartner" class="section-divider">
-          <h2 id="ansprechpartner">Ansprechpartner:innen</h2>
-          <div class="person-grid">
-            {people.map((person) => (
-              <article class="person-card">
-                <div class="person-card__top">
-                  <span aria-hidden="true" class="person-card__initials">
-                    {initials(person.name)}
-                  </span>
-                  <div>
-                    <p class="person-card__name">{person.name}</p>
-                    <p class="person-card__roles">{person.roles.join(' · ')}</p>
-                  </div>
-                </div>
-                <ul class="person-card__ways">
-                  {person.ways.map((way) => (
-                    <li>
-                      <span class="person-card__icon" data-icon={way.icon} />
-                      {way.href ? (
-                        <a href={way.href}>{way.value}</a>
-                      ) : (
-                        <span>{way.value}</span>
-                      )}
-                      <button
-                        aria-label={`${way.label} kopieren`}
-                        class="copy-button"
-                        data-copy-text={way.copy}
-                        type="button"
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-      </article>
     </div>
-  </main>
-</KatzenfreundeLayout>
+  </div>
+  <section class="section section--tint" aria-labelledby="t-people">
+    <div class="wrap">
+      <h2 id="t-people">Ansprechpartnerinnen und Ansprechpartner</h2>
+      <ul class="badges">
+        <li class="badge">
+          <h3 class="badge__name">Jutta Framenau</h3>
+          <p class="badge__role">Vorsitzende</p>
+          <div class="badge__ways">
+            <a class="num" href={contact.tel}>
+              <Icon name="phone" />
+              {contact.phone}
+            </a>
+            <a class="mail" href={contact.mailHref}>
+              <Icon name="envelope-simple" />
+              <span class="mail__addr">{contact.mail}</span>
+            </a>
+            <span class="num">
+              <Icon name="printer" />
+              Fax {contact.fax}
+            </span>
+          </div>
+        </li>
+        <li class="badge">
+          <h3 class="badge__name">Iris Alberti</h3>
+          <p class="badge__role">
+            Stellvertretende Vorsitzende, Katzenvermittlung
+          </p>
+          <div class="badge__ways">
+            <a class="num" href="tel:+4917631325306">
+              <Icon name="phone" />
+              01763 1325306
+            </a>
+          </div>
+        </li>
+        <li class="badge">
+          <h3 class="badge__name">Marlis Kälber</h3>
+          <p class="badge__role">Finanzen</p>
+          <div class="badge__ways">
+            <a class="mail" href={contact.mailHref}>
+              <Icon name="envelope-simple" />
+              <span class="mail__addr">{contact.mail}</span>
+            </a>
+          </div>
+        </li>
+        <li class="badge">
+          <h3 class="badge__name">Anni Kallert</h3>
+          <p class="badge__role">Schriftführerin, soziale Medien</p>
+          <div class="badge__ways">
+            <a class="mail" href={contact.mailHref}>
+              <Icon name="envelope-simple" />
+              <span class="mail__addr">{contact.mail}</span>
+            </a>
+          </div>
+        </li>
+        <li class="badge">
+          <h3 class="badge__name">N.&nbsp;B.</h3>
+          <p class="badge__role">Internetauftritt</p>
+          <div class="badge__ways">
+            <a class="mail" href="mailto:katzenfreunde@noverse.dev">
+              <Icon name="envelope-simple" />
+              <span class="mail__addr">katzenfreunde@noverse.dev</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="t-post">
+    <div class="wrap duo">
+      <div>
+        <h2 id="t-post" class="h-small">
+          Geschäftsstelle
+        </h2>
+        <address class="addr">
+          Katzenfreunde Bietigheim-Bissingen e.&nbsp;V.
+          <br />
+          {contact.street}
+          <br />
+          {contact.city}
+        </address>
+        <a class="go" href={contact.map}>
+          <span>Auf der Karte zeigen</span>
+          <Icon name="arrow-right" />
+        </a>
+      </div>
+      <div>
+        <h2 class="h-small">Sie möchten uns besuchen?</h2>
+        <p>
+          Unsere Katzen leben in Pflegestellen. Wenn Sie eine Katze kennenlernen
+          möchten, vereinbaren Sie bitte einen Termin mit Iris Alberti.
+        </p>
+        <a class="go" href={routes.vermittlung}>
+          <span>Katzen, die ein Zuhause suchen</span>
+          <Icon name="arrow-right" />
+        </a>
+      </div>
+    </div>
+  </section>
+</Site>

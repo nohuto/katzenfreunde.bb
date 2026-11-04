@@ -1,294 +1,361 @@
 ---
-import CopyList from '../../components/ui/CopyList.astro';
-import Img from '../../components/ui/Img.astro';
-import PdfCard from '../../components/ui/PdfCard.astro';
-import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
-
-const owner = 'Katzenfreunde Bietigheim-Bissingen e. V.';
-const bank = [
-  {
-    label: 'Empfänger',
-    value: owner.replace('e. V.', 'e.\u00a0V.'),
-    copy: owner,
-  },
-  {
-    label: 'IBAN',
-    value: 'DE89 6045 0050 0007 8841 57',
-    copy: 'DE89604500500007884157',
-    mono: true,
-  },
-  { label: 'BIC', value: 'SOLADES1LBG', mono: true },
-  { label: 'Bank', value: 'Kreissparkasse Ludwigsburg' },
-];
-const address = [
-  {
-    label: 'Empfänger',
-    value: owner.replace('e. V.', 'e.\u00a0V.'),
-    copy: owner,
-  },
-  { label: 'Geschäftsstelle', value: 'z. H. Jutta Framenau' },
-  { label: 'Straße', value: 'Im Vogelsang 11' },
-  { label: 'PLZ / Ort', value: '74372 Sersheim' },
-];
-const lines = (items: { label: string; value: string }[]) =>
-  items.map((item) => `${item.label}: ${item.value}`).join('\n');
+import Site from '../../layouts/Site.astro';
+import Photo from '../../components/site/Photo.astro';
+import Icon from '../../components/ui/Icon.astro';
+import girocode from '../../assets/girocode-frei.svg';
+import {
+  bank,
+  contact,
+  external,
+  ibanGroups,
+  membershipRates,
+  routes,
+} from '../../data/site';
 ---
 
-<KatzenfreundeLayout
-  title="Spenden - Katzenfreunde BiBi"
-  description="Ihre Spende hilft direkt Katzen in Not."
-  page="spenden"
-  canonical="/pages/spenden.html"
+<Site
+  title="Helfen"
+  description="Spenden, Mitgliedschaft, Pflegestelle oder Sachspenden: So unterstützen Sie die Katzenfreunde Bietigheim-Bissingen."
+  page="helfen"
+  path="/pages/spenden.html"
 >
-  <main class="page-shell">
-    <article class="rich-content prose page-content">
-      <section class="donation-highlight">
+  <div class="page-head wrap help">
+    <div>
+      <h1>So können Sie helfen</h1>
+      <p class="lead">
+        Wir erhalten keine Zuschüsse aus öffentlicher Hand. Deshalb sind wir auf
+        Spenden, Mitgliedsbeiträge und die Erlöse unseres Flohmarkts angewiesen.
+      </p>
+    </div>
+    <ul class="ways">
+      <li>
+        <a href="#spenden">
+          <Icon name="hand-coins" />
+          <span>
+            <b>Geld spenden</b> per Überweisung, GiroCode oder PayPal
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#mitglied">
+          <Icon name="users-three" />
+          <span>
+            <b>Mitglied werden</b> und den Verein mit einem Jahresbeitrag
+            unterstützen
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#pflege">
+          <Icon name="house-line" />
+          <span>
+            <b>Pflegestelle werden</b> und eine Katze auf Zeit aufnehmen
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#sachspenden">
+          <Icon name="package" />
+          <span>
+            <b>Sachspenden für den Flohmarkt</b> für unseren Flohmarktstand
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <section
+    class="section section--tint"
+    id="spenden"
+    aria-labelledby="t-spenden"
+  >
+    <div class="wrap">
+      <h2 id="t-spenden">Geld spenden</h2>
+      <div class="give" data-give>
+        <section class="slip" aria-label="Überweisung">
+          <p class="slip__head">
+            <Icon name="bank" />
+            Überweisung
+          </p>
+          <div class="slip__grid">
+            <dl class="slip__fields">
+              <div class="slip__f slip__f--wide">
+                <dt>Empfänger</dt>
+                <dd>
+                  {bank.name.replace(' V.', '\u00A0V.')}
+                  <button
+                    class="util util--sm copy"
+                    type="button"
+                    data-copy={bank.name}
+                    data-what="Empfänger"
+                  >
+                    <Icon name="copy" class="i copy__copy" />
+                    <Icon name="check" class="i copy__done" />
+                    <span class="sr-only" data-copy-label>
+                      Empfänger kopieren
+                    </span>
+                  </button>
+                </dd>
+              </div>
+              <div class="slip__f slip__f--wide">
+                <dt>IBAN</dt>
+                <dd>
+                  <span class="slip__iban num">{ibanGroups(bank.iban)}</span>
+                  <button
+                    class="util util--sm copy"
+                    type="button"
+                    data-copy={bank.iban}
+                    data-what="IBAN"
+                  >
+                    <Icon name="copy" class="i copy__copy" />
+                    <Icon name="check" class="i copy__done" />
+                    <span class="sr-only" data-copy-label>
+                      IBAN kopieren
+                    </span>
+                  </button>
+                </dd>
+              </div>
+              <div class="slip__f">
+                <dt>BIC</dt>
+                <dd class="num">
+                  {bank.bic}
+                  <button
+                    class="util util--sm copy"
+                    type="button"
+                    data-copy={bank.bic}
+                    data-what="BIC"
+                  >
+                    <Icon name="copy" class="i copy__copy" />
+                    <Icon name="check" class="i copy__done" />
+                    <span class="sr-only" data-copy-label>
+                      BIC kopieren
+                    </span>
+                  </button>
+                </dd>
+              </div>
+              <div class="slip__f slip__f--amount">
+                <dt>
+                  <label for="betrag-eingabe">Betrag</label>
+                  <button
+                    class="tip__btn"
+                    type="button"
+                    popovertarget="betrag-info"
+                    aria-label="Wofür wir Ihre Spende einsetzen"
+                  >
+                    <Icon name="info" />
+                  </button>
+                </dt>
+                <dd>
+                  <span class="slip__amount">
+                    <input
+                      id="betrag-eingabe"
+                      class="num"
+                      type="text"
+                      inputmode="decimal"
+                      autocomplete="off"
+                      placeholder="Betrag eingeben"
+                      aria-describedby="betrag-hinweis"
+                    />
+                    <span aria-hidden="true">€</span>
+                  </span>
+                  <p
+                    class="slip__error"
+                    id="betrag-fehler"
+                    data-amount-error
+                    hidden
+                  >
+                    <Icon name="warning-circle" />
+                    Bitte geben Sie einen Betrag in Euro ein, zum Beispiel 25.
+                  </p>
+                </dd>
+              </div>
+              <div class="slip__f slip__f--wide">
+                <dt>Verwendungszweck</dt>
+                <dd class="slip__purpose">Spende und Ihre Anschrift</dd>
+              </div>
+            </dl>
+            <div class="qr">
+              <div class="qr__code" data-qr>
+                <img
+                  src={girocode.src}
+                  width="140"
+                  height="140"
+                  alt="GiroCode mit der Bankverbindung, ohne Betrag"
+                />
+              </div>
+              <p id="betrag-hinweis">
+                Scannen Sie den Code mit Ihrer Banking-App. Ein eingetragener
+                Betrag ist darin schon enthalten. Ihre Anschrift ergänzen Sie
+                bitte im Verwendungszweck.
+              </p>
+            </div>
+          </div>
+        </section>
+        <div id="betrag-info" class="tip glass" popover>
+          <p class="tip__t">Wofür wir Ihre Spende einsetzen</p>
+          <dl>
+            <div data-tier="12">
+              <dt class="num">ab 12&nbsp;€</dt>
+              <dd>
+                Untersuchung und Impfungen gegen Katzenschnupfen und
+                Katzenseuche
+              </dd>
+            </div>
+            <div data-tier="20">
+              <dt class="num">ab 20&nbsp;€</dt>
+              <dd>Narkose und Schmerzmittel</dd>
+            </div>
+            <div data-tier="50">
+              <dt class="num">ab 50&nbsp;€</dt>
+              <dd>Kastration einer Kätzin</dd>
+            </div>
+            <div data-tier="120">
+              <dt class="num">ab 120&nbsp;€</dt>
+              <dd>Operative Eingriffe und Strahlenbehandlungen</dd>
+            </div>
+          </dl>
+          <p class="tip__note">
+            Die Beträge sind Beispiele aus unserer Arbeit.
+          </p>
+        </div>
+        <div class="give__alt">
+          <p>
+            Sie können auch <a href={external.paypal}>mit PayPal spenden</a>.
+            Für eine regelmäßige Unterstützung schicken Sie uns das{' '}
+            <a href="/assets/media/data/Spendenformular.pdf">
+              Formular für eine Dauerspende
+            </a>{' '}
+            (PDF, 89&nbsp;kB) ausgefüllt zurück.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" aria-label="Wohin Ihre Spende geht">
+    <div class="wrap">
+      <h2 id="t-wohin">Wohin Ihre Spende geht</h2>
+      <div class="figs">
         <div>
-          <h1>Spenden tut Not</h1>
+          <p class="figs__n num">100&nbsp;%</p>
+          <p>Ihrer Spende kommen den Katzen zugute.</p>
+        </div>
+        <div>
+          <p class="figs__n num">&gt;&nbsp;75&nbsp;%</p>
+          <p>unserer Ausgaben sind Tierarztkosten.</p>
+        </div>
+        <div>
+          <p class="figs__n num">3&nbsp;%</p>
           <p>
-            Jede Spende hilft, Tierelend zu lindern. Wir m&ouml;chten keine
-            Katze krank im Stich lassen. Durch Kastration von Streunerkatzen
-            wollen wir der Verwahrlosung vorbeugen.
+            fallen für Verwaltung und Öffentlichkeitsarbeit an. Diese Kosten
+            decken wir überwiegend aus den Erlösen unseres Flohmarkts.
           </p>
-          <div class="cta-group">
-            <a
-              class="btn btn--paypal"
-              data-icon="brand-paypal"
-              href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=KG7YM244JCF2Q"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Mit PayPal spenden
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section--quiet" aria-label="Weitere Möglichkeiten">
+    <div class="wrap duo">
+      <section id="mitglied" aria-labelledby="t-mitglied">
+        <h2 id="t-mitglied">Mitglied werden</h2>
+        <p>
+          Als Mitglied unterstützen Sie die Arbeit des Vereins dauerhaft. Sie
+          müssen dafür nicht aktiv mitarbeiten.
+        </p>
+        <p>
+          Laden Sie den Aufnahmeantrag herunter und schicken Sie ihn ausgefüllt
+          an unsere Geschäftsstelle. Für die Lastschrift enthält er bereits das
+          SEPA-Lastschriftmandat. Nach dem Beschluss des Vorstands erhalten Sie
+          eine Bestätigung.
+        </p>
+        <p>
+          {membershipRates} Mitgliedsbeiträge und Spenden sind steuerlich
+          absetzbar.
+        </p>
+        <ul class="docs">
+          <li>
+            <a href="/assets/media/data/Aufnahmeantrag.pdf">
+              <Icon name="file-pdf" />
+              <span>
+                <b>Aufnahmeantrag</b>
+                <small>PDF, 91&nbsp;kB</small>
+              </span>
             </a>
-            <button
-              class="btn btn--soft"
-              data-copy-email="info@katzenfreunde-bietigheim-bissingen.de"
-              type="button"
-            >
-              E-Mail kopieren
-            </button>
-          </div>
-          <p>
-            Wenn Sie dauerhaft spenden m&ouml;chten, laden Sie bitte das
-            Spendenformular herunter und senden es ausgef&uuml;llt an uns (siehe
-            Postanschrift):
-          </p>
-          <div class="pdf-inline-grid">
-            <PdfCard
-              href="/assets/media/data/Spendenformular.pdf"
-              label="Spendenformular.pdf"
-              loading="eager"
-              title="Spendenformular"
-            />
-          </div>
-        </div>
-        <CopyList
-          groups={[
-            {
-              title: 'Bankverbindung',
-              icon: 'bank',
-              items: bank,
-              copyAll: lines(bank),
-            },
-            {
-              title: 'Postanschrift',
-              icon: 'mail',
-              items: address,
-              copyAll: address.map((item) => item.value).join('\n'),
-            },
-          ]}
+          </li>
+          <li>
+            <a href="/assets/media/data/Hoenig/SEPA.pdf">
+              <Icon name="file-pdf" />
+              <span>
+                <b>Informationen zur SEPA-Umstellung</b>
+                <small>PDF, 61&nbsp;kB</small>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section id="pflege" aria-labelledby="t-pflege">
+        <h2 id="t-pflege">Pflegestelle werden</h2>
+        <p>
+          Katzen, die auf ein Zuhause warten, leben bei uns in Pflegestellen.
+          Der Verein stellt das Futter und übernimmt die Tierarztkosten. Sie
+          bieten der Katze Platz und schenken ihr Zeit und Zuwendung.
+        </p>
+        <Photo
+          name="plakat-pflegestellen"
+          widths={[480, 800]}
+          sizes="(max-width: 47.99rem) 60vw, 14rem"
+          alt="Plakat: Wir suchen dringend Pflegestellen für unsere Katzen"
+          class="duo__poster"
         />
+        <a class="go" href={`${routes.vermittlung}#pflegestelle`}>
+          <span>Voraussetzungen für eine Pflegestelle</span>
+          <Icon name="arrow-right" />
+        </a>
       </section>
-      <section class="schedule-section section-divider">
-        <h2>Warum diese Hilfe wichtig ist</h2>
-        <p>
-          Sie schlie&szlig;en die Augen und stellen sich vor: den traurigen
-          Blick eines Menschen und eines Tieres. Schwer dem Stand zu halten.
-          Schwer was zu erwidern.
-        </p>
-        <p>
-          Normalerweise verstecken wir uns gerne, wenn es uns beim Anblick
-          leidender Menschen oder im Elend lebender Tiere schlecht geht.
-          Tr&auml;nen soll keiner sehen. Gerade in unserer
-          Spa&szlig;gesellschaft, in der sehr viele Menschen das Leid durch
-          Wegschauen aus ihrem Leben verbannen m&ouml;chten.
-        </p>
-        <p>
-          Das Bild, das Sie vor Ihrem geistigen Auge sehen, zeigt etwas anderes:
-          Da steht ein trauerndes Wesen zu seinen Gef&uuml;hlen. Es schaut Sie
-          an. Und stellt eine Frage: <strong>Warum?</strong>
-        </p>
-        <p>
-          Es gibt im Leben so viele Situationen, in denen man dieser Frage nicht
-          mehr aus dem Weg gehen kann. Qualen, die keiner so richtig versteht.
-          Verlassenheit, die ein beh&uuml;tetes Leben durchkreuzt, scheinbar
-          ohne Sinn. Schmerzen, die zugef&uuml;gt werden, ohne ersichtlichen
-          Grund.
-        </p>
-        <p>
-          Schon die Frage nach dem <strong>&quot;Warum?&quot;</strong> ist wie
-          ein Protest gegen alles gef&uuml;hlte Unrecht. Und sie bringt uns in
-          Bewegung. Gerade heute in einer der Ichbezogenheit fr&ouml;nenden Zeit
-          bietet sich die Chance, zu fragen und wohl auch Antworten zu finden.
-        </p>
-        <p>
-          <picture>
-            <Img
-              alt="Bild aus dem Vereinsarchiv"
-              fetchpriority="high"
-              loading="eager"
-              src="/assets/media/resources/spenden-vereinsarchiv-katze.jpg"
-            />
-          </picture>
-        </p>
-        <p>
-          <strong>
-            F&uuml;ttern alleine gen&uuml;gt nicht; sehr oft ist auch
-            kostspielige medizinische Versorgung n&ouml;tig.
-          </strong>
-        </p>
-      </section>
-      <section class="schedule-section section-divider-none section-divider">
-        <h2>Wof&uuml;r wir finanzielle Unterst&uuml;tzung brauchen</h2>
-        <p>
-          Vielleicht ist es Ihnen ein besonderes Bed&uuml;rfnis, unseren Tieren
-          zu helfen. Auch hier gibt es viele gute Wege, Abhilfe oder Linderung
-          zu verschaffen. Ein Weg ist aktive Mitarbeit in unserem Verein, Ihre
-          Mitgliedschaft oder, wenn dies keine M&ouml;glichkeit f&uuml;r Sie
-          darstellt, Ihre Spende, der wir besonders bed&uuml;rfen, um die
-          Zukunft unserer streunenden oder sonst in Not geratenen Tiere zu
-          sichern. All das w&auml;re uns nat&uuml;rlich willkommen. Und Ihre
-          Spende macht unsere Arbeit erst m&ouml;glich. Helfen Sie damit den
-          Tieren. Es lohnt sich! Wir schaffen es nicht allein.
-        </p>
-        <p>
-          Wir brauchen finanzielle Unterst&uuml;tzung zum Wohl unserer
-          Sch&uuml;tzlinge:
-        </p>
-        <div class="donation-impact-grid">
-          <article class="donation-impact-card donation-impact-card--12">
-            <p class="donation-impact-card__amount">12 EURO</p>
-            <p class="donation-impact-card__text">
-              mindestens f&uuml;r Untersuchung sowie Impfungen gegen
-              Katzenschnupfen und Katzenseuche.
-            </p>
-          </article>
-          <article class="donation-impact-card donation-impact-card--20">
-            <p class="donation-impact-card__amount">20 EURO</p>
-            <p class="donation-impact-card__text">
-              mindestens f&uuml;r Narkose und Schmerzmittel.
-            </p>
-          </article>
-          <article class="donation-impact-card donation-impact-card--50">
-            <p class="donation-impact-card__amount">50 EURO</p>
-            <p class="donation-impact-card__text">
-              und mehr f&uuml;r die Kastration einer K&auml;tzin.
-            </p>
-          </article>
-          <article class="donation-impact-card donation-impact-card--120">
-            <p class="donation-impact-card__amount">120 EURO</p>
-            <p class="donation-impact-card__text">
-              mindestens f&uuml;r viele operative Eingriffe und
-              Strahlenbehandlungen.
-            </p>
-          </article>
+    </div>
+  </section>
+  <section
+    class="section section--quiet"
+    id="sachspenden"
+    aria-labelledby="t-sachen"
+  >
+    <div class="wrap">
+      <h2 id="t-sachen">Sachspenden für den Flohmarkt</h2>
+      <div class="duo">
+        <div>
+          <h3 class="h-small">Für den Flohmarkt</h3>
+          <p>
+            Gut erhaltene Gegenstände und Waren aus Nachlässen verkaufen wir an
+            unserem Flohmarktstand. Der Erlös fließt in die Versorgung der
+            Katzen. Bitte rufen Sie vorher Jutta oder Volkmar Framenau unter{' '}
+            <a class="num" href={contact.tel}>
+              {contact.phone}
+            </a>{' '}
+            an.
+          </p>
         </div>
-      </section>
-      <section class="schedule-section section-divider">
-        <h2>Ihre Spende kommt an</h2>
-        <p>
-          <strong>
-            Ihre Spende geht zu 100 Prozent direkt an unsere Katzen in Not:
-          </strong>
-        </p>
-        <p>
-          f&uuml;r ein liebevolles und gesch&uuml;tztes Zuhause, f&uuml;r ein
-          w&uuml;rdevolles &Uuml;berleben als Streunerkatze und f&uuml;r
-          medizinische Versorgung aller uns anvertrauten Tiere.
-        </p>
-        <p>
-          Sie k&ouml;nnen also wirklich sicher sein, dass Ihr Geld effektiv
-          hilft!
-        </p>
-        <p>
-          Die uns zuflie&szlig;enden Spenden und Mitgliedsbeitr&auml;ge reichen
-          aber l&auml;ngst nicht aus. So gehen Schutzgeb&uuml;hren aus
-          Katzenvermittlungen ebenfalls an unsere Tiere in Not.
-        </p>
-        <p>
-          Alle anderen Kosten wie z. B. Verwaltungskosten, Kosten der
-          &Ouml;ffentlichkeitsarbeit, Ausgaben f&uuml;r Veranstaltungen und
-          Ehrenamtspauschalen bestreiten wir haupts&auml;chlich aus Erl&ouml;sen
-          unserer Flohmarktaktivit&auml;ten.
-        </p>
-        <div class="content-grid">
-          <div class="content-grid__row">
-            <div class="content-grid__cell">
-              <p>
-                <picture>
-                  <Img
-                    alt="Bild aus dem Vereinsarchiv"
-                    loading="lazy"
-                    src="/assets/media/resources/katzenratgeber-seitenbild.jpg"
-                  />
-                </picture>
-              </p>
-            </div>
-            <div class="content-grid__cell">
-              <p>
-                <picture>
-                  <Img
-                    alt="Bild aus dem Vereinsarchiv"
-                    loading="lazy"
-                    src="/assets/media/resources/spenden-katzenhilfe-seitenbild.jpg"
-                  />
-                </picture>
-              </p>
-            </div>
-          </div>
+        <div>
+          <h3 class="h-small">Über den Futter-Shuttle</h3>
+          <p>
+            Wenn Sie Ihr Tierfutter über unseren Link beim Futter-Shuttle
+            bestellen, unterstützen Sie damit den Verein.
+          </p>
+          <a class="go" href={external.futterShuttle} referrerpolicy="origin">
+            <span>Zum Futter-Shuttle</span>
+            <Icon name="arrow-up-right" />
+          </a>
         </div>
-        <p>
-          Das Hauptaugenmerk legen wir dabei auf eine effiziente und sparsame
-          Verwaltung.{' '}
-          <strong>
-            &Ouml;ffentlichkeitsarbeit und Verwaltung machen insgesamt nur 3
-            Prozent unserer gesamten Jahresausgaben aus.
-          </strong>{' '}
-          Zum Vergleich: Das DZI - Spendensiegel zieht die H&ouml;chstgrenze
-          f&uuml;r eine wirtschaftliche und sparsame Mittelverwendung bei 30
-          Prozent der j&auml;hrlich get&auml;tigten Gesamtausgaben ein.
-        </p>
-        <p>
-          Gerade als kleine Organisation k&ouml;nnen und wollen wir nicht Kosten
-          f&uuml;r ein Spendensiegel tragen. Dort vorgegebene Kriterien wie
-          satzungsgem&auml;&szlig;e Mittelverwendung, die Beachtung der
-          Grunds&auml;tze der Wirtschaftlichkeit, Sparsamkeit und der
-          gr&ouml;&szlig;tm&ouml;glichen Wirksamkeit werden - wie Sie aus den
-          oben gemachten Angaben ersehen k&ouml;nnen - auch von uns eingehalten.
-        </p>
-      </section>
-      <section
-        aria-label="Wichtiger Hinweis f&uuml;r Spender:innen"
-        class="toc-card section-divider"
-      >
-        <h2>Wichtiger Hinweis</h2>
-        <p>
-          Leider k&ouml;nnen wir uns nicht immer bei allen Spender:innen
-          bedanken, wenn keine vollst&auml;ndige Anschrift vorliegt.
-        </p>
-        <p>
-          Falls sich Ihr Name oder Ihre Adresse ge&auml;ndert hat, teilen Sie
-          uns dies bitte mit.
-        </p>
-        <p>
-          <strong>
-            Bitte geben Sie bei &Uuml;berweisungen mindestens PLZ, Stra&szlig;e
-            und Hausnummer an, falls das Textfeld f&uuml;r die volle Anschrift
-            nicht ausreicht.
-          </strong>
-        </p>
-        <p>Vielen Dank.</p>
-      </section>
-    </article>
-  </main>
-</KatzenfreundeLayout>
+      </div>
+      <p class="asknote">
+        Fragen zu Spenden oder Beiträgen beantwortet Marlis Kälber, die sich um
+        die Finanzen des Vereins kümmert:{' '}
+        <a class="mail" href={contact.mailHref}>
+          {contact.mail}
+        </a>
+      </p>
+    </div>
+  </section>
+</Site>
+
+<script>
+  import { initGive } from '../../scripts/give';
+  initGive();
+</script>

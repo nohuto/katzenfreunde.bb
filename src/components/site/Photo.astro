@@ -1,0 +1,61 @@
+---
+import { getImage } from 'astro:assets';
+import { photo } from '../../data/photos';
+
+interface Props {
+  name: string;
+  widths: number[];
+  sizes?: string;
+  alt?: string;
+  class?: string;
+  eager?: boolean;
+  tag?: 'figure' | 'div';
+}
+
+const {
+  name,
+  widths,
+  sizes = '100vw',
+  alt = '',
+  class: className,
+  eager = false,
+  tag: Tag = 'figure',
+} = Astro.props;
+const src = photo(name);
+const top = Math.max(...widths);
+const height = Math.round((src.height / src.width) * top);
+const [avif, webp] = await Promise.all(
+  (['avif', 'webp'] as const).map((format) =>
+    getImage({
+      src,
+      widths,
+      sizes,
+      format,
+      quality: format === 'avif' ? 58 : 82,
+    }),
+  ),
+);
+const fallback = await getImage({
+  src,
+  width: top,
+  format: 'webp',
+  quality: 82,
+});
+---
+
+<Tag class:list={['photo', className]}>
+  <picture>
+    <source type="image/avif" srcset={avif!.srcSet.attribute} sizes={sizes} />
+    <img
+      src={fallback.src}
+      srcset={webp!.srcSet.attribute}
+      sizes={sizes}
+      width={top}
+      height={height}
+      alt={alt}
+      loading={eager ? undefined : 'lazy'}
+      fetchpriority={eager ? 'high' : undefined}
+      decoding="async"
+    />
+  </picture>
+</Tag>

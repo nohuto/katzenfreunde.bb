@@ -1,0 +1,33 @@
+.tips__img {
+  margin-block: 1.5rem;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-l);
+}
+.source {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.tips {
+  padding-bottom: var(--space-l);
+}
+.tips h2 {
+  margin-bottom: 0.75rem;
+}
+.tips > section {
+  max-width: 80ch;
+}
+.tips > section + section {
+  margin-top: var(--space-l);
+}
+.tips ul {
+  padding-left: 1.25rem;
+}
+.tips li + li {
+  margin-top: 0.5rem;
+}
+.tips .tips__img {
+  margin-block: 1.25rem;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}

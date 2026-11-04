@@ -1,297 +1,288 @@
 ---
-import Img from '../../components/ui/Img.astro';
-import PdfCard from '../../components/ui/PdfCard.astro';
-import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
+import Site from '../../layouts/Site.astro';
+import Photo from '../../components/site/Photo.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { external } from '../../data/site';
+import { events } from '../../data/events';
 ---
 
-<KatzenfreundeLayout
-  title="Berichte - Katzenfreunde BiBi"
-  description="Berichte und Vereinsinformationen der Katzenfreunde Bietigheim-Bissingen e.V."
-  page="berichte"
-  canonical="/pages/aktuelle-berichte.html"
+<Site
+  title="Aktuelles"
+  description="Termine und Berichte der Katzenfreunde Bietigheim-Bissingen."
+  page="aktuelles"
+  path="/pages/aktuelle-berichte.html"
 >
-  <main>
-    <section class="hero">
-      <div class="hero__card hero__card--title-only">
-        <div>
-          <h1>Berichte</h1>
+  <div class="page-head wrap">
+    <h1>Aktuelles</h1>
+    <p class="lead">
+      Unsere nächsten Termine und Berichte aus der Vereinsarbeit.
+    </p>
+  </div>
+  <div class="wrap feed" data-count>
+    <fieldset class="chips">
+      <legend class="sr-only">Anzeigen</legend>
+      <label class="chip">
+        <input type="radio" name="filter" value="alle" checked />
+        <span>
+          Alles <span class="chip__n num" data-n="alle"></span>
+        </span>
+      </label>
+      <label class="chip">
+        <input type="radio" name="filter" value="termin" />
+        <span>
+          Termine <span class="chip__n num" data-n="termin"></span>
+        </span>
+      </label>
+      <label class="chip">
+        <input type="radio" name="filter" value="bericht" />
+        <span>
+          Berichte <span class="chip__n num" data-n="bericht"></span>
+        </span>
+      </label>
+      <label class="chip">
+        <input type="radio" name="filter" value="verein" />
+        <span>
+          Verein <span class="chip__n num" data-n="verein"></span>
+        </span>
+      </label>
+    </fieldset>
+    <ol class="list" data-dates>
+      {events.map((event) => (
+        <li
+          class="list__row is-termin"
+          data-kind="termin"
+          data-until={event.date}
+        >
+          <div class="list__date">
+            <time datetime={event.date}>
+              <span class="list__d num">
+                {event.day}.&nbsp;{event.month}
+              </span>
+              <span class="list__y num">{event.year}</span>
+            </time>
+            <span class="list__type">Termin</span>
+          </div>
+          <div class="list__main">
+            <h2 class="list__t">{event.title}</h2>
+            <p>
+              Von {event.from} bis {event.to}&nbsp;Uhr {event.placeInline}.
+            </p>
+          </div>
+        </li>
+      ))}
+      <li class="list__row" data-kind="bericht" id="b-2026-05-05">
+        <div class="list__date">
+          <time datetime="2026-05-05">
+            <span class="list__d num">5.&nbsp;Mai</span>
+            <span class="list__y num">2026</span>
+          </time>
+          <span class="list__type">Bericht</span>
         </div>
-      </div>
+        <div class="list__main">
+          <h2 class="list__t">Wurst- und Getränkestopp mit Flohmarkt</h2>
+          <p>
+            Vielen Dank an alle Gäste und Helfer. Der gesamte Erlös kommt den
+            Katzen zugute.
+          </p>
+        </div>
+        <Photo
+          name="plakat-danke-mai2026"
+          widths={[256]}
+          sizes="8rem"
+          class="list__img"
+        />
+      </li>
+      <li class="list__row" data-kind="verein" id="b-2026-04-03">
+        <div class="list__date">
+          <time datetime="2026-04-03">
+            <span class="list__d num">3.&nbsp;April</span>
+            <span class="list__y num">2026</span>
+          </time>
+          <span class="list__type">Hinweis</span>
+        </div>
+        <div class="list__main">
+          <h2 class="list__t">Folgen Sie uns auf Instagram</h2>
+          <p>Aktuelle Neuigkeiten finden Sie auch auf Instagram.</p>
+          <p>
+            <a class="go" href={external.instagram}>
+              <span>instagram.com/katzenfreunde_bietigheim</span>
+              <Icon name="arrow-up-right" />
+            </a>
+          </p>
+        </div>
+      </li>
+      <li class="list__row" data-kind="bericht" id="b-2021-07-08">
+        <div class="list__date">
+          <time datetime="2021-07-08">
+            <span class="list__d num">8.&nbsp;Juli</span>
+            <span class="list__y num">2021</span>
+          </time>
+          <span class="list__type">Bericht</span>
+        </div>
+        <div class="list__main">
+          <h2 class="list__t">
+            Die Katzenfreunde gewinnen bei „Schwimm für deinen Verein“
+          </h2>
+          <p>
+            Zum 40-jährigen Jubiläum des Badeparks Ellental haben die Stadtwerke
+            Bietigheim-Bissingen Spenden für Vereine gesammelt. Die
+            Katzenfreunde schwammen die meisten Bahnen und erhielten 400&nbsp;€.
+          </p>
+          <p>
+            <a class="go" href="/assets/media/data/Bericht_Spende400.pdf">
+              <span>Bericht über die Spende (PDF, 5,2&nbsp;MB)</span>
+              <Icon name="download-simple" />
+            </a>
+          </p>
+        </div>
+        <Photo
+          name="bericht-spende400"
+          widths={[256]}
+          sizes="8rem"
+          class="list__img"
+        />
+      </li>
+      <li class="list__row" data-kind="bericht" id="b-2020-05-02">
+        <div class="list__date">
+          <time datetime="2020-05-02">
+            <span class="list__d num">2.&nbsp;Mai</span>
+            <span class="list__y num">2020</span>
+          </time>
+          <span class="list__type">Bericht</span>
+        </div>
+        <div class="list__main">
+          <h2 class="list__t">Grüße von den kleinen „Piroschkas“</h2>
+          <p>
+            Vor zwei Wochen haben wir zwei Katzenkinder übernommen. Beide haben
+            gut zugenommen und entwickeln sich prächtig.
+          </p>
+        </div>
+        <Photo
+          name="bericht-piroschkas"
+          widths={[256]}
+          sizes="8rem"
+          class="list__img"
+        />
+      </li>
+      <li class="list__row" data-kind="bericht" id="b-2020-04-21">
+        <div class="list__date">
+          <time datetime="2020-04-21">
+            <span class="list__d num">21.&nbsp;April</span>
+            <span class="list__y num">2020</span>
+          </time>
+          <span class="list__type">Bericht</span>
+        </div>
+        <div class="list__main">
+          <h2 class="list__t">Zwei Katzenbabys aus Ungarn gerettet</h2>
+          <p>
+            Die Firma Magna in Bietigheim-Bissingen rief uns an: In einem Paket
+            aus Ungarn waren im Wareneingang zwei kleine Katzenbabys angekommen.
+            Ein Mitarbeiter hat sich herzlich für unsere schnelle Hilfe bedankt
+            und sich nach den beiden erkundigt. Wir danken ihm für seinen
+            Einsatz. Die beiden Katzenkinder sind wohlauf und entwickeln sich
+            sehr gut.
+          </p>
+        </div>
+        <div class="list__imgs">
+          <Photo
+            name="bericht-katzenbaby-1"
+            widths={[300]}
+            sizes="8rem"
+            class="list__img"
+          />
+          <Photo
+            name="bericht-katzenbaby-2"
+            widths={[300]}
+            sizes="8rem"
+            class="list__img"
+          />
+        </div>
+      </li>
+      <li class="list__row" data-kind="verein">
+        <div class="list__date">
+          <span class="list__type">Auszeichnung</span>
+        </div>
+        <div class="list__main">
+          <h2 class="list__t">Ehrennadel für Jutta Framenau</h2>
+          <p>
+            Für ihren langjährigen Einsatz für streunende und hilfsbedürftige
+            Katzen hat Jutta Framenau die Landesehrennadel erhalten.
+          </p>
+        </div>
+      </li>
+      <li class="list__row" data-kind="verein" id="b-2017-10-04">
+        <div class="list__date">
+          <time datetime="2017-10-04">
+            <span class="list__d num">4.&nbsp;Oktober</span>
+            <span class="list__y num">2017</span>
+          </time>
+          <span class="list__type">Hinweis</span>
+        </div>
+        <div class="list__main">
+          <h2 class="list__t">Wir sind auch auf Facebook</h2>
+          <p>Besuchen Sie gern unsere Facebook-Seite.</p>
+          <p>
+            <a class="go" href={external.facebook}>
+              <span>facebook.com/katzenfreundebibi</span>
+              <Icon name="arrow-up-right" />
+            </a>
+          </p>
+        </div>
+      </li>
+      <li class="list__row" data-kind="verein" id="b-2016-03-30">
+        <div class="list__date">
+          <time datetime="2016-03-30">
+            <span class="list__d num">30.&nbsp;März</span>
+            <span class="list__y num">2016</span>
+          </time>
+          <span class="list__type">Verein</span>
+        </div>
+        <div class="list__main">
+          <h2 class="list__t">Mitglied im Deutschen Tierschutzbund</h2>
+          <p>
+            Der Deutsche Tierschutzbund hat unseren Aufnahmeantrag bestätigt.
+            Wir freuen uns über den Kontakt mit anderen Tierschutzvereinen.
+          </p>
+          <p>
+            <a class="go" href="https://www.tierschutzbund.de/">
+              <span>tierschutzbund.de</span>
+              <Icon name="arrow-up-right" />
+            </a>
+          </p>
+        </div>
+      </li>
+      <li class="dates__empty" hidden data-dates-empty>
+        Zurzeit stehen keine Termine fest.
+      </li>
+    </ol>
+    <section class="flyer" aria-labelledby="t-flyer">
+      <h2 id="t-flyer" class="h-small">
+        Unser Flyer zum Auslegen
+      </h2>
+      <p>
+        Wir freuen uns, wenn Sie unseren Flyer in Praxen und Geschäften oder an
+        anderen öffentlichen Orten auslegen.
+      </p>
+      <ul class="docs">
+        <li>
+          <a href="/assets/media/data/Flyer_Vorderseite.pdf">
+            <Icon name="file-pdf" />
+            <span>
+              <b>Flyer, Vorderseite</b>
+              <small>PDF, 2,3&nbsp;MB</small>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="/assets/media/data/Flyer_Rueckseite.pdf">
+            <Icon name="file-pdf" />
+            <span>
+              <b>Flyer, Rückseite</b>
+              <small>PDF, 1,9&nbsp;MB</small>
+            </span>
+          </a>
+        </li>
+      </ul>
     </section>
-    <div class="page-shell">
-      <article class="rich-content prose page-content">
-        <section aria-label="Berichte" class="reports-list">
-          <article class="report-card">
-            <header class="report-card__head">
-              <h2 class="report-card__title">
-                Wurst & Getränkestopp / Flohmarkt
-              </h2>
-              <time class="report-card__date" datetime="2026-05-05">
-                05. Mai 2026
-              </time>
-            </header>
-            <div class="report-media">
-              <picture>
-                <Img
-                  alt="Bericht Mai 2026"
-                  fetchpriority="high"
-                  loading="eager"
-                  sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
-                  src="/assets/media/resources/mai2026.jpg"
-                />
-              </picture>
-            </div>
-          </article>
-          <article class="report-card">
-            <header class="report-card__head">
-              <h2 class="report-card__title">
-                Folgen Sie uns auch auf Instagram
-              </h2>
-              <time class="report-card__date" datetime="2026-04-03">
-                03. April 2026
-              </time>
-            </header>
-            <p>
-              Entdecken Sie aktuelle Neuigkeiten auf unserem Instagram Profil:{' '}
-              <a
-                href="https://www.instagram.com/katzenfreunde_bietigheim/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                instagram.com/katzenfreunde_bietigheim
-              </a>
-            </p>
-          </article>
-          <article class="report-card">
-            <header class="report-card__head">
-              <h2 class="report-card__title">
-                Die Katzenfreunde gewinnen bei "Schwimm f&uuml;r deinen Verein"
-              </h2>
-              <time class="report-card__date" datetime="2021-07-08">
-                08. Juli 2021
-              </time>
-            </header>
-            <p>
-              Im Rahmen des 40-j&auml;hrigen Jubil&auml;ums des Badeparks
-              Ellental sammelten die Stadtwerke Bietigheim-Bissingen Spenden
-              f&uuml;r Vereine. Die Katzenfreunde Bietigheim-Bissingen e.V.
-              erreichten dabei die meisten geschwommenen Bahnen.
-            </p>
-            <p>
-              Die Vorsitzende Jutta Framenau und die Schatzmeisterin Jutta
-              Hoenig bedankten sich f&uuml;r die gro&szlig;z&uuml;gige
-              Unterst&uuml;tzung.
-            </p>
-          </article>
-          <article class="report-card">
-            <header class="report-card__head">
-              <h2 class="report-card__title">Spendenbericht 400 EUR</h2>
-              <time class="report-card__date" datetime="2021-07-08">
-                08. Juli 2021
-              </time>
-            </header>
-            <div class="pdf-inline-grid">
-              <PdfCard
-                href="/assets/media/data/Bericht_Spende400.pdf"
-                label="Bericht_Spende400.pdf"
-                title="Bericht Spende 400 EUR"
-              />
-            </div>
-            <div class="report-media">
-              <picture>
-                <Img
-                  alt="Spendenbericht 400 EUR"
-                  fetchpriority="high"
-                  loading="eager"
-                  sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
-                  src="/assets/media/resources/spendenbericht-400-euro.jpg"
-                />
-              </picture>
-            </div>
-          </article>
-          <article class="report-card">
-            <header class="report-card__head">
-              <h2 class="report-card__title">
-                Gr&uuml;&szlig;e von den kleinen "Piroschkas"
-              </h2>
-              <time class="report-card__date" datetime="2020-05-02">
-                02. Mai 2020
-              </time>
-            </header>
-            <p>
-              Vor 14 Tagen wurden zwei Katzenkinder &uuml;bernommen. Beide haben
-              sehr gut zugenommen und entwickeln sich in unserer Obhut prima.
-              Wir berichten weiter.
-            </p>
-            <div class="report-media">
-              <picture>
-                <Img
-                  alt="Katzenkinder Piroschkas"
-                  loading="lazy"
-                  sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
-                  src="/assets/media/resources/katzenkinder-piroschkas.jpg"
-                />
-              </picture>
-            </div>
-          </article>
-          <article class="report-card">
-            <header class="report-card__head">
-              <h2 class="report-card__title">
-                Zwei Katzenbabys aus Ungarn gerettet
-              </h2>
-              <time class="report-card__date" datetime="2020-04-21">
-                21. April 2020
-              </time>
-            </header>
-            <p>
-              Die Katzenfreunde wurden von der Firma Magna in
-              Bietigheim-Bissingen kontaktiert. Im Wareneingang wurden zwei
-              kleine Katzenbabys entdeckt. Dank der schnellen Hilfe konnten
-              beide Tiere sicher versorgt werden und haben sich inzwischen sehr
-              gut entwickelt.
-            </p>
-            <div class="report-media">
-              <picture>
-                <Img
-                  alt="Gerettetes Katzenbaby 1"
-                  loading="lazy"
-                  sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
-                  src="/assets/media/resources/gerettetes-katzenbaby-1.jpg"
-                />
-              </picture>
-              <picture>
-                <Img
-                  alt="Gerettetes Katzenbaby 2"
-                  loading="lazy"
-                  sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
-                  src="/assets/media/resources/gerettetes-katzenbaby-2.jpg"
-                />
-              </picture>
-            </div>
-          </article>
-          <article class="report-card">
-            <header class="report-card__head">
-              <h2 class="report-card__title">
-                Ehrennadel f&uuml;r Jutta Framenau
-              </h2>
-              <span class="report-card__date">Auszeichnung</span>
-            </header>
-            <p>
-              F&uuml;r ihren langj&auml;hrigen unerm&uuml;dlichen Einsatz
-              f&uuml;r streunende und hilfsbed&uuml;rftige Katzen erhielt Frau
-              Jutta Framenau die Landesehrennadel der Stadt
-              Bietigheim-Bissingen.
-            </p>
-            <div class="report-media">
-              <picture>
-                <Img
-                  alt="Ehrung Jutta Framenau 1"
-                  loading="lazy"
-                  sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
-                  src="/assets/media/resources/ehrung-jutta-framenau-1.jpg"
-                />
-              </picture>
-              <picture>
-                <Img
-                  alt="Ehrung Jutta Framenau 2"
-                  loading="lazy"
-                  sizes="(max-width: 700px) 100vw, (max-width: 980px) 50vw, 25vw"
-                  src="/assets/media/resources/ehrung-jutta-framenau-2.jpg"
-                />
-              </picture>
-            </div>
-          </article>
-          <article class="report-card">
-            <header class="report-card__head">
-              <h2 class="report-card__title">Wir sind auch auf Facebook</h2>
-              <time class="report-card__date" datetime="2017-10-04">
-                4. Oktober 2017
-              </time>
-            </header>
-            <p>
-              Schauen Sie auch auf unserer Facebook-Seite vorbei:{' '}
-              <a
-                href="https://www.facebook.com/katzenfreundebibi/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                facebook.com/katzenfreundebibi
-              </a>
-            </p>
-          </article>
-          <article class="report-card">
-            <header class="report-card__head">
-              <h2 class="report-card__title">
-                Spenden &Uuml;ber PayPal m&ouml;glich
-              </h2>
-              <time class="report-card__date" datetime="2016-07-01">
-                Seit 01.07.2016
-              </time>
-            </header>
-            <p>
-              &Uuml;ber unsere Seiten "Home" und "Spenden" k&ouml;nnen Sie
-              direkt per PayPal helfen. So erreichen wir mehr Unterst&uuml;tzung
-              f&uuml;r notleidende Katzen.
-            </p>
-          </article>
-          <article class="report-card">
-            <header class="report-card__head">
-              <h2 class="report-card__title">
-                Mitglied beim Deutschen Tierschutzbund
-              </h2>
-              <time class="report-card__date" datetime="2016-03-30">
-                Seit 30.03.2016
-              </time>
-            </header>
-            <p>
-              Der Antrag auf Mitgliedschaft im Deutschen Tierschutzbund wurde
-              best&auml;tigt. Wir freuen uns &uuml;ber diese wichtige Vernetzung
-              im Tierschutz.
-            </p>
-            <div class="report-media">
-              <a
-                href="https://www.tierschutzbund.de"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <img
-                  alt="Deutscher Tierschutzbund Logo"
-                  decoding="async"
-                  height="61"
-                  loading="lazy"
-                  src="/assets/media/resources/deutscher-tierschutzbund-logo.svg"
-                  width="61"
-                />
-              </a>
-            </div>
-          </article>
-          <article class="report-card">
-            <header class="report-card__head">
-              <h2 class="report-card__title">Vereins-Flyer</h2>
-              <span class="report-card__date">Info</span>
-            </header>
-            <p>
-              Unser Flyer kann angefordert werden. Wir freuen uns &uuml;ber
-              Unterst&uuml;tzung bei der Verteilung in Praxen, Gesch&auml;ften
-              und weiteren &ouml;ffentlichen Orten.
-            </p>
-            <div class="pdf-inline-grid">
-              <PdfCard
-                href="/assets/media/data/Flyer_Vorderseite.pdf"
-                label="Flyer Vorderseite.pdf"
-                sizes="(max-width: 545px) 100vw, 480px"
-                title="Flyer Vorderseite"
-              />
-              <PdfCard
-                href="/assets/media/data/Flyer_Rueckseite.pdf"
-                label="Flyer Rückseite.pdf"
-                sizes="(max-width: 545px) 100vw, 480px"
-                title="Flyer Rückseite"
-              />
-            </div>
-          </article>
-        </section>
-      </article>
-    </div>
-  </main>
-</KatzenfreundeLayout>
+  </div>
+</Site>

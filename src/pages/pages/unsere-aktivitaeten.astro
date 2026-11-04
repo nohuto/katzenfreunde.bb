@@ -1,139 +1,289 @@
 ---
-import Img from '../../components/ui/Img.astro';
-import KatzenfreundeLayout from '../../layouts/KatzenfreundeLayout.astro';
+import Site from '../../layouts/Site.astro';
+import Photo from '../../components/site/Photo.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { external, routes } from '../../data/site';
 ---
 
-<KatzenfreundeLayout
-  title="Unsere Aktivitäten - Katzenfreunde BiBi"
-  description="Übersicht unserer Einsatzbereiche im Katzenschutz."
-  page="unsere-aktivitaeten"
-  canonical="/pages/unsere-aktivitaeten.html"
+<Site
+  title="Unsere Arbeit"
+  description="Tierärztliche Versorgung, Futterstellen und Flohmarkt der Katzenfreunde Bietigheim-Bissingen."
+  page="arbeit"
+  path="/pages/unsere-aktivitaeten.html"
 >
-  <main>
-    <section class="hero">
-      <div class="hero__card hero__card--title-only">
-        <div>
-          <h1>Unsere Aktivit&auml;ten</h1>
+  <div class="page-head wrap">
+    <h1>Unsere Arbeit</h1>
+    <p class="lead">
+      Wir lassen Streunerkatzen kastrieren und tierärztlich versorgen, betreuen
+      Futterstellen und finanzieren einen Teil unserer Arbeit über den
+      Flohmarkt.
+    </p>
+    <nav class="toc" aria-label="Auf dieser Seite">
+      <ul>
+        <li>
+          <a href="#tierarzt">Tierärztliche Versorgung</a>
+        </li>
+        <li>
+          <a href="#futterstellen">Futterstellen</a>
+        </li>
+        <li>
+          <a href="#flohmarkt">Flohmarkt</a>
+        </li>
+        <li>
+          <a href={routes.daheim}>Endlich daheim</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <section class="section" id="tierarzt" aria-labelledby="t-tierarzt" data-art>
+    <div class="wrap">
+      <div class="vet-text prose">
+        <h2 id="t-tierarzt">Tierärztliche Versorgung</h2>
+        <p class="lead">
+          Jede Katze, die zu uns kommt, wird tierärztlich untersucht und
+          behandelt. Mehr als 75&nbsp;% unserer Ausgaben sind deshalb
+          Tierarztkosten.
+        </p>
+        <p>
+          Von den Kommunen erhalten wir bisher kein Geld. Trotzdem lassen wir
+          alle Katzen kastrieren und behandeln. So bleiben die Tiere gesünder,
+          und es gibt weniger ausgesetzte und streunende Katzen.
+        </p>
+        <p>
+          Operationen, Kastrationen und Wundversorgung können wir mit Spenden
+          und Mitgliedsbeiträgen allein kaum bezahlen. Sie können in beliebiger
+          Höhe gezielt für die Tierarztkosten spenden.
+        </p>
+        <a class="go" href={`${routes.helfen}#spenden`}>
+          <span>Für Tierarztkosten spenden</span>
+          <Icon name="arrow-right" />
+        </a>
+      </div>
+      <p class="vet-warn">
+        <Icon name="warning-circle" />
+        Einige Fotos zeigen Verletzungen und Parasiten.
+      </p>
+      <ul class="vet-grid vet-grid--glass">
+        <li>
+          <figure>
+            <Photo
+              name="tierarzt-projektil"
+              widths={[267]}
+              sizes="(max-width: 47.99rem) 45vw, 22rem"
+              alt=""
+              class="vet-grid__img"
+              tag="div"
+            />
+            <figcaption>Projektil in der Haut einer Katze</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <Photo
+              name="tierarzt-schnupfen"
+              widths={[225]}
+              sizes="(max-width: 47.99rem) 45vw, 22rem"
+              alt=""
+              class="vet-grid__img"
+              tag="div"
+            />
+            <figcaption>Katze mit Katzenschnupfen</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <Photo
+              name="tierarzt-schur"
+              widths={[360, 600]}
+              sizes="(max-width: 47.99rem) 45vw, 22rem"
+              alt=""
+              class="vet-grid__img"
+              tag="div"
+            />
+            <figcaption>Katzenschur</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <Photo
+              name="tierarzt-schoppenkatze"
+              widths={[249]}
+              sizes="(max-width: 47.99rem) 45vw, 22rem"
+              alt=""
+              class="vet-grid__img"
+              tag="div"
+            />
+            <figcaption>Kätzchen bekommt das Fläschchen</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <Photo
+              name="tierarzt-ohr"
+              widths={[250]}
+              sizes="(max-width: 47.99rem) 45vw, 22rem"
+              alt=""
+              class="vet-grid__img"
+              tag="div"
+            />
+            <figcaption>Kater nach Ohramputation wegen eines Tumors</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <Photo
+              name="tierarzt-wuermer"
+              widths={[360, 600]}
+              sizes="(max-width: 47.99rem) 45vw, 22rem"
+              alt=""
+              class="vet-grid__img"
+              tag="div"
+            />
+            <figcaption>Würmer</figcaption>
+          </figure>
+        </li>
+      </ul>
+      <div class="vet-credit">
+        <a class="vet-credit__logo" href={external.tierarztPraxis}>
+          <Photo
+            name="tierarzt-praxis-logo"
+            widths={[320]}
+            sizes="10rem"
+            alt="Tierarztpraxis Bietigheim-Bissingen"
+          />
+        </a>
+        <p>
+          Die Bildrechte an den Fotos liegen bei der Tierarztpraxis
+          Hoffmann-Fuesser in Bietigheim-Bissingen. Wir danken für die
+          freundliche Überlassung.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section
+    class="section section--tint"
+    id="futterstellen"
+    aria-labelledby="t-futter"
+  >
+    <div class="wrap">
+      <h2 id="t-futter">Futterstellen</h2>
+      <p class="lead lead--wide">
+        An einer Futterstelle übernehmen Menschen dauerhaft Verantwortung für
+        die Katzen, die dort leben.
+      </p>
+      <div class="stations">
+        <section aria-labelledby="t-mensch">
+          <h3 id="t-mensch" class="h-small">
+            Der Einsatz der Menschen
+          </h3>
           <p>
-            Um Sie mit unseren wichtigsten Einsatzbereichen vertraut zu machen,
-            finden Sie hier die zentralen Aufgaben unseres Vereins. Jede Kachel
-            f&uuml;hrt zu weiteren Informationen.
+            Ehrenamtliche füttern die Katzen jeden Tag bei jedem Wetter. Sie
+            arbeiten ohne Bezahlung oder erhalten eine kleine
+            Ehrenamtspauschale. Urlaub und Vertretung müssen verlässlich
+            geregelt sein.
           </p>
+          <p>
+            Im Jahr legen sie für die Anfahrten mehrere tausend Kilometer
+            zurück. Die Fahrtkosten erstattet niemand. Dazu kommen laufende
+            Kosten für das Futter und unzählige Stunden in der Tierarztpraxis.
+          </p>
+        </section>
+        <section aria-labelledby="t-oeko">
+          <h3 id="t-oeko" class="h-small">
+            Katzen und das ökologische Gleichgewicht
+          </h3>
+          <p>
+            Regelmäßige Mahlzeiten halten die Katzen an ihrem Platz, und neu
+            hinzugekommene Tiere fallen schneller auf. Kranke und unkastrierte
+            Katzen werden eingefangen und tierärztlich versorgt. So bleibt die
+            Gruppe gesünder, und Krankheiten breiten sich weniger aus.
+          </p>
+          <p>
+            Die rechtzeitige Kastration verhindert, dass sich die Katzen
+            unkontrolliert vermehren. Wo es nötig ist, sind auch Schutzmaßnahmen
+            für Vögel und Reptilien wichtig.
+          </p>
+        </section>
+        <Photo
+          name="futterstelle"
+          widths={[600]}
+          sizes="(max-width: 47.99rem) 100vw, 20rem"
+          alt="Miri, eine Streunerkätzin, wartet nahe ihrer Futterstelle"
+          class="stations__img"
+        />
+      </div>
+      <p class="feed-cta">
+        Mit Geld- oder Futterspenden helfen Sie den Katzen und den Menschen, die
+        sie jeden Tag versorgen.{' '}
+        <a class="go" href={routes.helfen}>
+          <span>So helfen Sie</span>
+          <Icon name="arrow-right" />
+        </a>
+      </p>
+    </div>
+  </section>
+  <section class="section" id="flohmarkt" aria-labelledby="t-floh">
+    <div class="wrap split">
+      <div>
+        <h2 id="t-floh">Flohmarkt</h2>
+        <p>
+          Wir verkaufen gespendete Gegenstände und Waren aus Nachlässen. Die
+          Einnahmen helfen, die Versorgung und tierärztliche Betreuung
+          herrenloser Katzen zu finanzieren, denn Beiträge und Spenden allein
+          reichen dafür bei Weitem nicht aus.
+        </p>
+        <p>
+          Unseren Stand finden Sie regelmäßig am Kuhbrunnen in der Bietigheimer
+          Altstadt. Jutta und Volkmar Framenau betreuen ihn und nehmen auch Ihre
+          Sachspenden entgegen.
+        </p>
+        <div class="btn-row">
+          <a class="go" href={routes.aktuelles}>
+            <span>Nächste Termine</span>
+            <Icon name="arrow-right" />
+          </a>
+          <a class="go" href={`${routes.helfen}#sachspenden`}>
+            <span>Sachspenden für den Flohmarkt</span>
+            <Icon name="arrow-right" />
+          </a>
         </div>
       </div>
-    </section>
-    <div class="page-shell">
-      <article class="activities-page page-content">
-        <section
-          aria-labelledby="so-helfen-wir"
-          class="activity-work section-divider"
-        >
-          <header class="activity-work__heading">
-            <h2 id="so-helfen-wir">So helfen wir</h2>
-            <p>
-              Von der t&auml;glichen Versorgung bis zu medizinischer Hilfe und
-              einem passenden Zuhause.
-            </p>
-          </header>
-          <div class="activity-grid">
-            <a class="activity-tile" href="/pages/flohmaerkte.html">
-              <span
-                class="activity-tile__icon"
-                data-icon="building-store"
-              ></span>{' '}
-              <span class="activity-tile__body">
-                <span class="activity-tile__title">Flohm&auml;rkte</span>{' '}
-                <span class="activity-tile__text">
-                  Die Erl&ouml;se tragen einen wichtigen Teil unserer laufenden
-                  Tierschutzarbeit.
-                </span>
-              </span>
-            </a>
-            <a class="activity-tile" href="/pages/tieraerztl-versorgung.html">
-              <span class="activity-tile__icon" data-icon="stethoscope"></span>{' '}
-              <span class="activity-tile__body">
-                <span class="activity-tile__title">
-                  Tier&auml;rztliche Versorgung
-                </span>{' '}
-                <span class="activity-tile__text">
-                  Behandlung, Kastration und Nachsorge f&uuml;r Katzen in
-                  unserer Obhut.
-                </span>
-              </span>
-            </a>
-            <a class="activity-tile" href="/pages/futterstellen.html">
-              <span class="activity-tile__icon" data-icon="fish"></span>{' '}
-              <span class="activity-tile__body">
-                <span class="activity-tile__title">Futterstellen</span>{' '}
-                <span class="activity-tile__text">
-                  Regelm&auml;&szlig;ige Versorgung und Beobachtung freilebender
-                  Katzen.
-                </span>
-              </span>
-            </a>
-            <a class="activity-tile" href="/pages/vermittlung.html">
-              <span
-                class="activity-tile__icon"
-                data-icon="heart-handshake"
-              ></span>{' '}
-              <span class="activity-tile__body">
-                <span class="activity-tile__title">Katzenvermittlung</span>{' '}
-                <span class="activity-tile__text">
-                  Pflege, Beratung und ein passendes dauerhaftes Zuhause.
-                </span>
-              </span>
-            </a>
-            <a class="activity-tile" href="/pages/schutzgebuehren.html">
-              <span
-                class="activity-tile__icon"
-                data-icon="shield-dollar"
-              ></span>{' '}
-              <span class="activity-tile__body">
-                <span class="activity-tile__title">Schutzgeb&uuml;hren</span>{' '}
-                <span class="activity-tile__text">
-                  Was die Geb&uuml;hren abdecken und warum sie zum Tierschutz
-                  geh&ouml;ren.
-                </span>
-              </span>
-            </a>
-            <a class="activity-tile" href="/pages/endlich-daheim.html">
-              <span class="activity-tile__icon" data-icon="home-heart"></span>{' '}
-              <span class="activity-tile__body">
-                <span class="activity-tile__title">Endlich daheim</span>{' '}
-                <span class="activity-tile__text">
-                  Geschichten von Katzen, die ihr neues Zuhause gefunden haben.
-                </span>
-              </span>
-            </a>
-            <a class="activity-tile" href="/pages/futter-shop.html">
-              <span
-                class="activity-tile__icon"
-                data-icon="shopping-cart"
-              ></span>{' '}
-              <span class="activity-tile__body">
-                <span class="activity-tile__title">Futter Shop</span>{' '}
-                <span class="activity-tile__text">
-                  Tierfutter bestellen und dabei unsere Arbeit
-                  unterst&uuml;tzen.
-                </span>
-              </span>
-            </a>
-            <article class="activity-feature">
-              <h2>Tierschutz vor Ort</h2>
-              <figure class="activity-feature__media">
-                <picture>
-                  <Img
-                    alt="Helferin bei einer Einfangaktion"
-                    loading="lazy"
-                    sizes="(max-width: 700px) 100vw, 360px"
-                    src="/assets/media/resources/einfangaktion-zwei-helferinnen.jpg"
-                  />
-                </picture>
-              </figure>
-            </article>
-          </div>
-        </section>
-      </article>
+      <div class="floh-photos">
+        <Photo
+          name="flohmarkt-stand"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 47.99rem) 45vw, 17rem"
+          alt="Flohmarktstand der Katzenfreunde in der Altstadt"
+          class="floh-photos__img"
+        />
+        <Photo
+          name="flohmarkt-stand-2"
+          widths={[200, 400, 600]}
+          sizes="(max-width: 47.99rem) 45vw, 17rem"
+          alt="Bücher und Spiele am Flohmarktstand"
+          class="floh-photos__img"
+        />
+      </div>
     </div>
-  </main>
-</KatzenfreundeLayout>
+  </section>
+  <section
+    class="section section--tint section--slim"
+    aria-labelledby="t-daheim"
+  >
+    <div class="wrap cta-row">
+      <div>
+        <h2 id="t-daheim" class="h-small">
+          Endlich daheim
+        </h2>
+        <p>
+          Ehemalige Schützlinge schicken uns Fotos und Geschichten aus ihrem
+          neuen Zuhause.
+        </p>
+      </div>
+      <a class="btn btn--go" href={routes.daheim}>
+        <span>Geschichten lesen</span>
+        <Icon name="arrow-right" />
+      </a>
+    </div>
+  </section>
+</Site>

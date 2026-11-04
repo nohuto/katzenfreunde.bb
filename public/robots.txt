@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://katzenfreunde-bietigheim-bissingen.de/sitemap.xml

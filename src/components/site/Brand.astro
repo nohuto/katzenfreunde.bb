@@ -1,0 +1,14 @@
+---
+import { getImage } from 'astro:assets';
+import logoSource from '../../image-sources/assets/katzenfreunde-transparent.png';
+import { routes } from '../../data/site';
+
+const logo = await getImage({ src: logoSource, width: 96, format: 'webp' });
+---
+
+<a class="brand" href={routes.start}>
+  <img src={logo.src} width="96" height="96" alt="" />
+  <span class="brand__name">
+    Katzenfreunde<small>Bietigheim-Bissingen e.&nbsp;V.</small>
+  </span>
+</a>

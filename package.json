@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "astro build",
+    "build": "npm run check && astro build && node scripts/csp-hashes.mjs",
     "dev": "astro dev",
     "check": "astro check",
     "preview": "astro preview",
@@ -14,11 +14,16 @@
     "node": ">=22.12.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
-    "astro": "^7.3.5",
-    "prettier": "^3.9.9",
-    "prettier-plugin-astro": "^1.1.0",
-    "sharp": "0.35.5",
+    "@astrojs/check": "^0.9.12",
+    "@phosphor-icons/core": "^2.1.1",
+    "@types/qrcode": "^1.5.6",
+    "astro": "^7.4.5",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.2",
+    "sharp": "^0.35.5",
     "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
   }
 }
