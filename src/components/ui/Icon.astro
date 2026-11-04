@@ -1,6 +1,12 @@
 ---
 import { readFile } from 'node:fs/promises';
 
+const brands = import.meta.glob<string>('../../icons/si-*.svg', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+
 const supported = [
   'arrow-right',
   'arrow-up-right',
@@ -30,6 +36,7 @@ const supported = [
   'phone',
   'printer',
   'shield-check',
+  'si-paypal',
   'stethoscope',
   'sun',
   'users-three',
@@ -50,13 +57,15 @@ interface Props {
 const { name, weight = 'regular', size, class: className = 'i' } = Astro.props;
 
 const file = weight === 'regular' ? `${name}.svg` : `${name}-${weight}.svg`;
-const source = await readFile(
-  new URL(
-    `../../../node_modules/@phosphor-icons/core/assets/${weight}/${file}`,
-    import.meta.url,
-  ),
-  'utf8',
-);
+const source =
+  brands[`../../icons/${name}.svg`] ??
+  (await readFile(
+    new URL(
+      `../../../node_modules/@phosphor-icons/core/assets/${weight}/${file}`,
+      import.meta.url,
+    ),
+    'utf8',
+  ));
 
 const dimensions = size ? ` width="${size}" height="${size}"` : '';
 const markup = source.replace(

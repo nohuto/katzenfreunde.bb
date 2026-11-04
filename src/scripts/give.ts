@@ -98,11 +98,13 @@ function initGiroCode(give: HTMLElement) {
 }
 
 function initTip(tip: HTMLElement) {
-  const button = document.querySelector<HTMLElement>(
-    '[popovertarget="betrag-info"]',
-  );
-  if (!button) return;
+  const buttons = [
+    ...document.querySelectorAll<HTMLElement>('[popovertarget="betrag-info"]'),
+  ];
+  if (!buttons.length) return;
   const place = () => {
+    const button =
+      buttons.find((el) => el.getClientRects().length) ?? buttons[0];
     const r = button.getBoundingClientRect();
     const left = Math.max(
       16,
@@ -132,15 +134,16 @@ function initTip(tip: HTMLElement) {
     clearTimeout(closer);
     if (byHover) closer = setTimeout(() => tip.hidePopover(), TIP_CLOSE_MS);
   };
-  for (const el of [button, tip]) {
+  for (const el of [...buttons, tip]) {
     el.addEventListener('pointerenter', open);
     el.addEventListener('pointerleave', close);
   }
-  button.addEventListener('click', (event) => {
-    if (!byHover) return;
-    event.preventDefault();
-    byHover = false;
-  });
+  for (const button of buttons)
+    button.addEventListener('click', (event) => {
+      if (!byHover) return;
+      event.preventDefault();
+      byHover = false;
+    });
 }
 
 export function initGive(): void {

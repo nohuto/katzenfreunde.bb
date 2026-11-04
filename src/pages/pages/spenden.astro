@@ -75,6 +75,15 @@ import {
           <p class="slip__head">
             <Icon name="bank" />
             Überweisung
+            <button
+              class="tip__btn tip__btn--head"
+              type="button"
+              popovertarget="betrag-info"
+              aria-label="Wofür wir Ihre Spende einsetzen"
+            >
+              <Icon name="info" />
+              Wofür?
+            </button>
           </p>
           <div class="slip__grid">
             <dl class="slip__fields">
@@ -219,8 +228,9 @@ import {
         </div>
         <div class="give__alt">
           <p>
-            Sie können auch <a href={external.paypal}>mit PayPal spenden</a>.
-            Für eine regelmäßige Unterstützung schicken Sie uns das{' '}
+            Sie können auch mit <Icon name="si-paypal" class="i paypal" />
+            <a href={external.paypal}>PayPal spenden</a>. Für eine regelmäßige
+            Unterstützung schicken Sie uns das{' '}
             <a href="/assets/media/data/Spendenformular.pdf">
               Formular für eine Dauerspende
             </a>{' '}

@@ -165,6 +165,12 @@
 .give__alt a {
   font-weight: 600;
 }
+.give__alt svg.paypal {
+  width: 1.05em;
+  height: 1.05em;
+  vertical-align: -0.2em;
+  fill: light-dark(#002991, #009cde);
+}
 .figs {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -371,8 +377,38 @@
   font-weight: 600;
 }
 
-.slip .slip__f:nth-child(3) {
-  padding-right: 1rem;
+@media (min-width: 48rem) {
+  .slip .slip__f:nth-child(3) {
+    padding-right: 1rem;
+  }
+  .tip__btn--head {
+    display: none;
+  }
+}
+@media (max-width: 47.99rem) {
+  .slip__f--amount {
+    display: none;
+  }
+  .slip__head {
+    hyphens: manual;
+  }
+  .tip__btn--head {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 0.35rem;
+    margin: -0.5rem -0.35rem -0.5rem auto;
+    border-radius: var(--radius-s);
+    color: var(--band-muted);
+    font: 500 0.8125rem/1.25 var(--font-body);
+    text-align: right;
+  }
+  .tip__btn--head:is(:hover, :focus-visible) {
+    color: var(--on-band);
+  }
+  .tip__btn--head svg {
+    vertical-align: -0.3em;
+  }
 }
 @media (pointer: coarse) {
   .tip__btn {

@@ -14,7 +14,8 @@ export function initMenu(): void {
     button.setAttribute('aria-expanded', String(open));
     label.textContent = open ? 'Schließen' : 'Menü';
     for (const el of outside) el.toggleAttribute('inert', open);
-    if (open) nav.querySelector<HTMLElement>('a')?.focus();
+    if (open)
+      nav.querySelector<HTMLElement>('a')?.focus({ preventScroll: true });
   };
   matchMedia('(min-width: 75rem)').addEventListener('change', () =>
     setOpen(false),
@@ -25,9 +26,16 @@ export function initMenu(): void {
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape' || !head.classList.contains('is-open')) return;
     setOpen(false);
-    button.focus();
+    button.focus({ preventScroll: true });
   });
   nav.addEventListener('click', (event) => {
     if (eventElement(event)?.closest('a')) setOpen(false);
+  });
+  document.addEventListener('click', (event) => {
+    if (
+      head.classList.contains('is-open') &&
+      !head.contains(eventElement(event))
+    )
+      setOpen(false);
   });
 }
