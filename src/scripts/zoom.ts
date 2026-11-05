@@ -5,8 +5,12 @@ export function initZoom(): void {
   const image = dialog?.querySelector('img');
   if (!dialog || !image) return;
   document.addEventListener('click', (event) => {
+    const target = eventElement(event);
     const link =
-      eventElement(event)?.closest<HTMLAnchorElement>('a[data-zoom]');
+      target?.closest<HTMLAnchorElement>('a[data-zoom]') ??
+      target
+        ?.closest('.photo > picture')
+        ?.parentElement?.querySelector<HTMLAnchorElement>(':scope > .zoom');
     if (
       !link ||
       event.button !== 0 ||

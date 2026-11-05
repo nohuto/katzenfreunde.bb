@@ -619,6 +619,9 @@ svg.i {
   width: 1.15rem;
   height: 1.15rem;
 }
+.photo:has(> .zoom) img {
+  cursor: zoom-in;
+}
 .zoom:hover,
 .zoom-view__close:hover {
   color: var(--brand);
