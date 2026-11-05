@@ -636,11 +636,13 @@ svg.i {
     transition: opacity var(--t) ease-out;
   }
 }
-@media (pointer: coarse) {
-  .zoom::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
+@media (hover: none) {
+  .zoom {
+    inset: 0;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    opacity: 0;
   }
 }
 .zoom-view {

@@ -335,6 +335,7 @@
 }
 .gallery__nav {
   position: absolute;
+  z-index: 2;
   top: 50%;
   translate: 0 -50%;
   display: grid;
