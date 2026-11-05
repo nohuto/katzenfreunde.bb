@@ -49,6 +49,7 @@ export const external = {
   tierschutzbund: 'https://www.tierschutzbund.de/',
   futterShuttle: 'https://www.futter-shuttle.de/',
   tierarztPraxis: 'https://www.tierarzt-bietigheim-bissingen.de/',
+  source: 'https://github.com/nohuto/katzenfreunde.bb',
   paypal:
     'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KG7YM244JCF2Q',
 };
