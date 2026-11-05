@@ -4,6 +4,7 @@ import { initGalleries } from './gallery';
 import { initCounts, initDates } from './lists';
 import { initMenu } from './menu';
 import { initTheme } from './theme';
+import { initZoom } from './zoom';
 
 initTheme();
 initMenu();
@@ -12,3 +13,4 @@ initDates();
 initCounts();
 initGalleries();
 initArt();
+initZoom();

@@ -79,6 +79,7 @@ const poster = await getImage({
             alt="Junge getigerte Katze auf einer blauen Decke in einer Transportbox"
             class="profile__photo"
             eager
+            zoom
           />
           <div class="profile__body">
             <h3>Junge getigerte Katze</h3>
@@ -123,6 +124,7 @@ const poster = await getImage({
                   widths={[160, 480, 900]}
                   sizes="(max-width: 63.99rem) 100vw, 600px"
                   alt="Franzi, schwarze Katze mit gelben Augen, auf einem Katzenkissen"
+                  zoom
                 />
               </div>
               <div class="gallery__slide" data-slide="2">
@@ -131,6 +133,7 @@ const poster = await getImage({
                   widths={[640, 1024, 1600]}
                   sizes="(max-width: 63.99rem) 100vw, 600px"
                   alt="Franzi liegt entspannt auf einer grauen Decke"
+                  zoom
                 />
               </div>
             </div>
@@ -349,7 +352,10 @@ const poster = await getImage({
         </div>
       </div>
       <figure class="pinned pinned--flat">
-        <a href={poster.src}>
+        <a
+          href={poster.src}
+          data-zoom="Plakat: Wir suchen dringend Pflegestellen für unsere Katzen"
+        >
           <Photo
             name="plakat-pflegestellen"
             widths={[800]}

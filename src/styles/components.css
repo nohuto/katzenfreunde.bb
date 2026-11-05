@@ -575,3 +575,109 @@ svg.i {
   visibility: hidden;
   color: var(--brand);
 }
+.gallery__nav,
+.gallery__count,
+.zoom,
+.zoom-view__close {
+  background: light-dark(rgb(255 255 255 / 0.62), rgb(22 26 20 / 0.62));
+  color: var(--ink);
+}
+@supports (backdrop-filter: blur(1px)) {
+  .gallery__nav,
+  .gallery__count,
+  .zoom,
+  .zoom-view__close {
+    backdrop-filter: blur(12px) saturate(1.2);
+  }
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .gallery__nav,
+  .gallery__count,
+  .zoom,
+  .zoom-view__close {
+    background: light-dark(rgb(255 255 255 / 0.92), rgb(22 26 20 / 0.92));
+  }
+}
+.zoom,
+.zoom-view__close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+}
+.zoom {
+  position: absolute;
+  z-index: 1;
+  top: 0.65rem;
+  right: 0.65rem;
+}
+.zoom svg,
+.zoom-view__close svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+.zoom:hover,
+.zoom-view__close:hover {
+  color: var(--brand);
+}
+@media (hover: hover) {
+  .zoom {
+    opacity: 0;
+  }
+  :is(figure, .gallery):is(:hover, :focus-within) .zoom {
+    opacity: 1;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .zoom {
+    transition: opacity var(--t) ease-out;
+  }
+}
+@media (pointer: coarse) {
+  .zoom::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+  }
+}
+.zoom-view {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 4rem var(--gutter) var(--gutter);
+  border: 0;
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+}
+.zoom-view[open] {
+  display: grid;
+  place-items: center;
+}
+.zoom-view::backdrop {
+  background: transparent;
+}
+.zoom-view img {
+  width: min(
+    calc(var(--w) * 2px),
+    100%,
+    calc((100dvh - 4rem - var(--gutter)) * var(--ratio))
+  );
+  border-radius: var(--radius-m);
+}
+.zoom-view img:not([style]) {
+  visibility: hidden;
+}
+.zoom-view__close {
+  position: fixed;
+  top: 0.75rem;
+  right: var(--gutter);
+  width: var(--touch);
+  height: var(--touch);
+}
+html:has(.zoom-view[open]) {
+  overflow: hidden;
+}

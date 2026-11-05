@@ -333,23 +333,6 @@
 .gallery__slide .photo {
   height: 100%;
 }
-.gallery__nav,
-.gallery__count {
-  background: light-dark(rgb(255 255 255 / 0.62), rgb(22 26 20 / 0.62));
-  color: var(--ink);
-}
-@supports (backdrop-filter: blur(1px)) {
-  .gallery__nav,
-  .gallery__count {
-    backdrop-filter: blur(12px) saturate(1.2);
-  }
-}
-@supports not (backdrop-filter: blur(1px)) {
-  .gallery__nav,
-  .gallery__count {
-    background: light-dark(rgb(255 255 255 / 0.92), rgb(22 26 20 / 0.92));
-  }
-}
 .gallery__nav {
   position: absolute;
   top: 50%;

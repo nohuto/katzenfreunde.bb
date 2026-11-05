@@ -2,6 +2,7 @@
 import { getImage } from 'astro:assets';
 import Header from '../components/site/Header.astro';
 import Footer from '../components/site/Footer.astro';
+import ZoomView from '../components/site/ZoomView.astro';
 import faviconSource from '../image-sources/assets/katzenfreunde-circle.png';
 import manropeUrl from '../fonts/Manrope-latin.woff2?url';
 import frauncesUrl from '../fonts/Fraunces-600-latin.woff2?url';
@@ -128,6 +129,7 @@ const organization = logo && {
       <slot />
     </main>
     <Footer />
+    <ZoomView />
     <p class="sr-only" role="status" aria-atomic="true" data-live-region></p>
     <script>
       import '../scripts/site';
