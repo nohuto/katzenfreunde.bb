@@ -37,13 +37,6 @@ export const navigationSections: Partial<Record<PageKey, [string, string][]>> =
       [`${routes.vermittlung}#gebuehren`, 'Schutzgebühren'],
       [`${routes.vermittlung}#formulare`, 'Formulare'],
     ],
-    gefunden: [
-      [`${routes.gefunden}#verletzt`, 'Verletzt oder in Gefahr'],
-      [`${routes.gefunden}#kitten`, 'Kätzchen ohne Mutter'],
-      [`${routes.gefunden}#zutraulich`, 'Zutrauliche Katze'],
-      [`${routes.gefunden}#streuner`, 'Scheue Streunerkatze'],
-      [`${routes.gefunden}#tot`, 'Tote Katze'],
-    ],
     helfen: [
       [`${routes.helfen}#spenden`, 'Geld spenden'],
       [routes.mitglied, 'Mitglied werden'],
