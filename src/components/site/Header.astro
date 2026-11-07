@@ -5,6 +5,7 @@ import {
   contact,
   navigation,
   navigationParent,
+  navigationSections,
   routes,
   type PageKey,
 } from '../../data/site';
@@ -28,8 +29,9 @@ const donate = `${routes.helfen}#spenden`;
       aria-expanded="false"
       aria-controls="hauptnavigation"
     >
-      <Icon name="list" />
-      <span class="menu-btn__label" data-menu-label>
+      <Icon name="list" class="i menu-btn__open" />
+      <Icon name="x" class="i menu-btn__close" />
+      <span class="sr-only" data-menu-label>
         Menü
       </span>
     </button>
@@ -40,18 +42,49 @@ const donate = `${routes.helfen}#spenden`;
       aria-label="Hauptnavigation"
     >
       <ul>
-        {navigation.map(([key, label]) => (
-          <li>
-            <a
-              href={routes[key]}
-              aria-current={
-                key === page ? 'page' : key === current ? 'true' : undefined
-              }
-            >
-              <span>{label}</span>
-            </a>
-          </li>
-        ))}
+        {navigation.map(([key, label]) => {
+          const sections = navigationSections[key];
+          return (
+            <li>
+              <a
+                href={routes[key]}
+                aria-current={
+                  key === page ? 'page' : key === current ? 'true' : undefined
+                }
+              >
+                <span>{label}</span>
+              </a>
+              {sections && (
+                <>
+                  <button
+                    class="nav__more"
+                    type="button"
+                    data-menu-more
+                    aria-expanded={key === current ? 'true' : 'false'}
+                    aria-controls={`unterpunkte-${key}`}
+                    aria-label={`Unterpunkte von ${label}`}
+                  >
+                    <Icon name="caret-down" />
+                  </button>
+                  <ul class="nav__sub" id={`unterpunkte-${key}`}>
+                    {sections.map(([href, text]) => (
+                      <li>
+                        <a
+                          href={href}
+                          aria-current={
+                            page && href === routes[page] ? 'page' : undefined
+                          }
+                        >
+                          {text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </li>
+          );
+        })}
         <li class="nav__donate">
           <a href={donate}>
             <Icon name="heart" />

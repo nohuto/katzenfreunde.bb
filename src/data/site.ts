@@ -30,6 +30,34 @@ export const navigationParent: Partial<Record<PageKey, PageKey>> = {
   mitglied: 'helfen',
 };
 
+export const navigationSections: Partial<Record<PageKey, [string, string][]>> =
+  {
+    vermittlung: [
+      [`${routes.vermittlung}#ablauf`, 'Ablauf'],
+      [`${routes.vermittlung}#gebuehren`, 'Schutzgebühren'],
+      [`${routes.vermittlung}#formulare`, 'Formulare'],
+    ],
+    gefunden: [
+      [`${routes.gefunden}#verletzt`, 'Verletzt oder in Gefahr'],
+      [`${routes.gefunden}#kitten`, 'Kätzchen ohne Mutter'],
+      [`${routes.gefunden}#zutraulich`, 'Zutrauliche Katze'],
+      [`${routes.gefunden}#streuner`, 'Scheue Streunerkatze'],
+      [`${routes.gefunden}#tot`, 'Tote Katze'],
+    ],
+    helfen: [
+      [`${routes.helfen}#spenden`, 'Geld spenden'],
+      [routes.mitglied, 'Mitglied werden'],
+      [`${routes.helfen}#pflege`, 'Pflegestelle werden'],
+      [`${routes.helfen}#sachspenden`, 'Sachspenden'],
+    ],
+    arbeit: [
+      [`${routes.arbeit}#tierarzt`, 'Tierärztliche Versorgung'],
+      [`${routes.arbeit}#futterstellen`, 'Futterstellen'],
+      [`${routes.arbeit}#flohmarkt`, 'Flohmarkt'],
+      [routes.daheim, 'Endlich daheim'],
+    ],
+  };
+
 export const contact = {
   phone: '07042 34355',
   tel: 'tel:+49704234355',

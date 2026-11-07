@@ -132,6 +132,7 @@ svg.i {
 .hot {
   background: var(--band);
   color: var(--on-band);
+  --focus: var(--on-band);
   border: 1px solid var(--band);
 }
 .hot h2 {

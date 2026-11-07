@@ -74,6 +74,7 @@
 .fold--urgent {
   background: var(--band);
   color: var(--on-band);
+  --focus: var(--on-band);
 }
 .fold--urgent .fold__ic,
 .fold--urgent .fold__chev,

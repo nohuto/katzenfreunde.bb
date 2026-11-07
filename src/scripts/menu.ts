@@ -6,9 +6,14 @@ export function initMenu(): void {
   const label = button?.querySelector('[data-menu-label]');
   const nav = head?.querySelector('[data-menu-nav]');
   if (!head || !button || !label || !nav) return;
-  const outside = [...document.body.children].filter(
-    (el) => el !== head && !el.matches('script, template'),
-  );
+  const outside = [
+    ...[...document.body.children].filter(
+      (el) => el !== head && !el.matches('script, template'),
+    ),
+    ...head.querySelectorAll(
+      '.head__bar > :not([data-menu-toggle], [data-menu-nav])',
+    ),
+  ];
   const setOpen = (open: boolean) => {
     head.classList.toggle('is-open', open);
     button.setAttribute('aria-expanded', String(open));
@@ -29,12 +34,21 @@ export function initMenu(): void {
     button.focus({ preventScroll: true });
   });
   nav.addEventListener('click', (event) => {
-    if (eventElement(event)?.closest('a')) setOpen(false);
+    const target = eventElement(event);
+    const more = target?.closest('[data-menu-more]');
+    if (more)
+      more.setAttribute(
+        'aria-expanded',
+        String(more.getAttribute('aria-expanded') !== 'true'),
+      );
+    else if (target?.closest('a')) setOpen(false);
   });
   document.addEventListener('click', (event) => {
+    const target = eventElement(event);
     if (
       head.classList.contains('is-open') &&
-      !head.contains(eventElement(event))
+      !nav.contains(target) &&
+      !button.contains(target)
     )
       setOpen(false);
   });
